@@ -1,17 +1,18 @@
 # Raijax
 
-**代號 (Codename)**: The Robotic AI Junction (機器人 AI 樞紐)
-**狀態 (Status)**: 孵化中 / 規劃中 (Incubation / Planning)
+**代號 (Codename)**: The Observation Point (前線觀測站)
+**狀態 (Status)**: 孵化中 (Incubation)
 **網域 (Domain)**: [raijax.com](https://raijax.com) | [raijax.ai](https://raijax.ai) | [raijax.io](https://raijax.io)
 
 ---
 
 ## 🚀 概述 (Overview)
 
-**Raijax** 是通往具身智能 (Embodied AI) 革命的首選目的地。它致力於成為混亂的機器人 DIY 領域中明確的清晰引擎，作為建構者、程式設計師和創作者的「系統整合者」與「洞見樞紐」。
+**Raijax** 不是一個單純的網站，它是 **自主智能時代的前線觀測站 (Observation Point for the Age of Autonomous Intelligence)**。
 
-Raijax 不僅僅是一個新聞網站；它是一個 **工具與情報平台 (Tools & Intelligence Platform)**。
-想像一下：**機器人領域的 PCPartPicker 遇上了 Civitai。**
+它是一個 **「被未來的介面呼叫的思考場」** —— 當人類與機器在協作中卡關、產生價值衝撞時，我們在這裡記錄、觀測並尋找視角。
+
+我們不追求教科書式的答案，我們記錄 **「人類與 AI 如何共存、磨合與拉扯」** 的真實過程。
 
 ## 📂 關鍵文檔 (Key Documentation)
 
