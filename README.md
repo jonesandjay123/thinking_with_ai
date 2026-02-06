@@ -16,6 +16,7 @@
 thinking_with_ai/
 ├── projects/           # 進行中 & 已完成的專案
 │   ├── jarvis-identity/    # Jarvis AI Agent 系統
+│   ├── jovix-gateway/      # Jovix 本地端多模態閘道器 🆕
 │   ├── raijax-v2/          # Raijax 個人實驗空間
 │   ├── vibe-coding-course/ # Vibe Coding 教學
 │   ├── game-development/   # 遊戲開發探索（暫停）
@@ -33,6 +34,12 @@ thinking_with_ai/
 - 🌐 [raijax.com](https://raijax.com)
 - 核心：圖片競猜遊戲 + 哲學展示牆
 - 狀態：**開發中**
+
+### [Jovix Gateway](./projects/jovix-gateway/) 🆕
+本地端多模態 I/O 閘道器 — 讓 Jovix 可接機器人
+- 🖥️ Jovix (RTX 5080) 負責視覺推理
+- 🎯 目標：手機 → 視覺/語音 → OpenClaw → 控制硬體
+- 狀態：**規劃中**
 
 ### [Vibe Coding Course](./projects/vibe-coding-course/)
 為櫻井妹妹（Azunyan）設計的 AI 輔助開發教學
@@ -57,7 +64,7 @@ Jarvis AI Agent 的身份系統與運作規範
 | 2026-02-02 | 雙重身份模型、8 個 UI/UX 提案完成 |
 | 2026-02-04 | Raijax 方向轉彎、Vibe Coding PPT 完成、i18n 上線 |
 | 2026-02-05 | Firebase Auth 整合、Image Guessing 開發 |
-| 2026-02-06 | VibeCoding_Workshop repo 整合 |
+| 2026-02-06 | VibeCoding_Workshop repo 整合、Jovix Gateway 規劃 |
 
 ---
 
