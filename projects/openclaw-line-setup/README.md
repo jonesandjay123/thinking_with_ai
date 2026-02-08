@@ -233,7 +233,33 @@ openclaw plugins list
 | `open` | 任何人都可以對話（不建議） |
 | `disabled` | 停用 DM |
 
-### 4.4 重啟 Gateway
+### 4.4 groupPolicy 選項（群組聊天）
+
+如果要讓 Bot 加入 LINE 群組，需要設定 `groupPolicy`：
+
+```json
+{
+  "channels": {
+    "line": {
+      "enabled": true,
+      "channelAccessToken": "YOUR_TOKEN",
+      "channelSecret": "YOUR_SECRET",
+      "dmPolicy": "pairing",
+      "groupPolicy": "open"
+    }
+  }
+}
+```
+
+| Policy | 行為 |
+|--------|------|
+| `open` | Bot 可以加入任何群組 |
+| `allowlist` | 只允許白名單中的群組（用 `groupAllowFrom` 指定 Group ID） |
+| `disabled` | Bot 不加入群組（預設） |
+
+> ⚠️ **重要：** 如果沒有設定 `groupPolicy`，預設是 `disabled`。Bot 被拉進群組後會**立刻自動退出**（秒退），這是 OpenClaw 的安全機制。必須明確設定 `groupPolicy` 才能留在群組中。
+
+### 4.5 重啟 Gateway
 
 ```bash
 openclaw gateway restart
