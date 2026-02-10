@@ -479,6 +479,145 @@ cd ios && pod install
 
 ---
 
+## 🧪 實戰驗證紀錄（2026-02-10）
+
+> 以下是在 Jarvis Mac Mini 上實際走完「從零到 iPad 跑起 Hello World」的完整紀錄，含踩過的坑與解法。
+
+### 環境
+
+| 項目 | 規格 |
+|------|------|
+| Mac | Mac Mini M 系列、24GB RAM、macOS Sequoia |
+| Apple ID | jarvis.mac.ai@gmail.com（免費，未付 $99） |
+| 測試裝置 | iPad（iPadOS 26.x）+ iPhone 6S（iOS 15.8.6） |
+| Xcode | App Store 最新版 |
+
+### 完整 SOP（照做即可）
+
+#### Step 1：安裝 Xcode
+
+1. App Store 搜尋 **Xcode** → 安裝（⚠️ 不要裝「Apple Developer」，那是資訊 App，不能寫程式）
+2. 第一次開啟讓它跑完 **Installing additional components**
+3. Terminal 執行：
+   ```bash
+   sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+   sudo xcodebuild -license accept
+   ```
+
+#### Step 2：登入 Apple ID（確認 Personal Team）
+
+1. Xcode → **Settings** → **Accounts**
+2. 點 `+` → Apple ID → 登入（會需要 2FA 驗證碼）
+3. 點進帳號，確認看到 **Personal Team**
+4. 看到 `0 Provisioned Devices` 是正常的（第一次 Run 後會自動變 1）
+
+> **重要：** 不需要去 Apple Developer 網站註冊任何東西，也不需要手動綁定裝置。現代 Xcode 在第一次 ⌘R 時會自動處理所有 signing/provisioning。
+
+#### Step 3：準備實體裝置（建議插線）
+
+**iPad/iPhone 端：**
+1. 用 USB 線連接 Mac
+2. 跳出「信任此電腦？」→ **信任**，輸入解鎖密碼
+3. 開啟開發者模式（iPadOS/iOS 16+）：
+   - 設定 → 隱私權與安全性 → **開發者模式** → 開啟
+   - **必須重新開機一次**（不重開 → Xcode 不會給你 Wi-Fi 選項）
+
+**Mac / Xcode 端：**
+1. Xcode → **Window → Devices and Simulators**
+2. 左側應看到你的裝置
+3. 可能顯示「Preparing...」→ 等它跑完
+
+#### Step 4：建立空白 SwiftUI 專案
+
+1. Xcode → **File → New → Project**
+2. 選 **iOS → App → Next**
+3. 專案設定：
+
+| 欄位 | 建議值 | 說明 |
+|------|--------|------|
+| Product Name | `VidCatalog`（或任意） | App 名稱 |
+| Team | Personal Team | 選你的免費 Team |
+| Organization Identifier | `com.jarvismac` | 反域名格式 |
+| Interface | **SwiftUI** | 現代 UI 框架 |
+| Language | **Swift** | |
+| Testing System | **None** ✅ | 第一個 App 不需要測試框架 |
+| Storage | **None** ✅ | 第一個 App 不需要資料庫 |
+
+> **Testing System 和 Storage 一律選 None。** 這兩個是進階功能，選了會讓專案多一堆新手看不懂的檔案。
+
+#### Step 5：Run 到實體裝置
+
+1. **關鍵：** 確認上方 Run Destination **不是 My Mac**
+2. 點下拉選單 → 選你的 iPad/iPhone
+3. 按 **▶️**（或 ⌘R）
+4. 第一次可能需要在裝置上信任開發者：
+   - iPad/iPhone → 設定 → 一般 → **VPN 與裝置管理**
+   - 找到你的 Apple ID → **信任**
+5. 成功後 iPad 桌面出現 App，打開看到 **Hello, world!** 🎉
+
+#### Step 6：Wi-Fi Debug（可選，第二階段）
+
+1. **前提：** 必須先用插線成功跑過一次
+2. Xcode → Window → Devices and Simulators → 選裝置
+3. 勾選 **Connect via network**（有時插線成功後會自動可用）
+4. 條件：Mac 與裝置在同一 Wi-Fi、裝置解鎖、不是 Guest/公司隔離網路
+
+### 踩過的坑
+
+#### 坑 1：「iOS XX.X is not installed」
+
+```
+iOS 26.2 is not installed. Please download and install the platform 
+from Xcode > Settings > Components
+```
+
+**原因：** Xcode 剛裝好，還沒下載對應 iOS 版本的 platform support（約 8GB）。
+
+**解法：** Xcode → Settings → Components → 下載對應版本。第一次必經，之後不用重來。
+
+#### 坑 2：iPhone 6S 太舊
+
+```
+Your iPhone's iOS 15.8.6 doesn't match app's iOS 26.x deployment target
+```
+
+**原因：** Xcode 新建專案預設用最新 iOS 當 Deployment Target，但 iPhone 6S 最高只能 iOS 15。
+
+**解法 A（推薦）：** 換較新的裝置。
+**解法 B：** 專案 → Targets → General → Deployment Target 改為 `15.0`。
+
+> **教學建議：** 第一堂課用新裝置，避免版本問題打擊信心。Deployment Target 降版當第二堂加分題。
+
+#### 坑 3：App Store 裡 Xcode vs Apple Developer 搞混
+
+App Store 搜 Xcode 會同時出現：
+- **Xcode** — 開發工具，要裝這個 ✅
+- **Apple Developer** — 資訊/帳號管理 App，不需要 ❌
+
+#### 坑 4：「不受信任的開發者」
+
+App 裝上去了但打不開 → iPad 設定 → 一般 → VPN 與裝置管理 → 信任開發者。
+
+### 教學建議（給要帶新手的人）
+
+1. **第一次一定插線** — Wi-Fi 連線的變數太多，新手容易卡在「裝置看不到」
+2. **Testing System / Storage 選 None** — 一句話帶過：「等你開始寫邏輯再加」
+3. **7 天過期這樣解釋：**「跟手機充電一樣，沒壞，只是期限到了，回 Xcode 按一次 ▶️ 就好」
+4. **不要在第一堂提 Wi-Fi Debug** — 成功跑起來再教，當作「驚喜加分」
+5. **Deployment Target 問題** — 「Xcode 預設用最新 iOS，手機舊的話要調低」
+
+### 狀態（2026-02-10 驗證完成）
+
+- ✅ Xcode 安裝並設定完成
+- ✅ Apple ID 登入，Personal Team 可用
+- ✅ SwiftUI 空白專案建立（Testing: None, Storage: None）
+- ✅ 插線連 iPad，成功 Build & Run
+- ✅ 開發者憑證已信任，App 正常啟動
+- ✅ Wi-Fi Debug 可用
+- ✅ 整條流程確認可用於教學
+
+---
+
 ## 💡 總結
 
 免費開發 iOS App 完全可行，主要限制是 7 天重新簽名和功能限制。對於學習和個人使用來說已經足夠。
@@ -503,5 +642,5 @@ cd ios && pod install
 
 ---
 
-*最後更新：2026年2月9日*  
+*最後更新：2026年2月10日*  
 *如有問題或建議，歡迎提出 Issue 或 Pull Request*
