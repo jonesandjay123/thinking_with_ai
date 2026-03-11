@@ -25,6 +25,8 @@ thinking_with_ai/
 │   ├── firebase-hosting-guide/     # Firebase Hosting + GitHub Actions 指南
 │   ├── ios-local-dev-guide/        # iOS 本地開發指南（免付費帳號）
 │   ├── free-llm-for-openclaw/      # 免費 LLM 方案研究
+│   ├── tokyo-trip-planner/         # 🗼 東京旅行規劃工具（構想中）
+│   ├── voice-chat-agent/           # 🎙️ 語音對話 Jarvis（構想中）
 │   ├── game-development/           # 遊戲開發探索（暫停）
 │   └── market-research/            # 市場調研成果
 ├── ideas/                          # 想法與待執行清單
@@ -56,6 +58,18 @@ thinking_with_ai/
 Jarvis AI Agent 的身份系統與運作規範
 - 🤖 誕生日：2026-01-27
 - 狀態：**Phase 2 (Browser Control + Multi-Channel)**
+
+### [Tokyo Trip Planner](./projects/tokyo-trip-planner/) 🗼
+2026 年 5 月東京旅行的 AI 協作規劃工具
+- 📍 卡片式靈感收集 + 日期軸拖放
+- 🤖 Jarvis 自動根據關鍵字爬資訊、生成景點卡
+- 狀態：**構想中** — D2R bot 告一段落後啟動
+
+### [Voice Chat Agent](./projects/voice-chat-agent/) 🎙️
+讓 Jones 用語音跟 Jarvis 溝通
+- 📱 Android 友善方案（非 Siri）
+- 🔍 研究方向：OpenClaw 社群方案 / Telegram 語音 / Web Speech API / Tasker
+- 狀態：**構想中** — 先研究可行方案
 
 ---
 
