@@ -27,6 +27,7 @@ thinking_with_ai/
 │   ├── free-llm-for-openclaw/      # 免費 LLM 方案研究
 │   ├── trip-planner/         # 🗼 東京旅行規劃工具（構想中）
 │   ├── voice-chat-agent/           # 🎙️ 語音對話 Jarvis（構想中）
+│   ├── godot-game-dev/            # 🎮 Godot + AI 遊戲開發（構想中）
 │   ├── game-development/           # 遊戲開發探索（暫停）
 │   └── market-research/            # 市場調研成果
 ├── ideas/                          # 想法與待執行清單
@@ -70,6 +71,12 @@ Jarvis AI Agent 的身份系統與運作規範
 - 📱 Android 友善方案（非 Siri）
 - 🔍 研究方向：OpenClaw 社群方案 / Telegram 語音 / Web Speech API / Tasker
 - 狀態：**構想中** — 先研究可行方案
+
+### [Godot Game Dev](./projects/godot-game-dev/) 🎮
+用 Godot 開源引擎 + AI 輔助做遊戲
+- 🎯 零編程背景也能做，GDScript 類似 Python
+- 🤖 AI 寫邏輯 + 生成素材
+- 狀態：**構想中** — D2R bot 告一段落後考慮
 
 ---
 
