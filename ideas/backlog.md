@@ -99,4 +99,29 @@
 
 ---
 
-*最後更新：2026-02-06*
+## 🎙️ Fish-Speech — OpenAI TTS 開源平替
+
+**狀態**：📋 待研究
+
+**構想**：
+- [Fish-Speech](https://github.com/fishaudio/fish-speech) — 開源 TTS 引擎
+- 號稱是 OpenAI TTS 的開源替代方案
+- 支援多語言、語音克隆、即時生成
+- 可本地部署（不需 API key、不需付費）
+
+**潛在用途**：
+- Jarvis 語音回覆（取代 ElevenLabs / OpenAI TTS）
+- Raijax 互動語音
+- D2R bot 語音通知（掉落提醒等）
+- 教學影片旁白自動生成
+
+**為何感興趣**：
+- 免費 + 開源 + 可本地跑
+- 如果品質夠好，可以取代付費 TTS 服務
+- Jones 的 5080 / Mac Mini 都有算力可以跑
+
+**下一步**：找時間研究品質、部署難度、跟現有方案比較
+
+---
+
+*最後更新：2026-03-12*
