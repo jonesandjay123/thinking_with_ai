@@ -9,11 +9,13 @@
 
 ## TL;DR 結論
 
-**✅ 可行，建議推進。**
+**✅ 高度可行，強烈建議推進。**
 
 原 README 規劃的 Pipeline 五步驟，在 Claude Code 架構下每一步都有直接對應的實作路徑。Polymarket 的技術堆疊（CLOB API、SDK、WebSocket）完全不依賴 OpenClaw，遷移後不只「能做」，而且還新增了幾個原本沒有的能力。
 
-**推薦方案：方案 α（本機 Mac Mini + Claude Code CLI）** 作為 Phase 1 起點，以 $50 預算上限跑第一個 pipeline。先驗證 decision loop，再考慮是否升級到 VPS 方案。
+在 **Claude Max 訂閱 + 本機 Mac Mini** 的前提下，主要瓶頸已從「成本與 rate limit」轉移到「工程複雜度」（watchdog 設計、context 管理、風險控制）。這是一個更健康的瓶頸——全部都是可解的工程問題。
+
+**推薦方案：方案 α（本機 Mac Mini + Claude Code CLI）** 作為 Phase 1 起點，以 $50 預算上限跑第一個 pipeline。Max 訂閱的高配額讓方案 α 極具優勢，Phase 2 之前不需要考慮 VPS。
 
 ---
 
@@ -73,11 +75,12 @@ Mac Mini 24/7
 | 項目 | 評估 |
 |------|------|
 | 硬體成本 | $0（已有 Mac Mini 24/7）|
-| API 成本 | Claude Pro $20/月 + Polymarket 手續費 |
+| Claude 成本 | Max 訂閱 $100-200/月（已有）；日常 agent 跑在訂閱配額內，**額外 API 成本趨近於零** |
+| Polymarket 手續費 | 僅下注時發生，Phase 1 乾跑 $0 |
 | 私鑰安全 | 留在本機 Keychain，不上傳 |
 | 穩定性 | ⚠️ Mac 重啟 / 網路中斷會停 |
 | 啟動速度 | 最快（環境已就位）|
-| 適用場景 | Phase 1 驗證 + $50 預算實驗 |
+| 適用場景 | Phase 1-2 全程；Phase 3 前不需要升級 |
 
 ### 方案 β：Hetzner VPS（Phase 2 可考慮）
 
@@ -93,11 +96,13 @@ Mac Mini 負責：下指令、審核、記憶備份
 | 項目 | 評估 |
 |------|------|
 | 硬體成本 | VPS ~$5-8/月 |
-| API 成本 | Claude API $20-50/月（看策略強度）|
+| Claude 成本 | ⚠️ VPS 上的 Claude Code CLI 無法共享 Max 訂閱配額，**需要另外付 API 費用** $30-100/月（看強度）|
 | 私鑰安全 | ⚠️ 需謹慎處理，建議加 Vault |
 | 穩定性 | ✅ 99.9% uptime，獨立於家用網路 |
 | 啟動速度 | 需要 CI/CD 配置，約 1 週 |
-| 適用場景 | pipeline 驗證完、想 scale up 時 |
+| 適用場景 | 家用網路嚴重不穩，或 Phase 3 策略強度到需要 scale 時 |
+
+> **重要提醒**：Jones 是 Max 訂閱用戶，方案 β 的主要吸引力（省 Claude API 費）在這個情況下**反而消失**——VPS 上跑的 Claude Code 是 API 計費，不吃 Max 配額。除非有網路隔離或穩定性需求，否則方案 β 在 Max 訂閱下性價比低於方案 α。
 
 ### 方案 γ：混合模式（Phase 3 選項）
 
@@ -105,7 +110,7 @@ Mac Mini 負責：下指令、審核、記憶備份
 - VPS 跑：高頻交易執行層 + 時間敏感下單
 - 成本最高，架構最複雜，等真的有策略 edge 再考慮
 
-**建議路徑**：α → β（當 pipeline 驗證完）→ γ（當策略可重複獲利）
+**建議路徑（Max 訂閱版）**：α（Phase 1-2 全程）→ 若家用網路不穩才考慮 β → γ 只有 Phase 3 真正 scale 時
 
 ---
 
@@ -121,11 +126,19 @@ Mac Mini 負責：下指令、審核、記憶備份
 
 ### 2. Rate Limit
 
-**問題**：Claude Pro 約 45 messages / 5hr；高頻監控會撞牆。
-**對策**：
-- `/loop 30m` 而非 `/loop 5m`——降低頻率
-- 非交易時段（深夜）減慢心跳
-- 打到 rate limit 時：agent 應自動寫 checkpoint 到 memory 並 graceful exit，不要掛住
+**實際狀況（Max 訂閱）**：原本擔心的「Pro plan 45 messages / 5hr」**對 Jones 不適用**。
+
+| Max tier | 配額 | 適用 |
+|----------|------|------|
+| Max $100/月（5x Pro）| ~200-225 messages / 5hr | 日常 Polymarket agent 綽綽有餘 |
+| Max $200/月（20x Pro）| ~900 messages / 5hr | 幾乎不可能撞牆 |
+
+單純的 Polymarket 監控 loop（掃市場 → LLM 判斷 → 記錄）每輪約 5-10 messages，以每 30 分鐘一輪計算，一天約 240-480 messages，在 $100 Max tier 的日配額以內。**撞 rate limit 的主要風險只在同時開多個 parallel subagent 或密集 tool call 的情境。**
+
+**對策（保留基本設計，不因為配額高就放任）**：
+- Checkpoint/graceful exit 仍然必要——不是為了省配額，而是為了應對 context window 耗盡
+- 非交易時段（深夜）可以放心拉長 heartbeat 間隔（節省 context，不是節省配額）
+- 若在 Max 配額內跑完整個 24/7 loop，額外 API 費用趨近於零（只需 Max 本身的月費）
 
 ### 3. 背景 Agent 停止問題
 
@@ -153,13 +166,18 @@ done
 - **Polymarket 官方 Gamma API**：已經包含市場熱度、交易量排名，可替代「熱門問題」爬蟲
 - **結論**：Twitter 直接爬的需求可以 80% 被 Brave Search 替代，剩下 20% 靠 WebSearch
 
-### 5. API 成本估算
+### 5. 成本估算（Max 訂閱版）
 
-| 使用情境 | 月成本估算 |
-|---------|-----------|
-| Phase 1：手動觸發 + 偶爾掃描 | Claude Pro $20（已有）+ $0 Polymarket 手續費（乾跑不下注）|
-| Phase 2：每 30 分鐘 heartbeat，日常跑 | ~$30-50（API usage）|
-| Phase 3：全自動 24/7，積極策略 | $100-500+（依推理深度）|
+**核心前提**：Jones 是 Claude Max 用戶。在訂閱配額內運行的 agent，**不產生額外 API 費用**。成本主要是 Max 本身的月費。
+
+| 使用情境 | 月成本估算（Max 訂閱） |
+|---------|----------------------|
+| Phase 1：手動觸發 + 偶爾掃描 | Max $100-200（已有）+ $0 Polymarket 手續費（乾跑）|
+| Phase 2：每 30 分鐘 heartbeat，方案 α（本機）| Max 月費（已有）+ Polymarket 手續費（小額）|
+| Phase 2：每 30 分鐘 heartbeat，方案 β（VPS）| Max 月費 + VPS $5-8 + **額外 Claude API $30-100**（VPS 上不走 Max 配額）|
+| Phase 3：全自動 24/7 + 多 subagent，方案 α | Max 月費；若衝破週配額上限才加購 extra usage |
+
+**結論**：相比「API 計費」情境下可能高達 $3,000-10,000/年的年成本，Max 訂閱方案（$1,200-2,400/年）讓整個計畫的財務可行性大幅提升，且成本上限清晰可控。
 
 **Phase 1 建議**：先乾跑（paper trading），不實際下注，只記錄 decision log。驗證 pipeline 正確性比賺錢更重要。
 
@@ -244,7 +262,7 @@ Week 2：
 | 風險 | 嚴重度 | 對策 |
 |------|--------|------|
 | 私鑰洩漏 | 🔴 高 | 只存 macOS Keychain；code 裡用環境變數；不 commit 到 GitHub |
-| 成本失控（Claude API） | 🟡 中 | Phase 1 設 `/loop` 最低頻率；每日 API 用量 alert |
+| 成本失控（Claude API） | 🟢 低 | Max 訂閱內基本無額外費用；風險僅在 Phase 3 密集 subagent 場景，加購 extra usage 前設提醒 |
 | Agent 持續運行中斷 | 🟡 中 | watchdog 腳本 + Telegram heartbeat |
 | 策略連續虧損超出預算 | 🟡 中 | 程式碼內寫死 $50 上限；每筆最大 $5 |
 | Polymarket API 版本變動 | 🟢 低 | 有官方 `Polymarket/agents` repo 可參考；SDK 有版本鎖 |
@@ -284,6 +302,13 @@ Week 2：
 - [Always-On AI Agent Server Setup](https://okhlopkov.com/always-on-ai-agent-server-setup/)
 - [How to Run Claude Code 24/7 Without Burning Context Window](https://dev.to/gentic_news/how-to-run-claude-code-247-without-burning-your-context-window-48ci)
 - [Claude Code issue #41461 — 背景 agent 停止問題](https://github.com/anthropics/claude-code/issues/41461)
+
+---
+
+## 修訂紀錄
+
+- **2026-04-04 v1** 初版
+- **2026-04-04 v1.1** 更正 rate limit 章節（Jones 實際為 Claude Max 訂閱，非 Pro），重新評估成本與部署方案推薦
 
 ---
 
