@@ -4,6 +4,25 @@
 
 這裡不只是研究資料夾，也不只是靈感倉庫。它是 Jones 與 AI 夥伴（GPT / Jarvis / 其他 agents）共同工作的知識與產出中樞。
 
+## Start here
+
+如果你是未來的 Jones，或是未來的 Jarvis，建議先從這裡進入：
+
+### 1. 核心方法論
+- [Thinking → Building → Compounding](./principles/thinking-building-compounding/)
+
+### 2. 操作流程
+- [Conversation → Article Playbook](./playbooks/conversation-to-article/)
+
+### 3. 關鍵決策
+- [Repo 2.0 Upgrade Decision Log](./decision-log/2026-04-repo-2.0-upgrade.md)
+
+### 4. 近期代表性專案
+- [OpenClaw vs Hermes](./projects/openclaw-vs-hermes/)
+- [Codex mobile usage check](./projects/codex-mobile-usage-check/)
+- [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
+- [Trip Planner](./projects/trip-planner/)
+
 ## Repo 的新定位
 
 `thinking_with_ai` 2.0 的核心不是「什麼都丟進 projects/」，而是把不同類型的內容分層管理，避免未來越堆越亂。
@@ -51,6 +70,7 @@ thinking_with_ai/
 ├── principles/                 # 長期原則與方法論
 │   └── thinking-building-compounding/
 ├── playbooks/                  # 可執行流程與操作手冊
+│   └── conversation-to-article/
 ├── projects/                   # 研究、報告、產品探索、專案檔案
 ├── decision-log/               # 關鍵決策與轉折
 ├── ideas/                      # 尚未封裝的點子與 backlog
@@ -60,8 +80,13 @@ thinking_with_ai/
 ## 目前最重要的內容
 
 ### Principles
-- [Thinking → Building → Compounding](./principles/thinking-building-compounding/)  
-  Jones 目前最重要的個人創作方法論，也是這個 repo 2.0 架構升級的核心精神。
+- [Thinking → Building → Compounding](./principles/thinking-building-compounding/)
+
+### Playbooks
+- [Conversation → Article](./playbooks/conversation-to-article/)
+
+### Decision logs
+- [2026-04 Repo 2.0 Upgrade](./decision-log/2026-04-repo-2.0-upgrade.md)
 
 ### Selected Projects
 - [OpenClaw vs Hermes](./projects/openclaw-vs-hermes/)
@@ -80,10 +105,10 @@ thinking_with_ai/
 
 ## 下一步可持續優化
 
-- 補一份 `playbooks/conversation-to-article/`
-- 補一份 `decision-log/2026-04-repo-2.0-upgrade.md`
+- 補更多 `playbooks/`
+- 在 `decision-log/` 累積重要轉折
 - 逐步檢查舊 `projects/` 是否有內容其實應該升格到 `principles/` 或 `playbooks/`
-- 之後再視需要加 `indexes/` 或 `maps/` 來做跨專案導航
+- 視需要加 `indexes/` 或 `maps/` 做跨專案導航
 
 ---
 
