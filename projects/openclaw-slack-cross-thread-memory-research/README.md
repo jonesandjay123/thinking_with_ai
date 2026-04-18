@@ -867,25 +867,30 @@ Jones 真正想要的比較像是：
 
 ---
 
-## 新 Slack thread 啟動時的 recall 流程（第一版）
+## 新 Slack thread 啟動時的 recall 流程（第一版，已調整）
 
 建議流程：
 
 1. `SOUL.md`
 2. `USER.md`
-3. `memory/YYYY-MM-DD.md`（today + yesterday）
-4. `MEMORY.md`
-5. `memory/active-context.md`
+3. `memory/active-context.md`
+4. `memory/YYYY-MM-DD.md`（today + yesterday）
+5. `MEMORY.md`
 
-### 補充
+### 為什麼這樣調整
 
-GPT 建議也有一個合理變體：把 `active-context.md` 提前到 daily / `MEMORY.md` 前面，以便更快接上當前工作。這點可以之後實測。
+這次根據進一步討論，第一版 recall 順序改成讓 `active-context.md` 提前。
 
-目前第一版仍建議先保持較穩的順序：
-- 先人格 / user
-- 再近期時間脈絡
-- 再長期記憶
-- 最後接 active working state
+理由是：
+- 新 thread 最需要的是快速接上「現在正在做什麼」
+- `active-context.md` 應該是短而硬的工作白板，不應該重到干擾整體 context
+- 近期 daily note 和 `MEMORY.md` 仍然保留，用來補時間脈絡與長期穩定資訊
+
+這樣的順序更偏向：
+- 先恢復 persona / user
+- 再快速接上跨 thread working state
+- 再補近期事件
+- 最後補長期穩定記憶
 
 ---
 
