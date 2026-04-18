@@ -26,6 +26,9 @@
 4. **所以網路上會推崇 Hermes，不代表你遇到的是幻覺。**  
    比較像是：Hermes 被推崇的重點多半是 memory / skills / agent loop / extensibility；但如果你的主工作流核心是「Slack thread 裡像同一個人一路接著做事」，那它現在確實還有一段距離。
 
+5. **對 Jones 的實務結論很直接：**  
+   如果你的主要工作面是 Slack thread 內的長流程協作，那目前 Hermes 並不適合直接取代 OpenClaw 成為第一線主 runtime。
+
 ---
 
 ## 一、這次調查看了什麼
@@ -47,7 +50,24 @@
 
 ---
 
-## 二、官方對外宣稱：Hermes 的賣點確實包含 memory、cross-session continuity、multi-platform messaging
+## 二、問題定義：你實際遇到的是什麼？
+
+Jones 在 Hermes 上遇到的，不只是「偶爾答錯」，而是一種很具體的工作流崩壞：
+
+- 同一條 Slack thread 裡，隔一段時間接續追問，agent 卻像在回答別的上下文
+- 對 thread 內先前內容的掌握不穩，甚至會抓錯前幾輪重點
+- 每輪都像重新理解一次狀況，thinking 長、token 燒得快
+- 期待的是 *thread continuity*，實際得到的卻更像 *memory retrieval + partial reconstruction*
+
+這裡最重要的差別是：
+
+> **Slack thread 是 UI grouping，不等於 agent runtime 的 session。**
+
+而你的 frustration，正是出在 UI 看起來連續，但 agent 腦中的上下文單位不一定連續。
+
+---
+
+## 三、官方對外宣稱：Hermes 的賣點確實包含 memory、cross-session continuity、multi-platform messaging
 
 Hermes 官方 README 明確把這些當賣點：
 
@@ -80,9 +100,11 @@ Hermes 自己的產品敘事，本來就讓人合理期待：
 - memory / session / thread 不應該太常錯位
 - 同一條對話不應該頻繁表現出像「重新開機」一樣的割裂感
 
+這也正是為什麼當真實體驗很差時，落差會特別大。
+
 ---
 
-## 三、最直接的公開證據：Hermes 官方 repo 已有多個 Slack continuity 相關 issue
+## 四、最直接的公開證據：Hermes 官方 repo 已有多個 Slack continuity 相關 issue
 
 下面我把證據分級：
 
@@ -92,7 +114,7 @@ Hermes 自己的產品敘事，本來就讓人合理期待：
 
 ---
 
-## 四、A 級證據：直接支持你遇到的「同一 thread 內容接不住」
+## 五、A 級證據：直接支持你遇到的「同一 thread 內容接不住」
 
 ### 1) Issue #2950 — Slack thread parent message missing from conversation context
 
@@ -160,7 +182,7 @@ issue 內容直接描述：
 
 ---
 
-## 五、B 級證據：顯示 Slack session scope / routing 還在持續修，足以導致割裂體感
+## 六、B 級證據：顯示 Slack session scope / routing 還在持續修，足以導致割裂體感
 
 ### 5) Issue #9394 — approval buttons and standalone sends ignore thread context
 
@@ -224,7 +246,7 @@ issue 內容直接描述：
 
 ---
 
-## 六、C 級證據：說明 Hermes 的 Slack continuity 邏輯本來就不是單純天然成立
+## 七、C 級證據：說明 Hermes 的 Slack continuity 邏輯本來就不是單純天然成立
 
 ### 8) PR #7466 — unified thread context hook in BasePlatformAdapter
 
@@ -264,7 +286,7 @@ PR 描述提到：
 
 ---
 
-## 七、Slack 官方 threading 模型，本來就容易跟 AI session 模型錯位
+## 八、Slack 官方 threading 模型，本來就容易跟 AI session 模型錯位
 
 Slack 官方對 thread 的定義是：
 
@@ -272,7 +294,7 @@ Slack 官方對 thread 的定義是：
 - 用來避免污染主頻道
 - UI 上看起來像一個完整主題
 
-Slack 官方文件：  
+Slack 官方文件：
 <https://slack.com/help/articles/115000769927-Use-threads-to-organize-discussions-in-channels>
 
 但 Hermes docs 自己的 session 模型則是：
@@ -295,7 +317,7 @@ Slack 官方文件：
 
 ---
 
-## 八、所以這是不是「大家都在回報」？
+## 九、所以這是不是「大家都在回報」？
 
 ### 可以肯定的部分
 
@@ -324,7 +346,7 @@ Slack 官方文件：
 
 ---
 
-## 九、為什麼網路上還是會推崇 Hermes？
+## 十、為什麼網路上還是會推崇 Hermes？
 
 根據官方 README / docs 的主敘事，我的判斷是：
 
@@ -346,7 +368,7 @@ Slack 官方文件：
 
 ---
 
-## 十、我對你這次體驗的判斷
+## 十一、我對 Jones 這次體驗的判斷
 
 如果只根據這次公開調查，我的判斷是：
 
@@ -368,7 +390,7 @@ Slack 官方文件：
 
 ---
 
-## 十一、對 Jones 最實用的結論
+## 十二、對 Jones 最實用的結論
 
 ### 如果你的核心工作流是：
 - 在 Slack thread 裡長時間 debug
@@ -381,10 +403,33 @@ Slack 官方文件：
 2. **目前公開證據支持：Slack continuity 仍是 Hermes 的脆弱區。**
 3. **Hermes 仍可用，但比較適合把 Slack 當入口，而不是當最核心、最依賴連續性的主工作面。**
 4. **如果你最需要的是穩定連續的工作流，OpenClaw 或更單線性的 chat/session 介面，主觀體感可能真的會更順。**
+5. **以 Jones 目前的工作型態，Hermes 不適合直接接管第一線。**
 
 ---
 
-## 十二、來源清單
+## 十三、為什麼這次退回 OpenClaw 是合理決策
+
+如果你的工作重點是：
+- Slack 裡穩定對話
+- 長流程研究與 debug
+- 對 continuity 非常敏感
+- 希望「同一個 Jarvis」一路陪你做事
+
+那 OpenClaw 目前反而更符合你的真實需求。
+
+這不表示 Hermes 沒價值，而是表示：
+
+> **在 2026-04 這個時間點，Hermes 還沒有成熟到能在你的 Slack 工作流裡無痛取代 OpenClaw。**
+
+所以這次結論不是「你不會用 Hermes」，而是：
+
+> **你已經把它用到設計邊界了。**
+
+這次退回 OpenClaw，不是保守，而是務實。
+
+---
+
+## 十四、來源清單
 
 ### 官方文件 / 官方頁面
 - Hermes README  
@@ -422,11 +467,19 @@ Slack 官方文件：
 
 ---
 
-## 十三、下一步建議
+## 十五、後續建議
 
-如果你要，我下一步最有價值的是二選一：
+如果未來還要再碰 Hermes，比較好的做法是：
 
-1. **做一份工程向 follow-up**：把這些 issue 對應成「Jones 這台 Hermes 應該先檢查哪些 config / behavior / patch point」  
-2. **做一份 workflow 向建議**：直接幫你設計「Slack / Hermes / OpenClaw / ChatGPT 怎麼分工，才不會再被 continuity 問題拖死」
+1. 不把 Slack thread 當主工作面
+2. 先在 CLI / 單一 session / 本機互動裡驗證體感
+3. 如果要進 Slack，先驗證 thread → session 綁定是否穩
+4. 把 Hermes 當研究對象或次要工具，而不是直接接管第一線工作流
 
-我會建議先做第 1 個，因為它最接近你現在卡住的真問題。
+而對 Jones 目前最務實的策略是：
+
+- **OpenClaw Jarvis**：第一線工作流、Slack 主通道、穩定 continuity
+- **ChatGPT**：高階顧問與抽象思辨
+- **Hermes**：暫時作為觀察與研究對象，不做主 runtime
+
+這樣的分工，比硬把 Hermes 推上第一線更合理。
