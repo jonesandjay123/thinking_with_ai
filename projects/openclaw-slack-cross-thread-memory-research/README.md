@@ -909,6 +909,32 @@ Jones 真正想要的比較像是：
 
 ---
 
+## 跨 thread 查細節的標準處理流程
+
+如果一個新 session / 新 thread 已經靠 `active-context.md` 知道大方向，但發現自己缺少足夠細節，處理流程應該是：
+
+1. 先讀 `memory/active-context.md`
+   - 確認目前正在延續的主線與最近決策
+2. 再讀今日與昨日的 `memory/YYYY-MM-DD.md`
+   - 補近期時間脈絡
+3. 若問題涉及長期偏好、穩定規則、長期專案事實
+   - 再讀 `MEMORY.md`
+4. 如果題目明顯指向某個具體 artifact
+   - 直接去讀對應 project / report / README 檔案
+5. 如果仍然缺關鍵細節
+   - 再查相關 session / thread 歷史
+6. 如果查過後仍然沒有足夠把握
+   - 明白說自己查過，但目前只確認到哪些內容，不要假裝全都知道
+
+### 核心原則
+
+- 先 retrieval，再提問
+- 優先讀最可能有答案的檔案
+- 只有在查過後仍然不夠時，才請 Jones 補充
+- 不要因為換 thread 就直接把問題丟回給 Jones 重新解釋
+
+---
+
 ## Thread summary 的產生條件（之後再做，不是現在全部做）
 
 不要每個 thread 都 summary。
