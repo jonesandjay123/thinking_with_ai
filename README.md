@@ -18,6 +18,7 @@
 - [Repo 2.0 Upgrade Decision Log](./decision-log/2026-04-repo-2.0-upgrade.md)
 
 ### 4. 近期代表性專案
+- [OpenClaw Slack Thread Continuity Success](./projects/openclaw-slack-thread-continuity-success/)
 - [OpenClaw vs Hermes](./projects/openclaw-vs-hermes/)
 - [Codex mobile usage check](./projects/codex-mobile-usage-check/)
 - [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
@@ -89,6 +90,7 @@ thinking_with_ai/
 - [2026-04 Repo 2.0 Upgrade](./decision-log/2026-04-repo-2.0-upgrade.md)
 
 ### Selected Projects
+- [OpenClaw Slack Thread Continuity Success](./projects/openclaw-slack-thread-continuity-success/)
 - [OpenClaw vs Hermes](./projects/openclaw-vs-hermes/)
 - [Codex mobile usage check](./projects/codex-mobile-usage-check/)
 - [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
