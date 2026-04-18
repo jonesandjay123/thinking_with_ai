@@ -283,7 +283,15 @@ Jones 評估一個 agent runtime，不是只看：
 
 ---
 
-## 十一、建議的後續文件關聯
+## 十一、相關延伸文件
+
+- `slack-codex-usage-slash-command.md`
+  記錄如何在 Slack 中用 Socket Mode 建立 `/codex-usage`，直接查 Codex 剩餘用量，不經主 agent/LLM。
+
+- `slack-codex-usage-sop.md`
+  更偏實作交接的一步一步 SOP，給未來 agent 或操作者直接照做。
+
+## 十二、建議的後續文件關聯
 
 這份文件建議與以下文件一起看：
 
@@ -304,6 +312,6 @@ Jones 評估一個 agent runtime，不是只看：
 
 ---
 
-## 十二、一句話總結
+## 十三、一句話總結
 
 > **這次成功，不只是 Slack thread 能回，而是 Jones 終於再次感受到：在同一條 thread 裡，還是同一個 Jarvis，在沿著同一條工作線繼續做事。**
