@@ -738,6 +738,223 @@ Jones 真正想要的比較像是：
 
 ---
 
+## OpenClaw / Jarvis 可直接實作的 memory policy 草案
+
+這一段不是再抽象討論，而是把前面的研究收斂成一套第一版可以直接落地的 policy。
+
+## 核心原則
+
+1. **Slack thread 內的 continuity 用 session 承接**
+2. **Slack thread 之間的 continuity 用 shared working memory 承接**
+3. **長期穩定資訊不要和當前工作狀態混在一起**
+4. **shared working memory 必須可覆寫，不可變成 append-only 墓園**
+5. **先不要上 retrieval / vector / external memory service**
+
+---
+
+## `memory/active-context.md` 的定位
+
+它不是第二份 `MEMORY.md`，也不是第二份日記。
+
+它應該是：
+
+> 一份跨 thread / 跨 session 共用的 working whiteboard。
+
+它的目標只有一個：
+
+> 當 Jones 換一個 Slack thread 時，Jarvis 不用從零開始想「現在到底接到哪裡」。
+
+### 設計要求
+
+- 要短
+- 要可掃描
+- 要偏 operational
+- 要能覆寫舊狀態
+- 不要變成流水帳
+
+---
+
+## 建議範本
+
+```md
+# Active Context
+
+> Shared working memory across threads/sessions.
+> This file is a whiteboard, not a journal.
+> Keep it short, current, and rewriteable.
+
+## Current focus
+- 正在處理的主線任務，最多 3 條
+
+## Ongoing workstreams
+- 每條一行：名稱 / 狀態 / 下一步
+
+## Recent important decisions
+- 最近已拍板、未來 thread 不該失憶的決策
+
+## Pending follow-ups
+- 還沒完成、很可能會在別的 thread 接著做的 open loops
+
+## Cross-thread context Jones expects Jarvis to carry
+- Jones 若換 thread，Jarvis 仍應該記得的當前重點
+
+## Optional thread map
+- 哪些 thread 正在延續什麼主題（可選）
+```
+
+---
+
+## Promotion rules（資訊要流去哪）
+
+### 1. thread details -> session / thread logs
+
+適合放在 thread 本地的內容：
+- 一般對答
+- 當下 debug 過程
+- 暫時性來回討論
+- 不值得跨 thread 帶走的細節
+
+### 2. same-day timeline -> `memory/YYYY-MM-DD.md`
+
+適合放在 daily note 的內容：
+- 今天做了什麼
+- 時間序列事件
+- 有留痕價值但不一定要跨 thread 帶走的事情
+
+### 3. cross-thread active state -> `memory/active-context.md`
+
+只有符合以下條件，才應該寫進 active context：
+
+- 這件事明天或下一個 thread 很可能還要接著做
+- 不寫會導致 Jones 需要重新解釋背景
+- 這是一個已形成的決策，而不是還在發散中的雜訊
+- 這是工作狀態 / handoff 線索，而不是一般聊天內容
+
+### 4. durable facts / identity / lessons -> `MEMORY.md`
+
+適合升級進長期記憶的內容：
+- Jones 的穩定偏好
+- Jarvis 應長期記住的工作方式
+- 長期有效的專案事實
+- 值得保留的教訓與規則
+
+---
+
+## 不要寫進 `active-context.md` 的東西
+
+- 暫時 brainstorm
+- thread 裡一般來回對話
+- 很快會過期的細節
+- 可直接從 daily log 查回的流水帳
+- 使用者一時的情緒輸出，但沒有形成持續工作脈絡的內容
+
+---
+
+## `active-context.md` 的維護規則
+
+它應該像白板，不是墓園。
+
+### 可以做的事
+- 刪掉舊 focus
+- 更新 workstream 狀態
+- 覆寫過時決策
+- 移除已完成的 pending follow-up
+
+### 不該做的事
+- 只會 append
+- 為了怕漏而把一切都往裡面塞
+- 把它當長期記憶或完整歷史記錄
+
+---
+
+## 新 Slack thread 啟動時的 recall 流程（第一版）
+
+建議流程：
+
+1. `SOUL.md`
+2. `USER.md`
+3. `memory/YYYY-MM-DD.md`（today + yesterday）
+4. `MEMORY.md`
+5. `memory/active-context.md`
+
+### 補充
+
+GPT 建議也有一個合理變體：把 `active-context.md` 提前到 daily / `MEMORY.md` 前面，以便更快接上當前工作。這點可以之後實測。
+
+目前第一版仍建議先保持較穩的順序：
+- 先人格 / user
+- 再近期時間脈絡
+- 再長期記憶
+- 最後接 active working state
+
+---
+
+## Thread 結束 / 切換前的微型維護檢查
+
+每次一個 thread 有實際進展後，Jarvis 應快速問自己：
+
+1. 這個 thread 有沒有需要跨 thread 帶走的東西？
+2. 如果有，這個資訊應該去哪？
+   - session only
+   - daily note
+   - active context
+   - MEMORY.md
+
+這個檢查不需要很重，但應該變成習慣。
+
+---
+
+## Thread summary 的產生條件（之後再做，不是現在全部做）
+
+不要每個 thread 都 summary。
+
+只有符合以下條件才考慮做 thread summary：
+
+- 有**決策**
+- 有**產出**
+- 有**待辦接手**
+- 有**錯誤排查結論**
+- 有**值得未來引用的 workaround**
+
+若之後實作，建議加標籤，例如：
+- `decision`
+- `debug`
+- `workflow`
+- `design`
+- `blocked`
+- `resolved`
+
+這會讓未來若要做 retrieval，精準度高很多。
+
+---
+
+## 第一版實作建議
+
+### 立刻做
+- 建立 `memory/active-context.md`
+- 更新 agent 工作規則，讓它在 direct / main-session 工作流中讀這份檔
+- 開始使用 promotion rules
+
+### 暫時不要做
+- vector retrieval
+- external memory service
+- 全量 thread summary 自動化
+- 把所有 Slack threads 合併成一個 giant session
+
+---
+
+## 第一版實作狀態（2026-04-18）
+
+已開始落地：
+
+- 已建立 `memory/active-context.md`
+- 已更新工作區規則，讓未來 session startup 會讀取 active context
+- 已把 shared working memory 明確定位為 cross-thread / cross-session whiteboard
+
+這代表這份研究已經不只是理論，而是進入第一階段實作。
+
+---
+
 ## 參考來源
 
 - OpenClaw docs：多通道 Gateway、session-centric 架構、file-memory 慣例
