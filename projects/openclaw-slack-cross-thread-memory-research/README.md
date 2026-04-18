@@ -94,7 +94,8 @@ Equivalent OpenClaw-style layers could be:
 ### Source concepts
 
 - LangChain memory overview: short-term memory is thread-scoped, long-term memory is shared across threads/sessions
-- LangGraph positioning: agents need persisted memory for future interactions
+- LangGraph persistence: checkpointers persist per-thread state keyed by `thread_id`
+- LangGraph positioning: agents need persisted memory across future interactions
 
 ---
 
@@ -178,6 +179,33 @@ not:
 - full vector stack unless truly needed
 
 This is important because it means a good first solution may be relatively lightweight and still materially improve UX.
+
+---
+
+## 5. MCP direction: standardizing access to external memory systems
+
+MCP itself is not a memory solution, but it matters because it standardizes how AI clients connect to external tools and data systems.
+
+### Why this matters
+
+If OpenClaw eventually wants to connect to:
+
+- a dedicated memory store
+- a notes system
+- a vector database
+- a project-state service
+
+MCP-compatible tooling is a strong future path.
+
+### Practical implication
+
+The first implementation for Jones probably should **not** start with MCP. But if later we want:
+
+- shared memory services
+- cross-tool memory access
+- reusable memory components across multiple AI clients
+
+then MCP becomes strategically interesting.
 
 ---
 
@@ -334,6 +362,281 @@ Interesting benchmark, but probably too heavy as the first answer for Jones.
 
 ---
 
+## Which tools / ideas seem most reusable for Slack even if not Slack-specific?
+
+These are the most transferable ideas:
+
+### Very reusable
+- LangGraph's split between **thread memory** and **shared long-term memory**
+- LlamaIndex's split between **recent buffer**, **fact extraction**, and **retrieved older episodes**
+- Mem0's framing of memory as a **dedicated product/system layer**
+
+### Potentially reusable later
+- MCP-based memory services or connectors
+- vector memory stores for recalled episodic context
+- structured project-state stores
+
+### Less likely to be the right first step
+- giant autonomous agent-memory frameworks with lots of hidden machinery
+- overbuilt graph memories before the file-memory lifecycle is even clean
+
+---
+
+## 2. Practical options Jones could actually choose from
+
+Below is the condensed decision version.
+
+## Choice 1. Lightweight file-memory upgrade
+
+### What it is
+
+Add:
+
+- `memory/active-context.md`
+
+and teach Jarvis to read/write it as the shared cross-thread working memory.
+
+### What you get
+
+- much better continuity across Slack threads
+- very low engineering risk
+- fully transparent and editable by humans
+
+### What you do not get
+
+- automatic semantic retrieval
+- fancy ranking or memory extraction
+
+### Best for
+
+- immediate UX improvement
+- low-risk rollout
+- preserving debuggability
+
+---
+
+## Choice 2. File-memory upgrade + structured promotion policy
+
+### What it is
+
+Same as Choice 1, plus strong rules:
+
+- thread detail -> thread/session
+- same-day detail -> daily log
+- cross-thread active work -> `active-context.md`
+- durable memory -> `MEMORY.md`
+
+### What you get
+
+- coherent memory architecture
+- less duplication
+- much better cross-thread carryover
+
+### Best for
+
+- Jones's real workflow
+- immediate practical implementation
+- minimum viable durable memory design
+
+### Recommendation
+
+This is the best near-term choice.
+
+---
+
+## Choice 3. Retrieval-enhanced memory later
+
+### What it is
+
+Add search/retrieval over:
+
+- memory files
+- selected thread summaries
+- maybe project-specific notes
+
+### What you get
+
+- better recall for older related work
+- less dependence on one hand-curated active file
+
+### Risks
+
+- more engineering complexity
+- more tuning work
+- more chances to retrieve irrelevant context
+
+### Best for
+
+- phase 2 after Choice 2 works
+
+---
+
+## Choice 4. External memory product/infrastructure
+
+### What it is
+
+Use tools like Mem0 or build an equivalent memory layer with vector/DB backing.
+
+### What you get
+
+- strongest future extensibility
+- cross-client / cross-agent possibilities
+
+### Risks
+
+- operational overhead
+- integration complexity
+- harder debugging
+
+### Best for
+
+- later stage, once the simpler architecture proves insufficient
+
+---
+
+## 3. If we implement this in OpenClaw, what should the design be?
+
+## Recommendation: a 3-layer memory model
+
+### Layer 1. Thread-local session memory
+
+**Purpose:** preserve continuity within the current Slack thread
+
+**Backed by:**
+- existing OpenClaw session/thread transcript behavior
+- session JSONL logs
+
+**Rule:**
+- do not try to merge all threads into one giant session
+
+---
+
+### Layer 2. Shared working memory
+
+**Purpose:** carry current relevant context across Slack threads
+
+**Backed by:**
+- `memory/active-context.md`
+
+**Suggested structure:**
+
+```md
+# Active Context
+
+## Current focus
+## Ongoing workstreams
+## Recent decisions
+## Pending follow-ups
+## Important context to carry across threads
+## Optional thread map
+```
+
+**Rule:**
+- this is the default cross-thread handoff layer
+- should stay concise and current
+
+---
+
+### Layer 3. Durable long-term memory
+
+**Purpose:** preserve stable preferences, identity, lessons, and long-lived project facts
+
+**Backed by:**
+- `MEMORY.md`
+
+**Rule:**
+- only durable information goes here
+- avoid dumping volatile thread details into it
+
+---
+
+## Supporting layer. Daily event log
+
+**Purpose:** retain chronological details without polluting the shared layers
+
+**Backed by:**
+- `memory/YYYY-MM-DD.md`
+
+**Rule:**
+- raw daily events go here
+- useful as a recall source, not the main cross-thread handoff object
+
+---
+
+## Proposed memory lifecycle
+
+### On every important thread outcome
+
+Ask:
+
+1. is this only useful inside this thread?
+   - keep in thread/session only
+2. is this relevant later today or across nearby threads?
+   - add to `active-context.md`
+3. is this a durable preference, lesson, or stable project fact?
+   - promote to `MEMORY.md`
+4. is this just chronological traceability?
+   - log in daily note
+
+This gives OpenClaw a real memory policy instead of memory chaos.
+
+---
+
+## Proposed startup / recall behavior for Slack main-session contexts
+
+When Jarvis starts work in a main-session Slack context, the ideal recall order would be:
+
+1. `SOUL.md`
+2. `USER.md`
+3. today's daily memory
+4. yesterday's daily memory
+5. `MEMORY.md`
+6. `memory/active-context.md`
+
+If relevant, optionally search:
+- session logs
+- project-specific notes
+- selected research/report files
+
+### Why this works
+
+- stable persona and user context load first
+- recent chronology next
+- durable memory after that
+- current cross-thread work state last, right before action
+
+This is likely enough to dramatically reduce “wait, what were we doing?” moments across threads.
+
+---
+
+## Optional next enhancement: thread summaries
+
+If later needed, add a lightweight per-thread summary mechanism:
+
+- one short summary per meaningful Slack thread
+- promoted only when a thread had actual decisions/outcomes
+
+These could live in:
+- `memory/thread-summaries/`
+- or be embedded into daily notes
+
+This would improve episodic retrieval without having to inspect raw session logs every time.
+
+---
+
+## Optional next enhancement: retrieval at thread start
+
+Once the file-memory system is disciplined, a retrieval step could be added:
+
+- use a search tool over `MEMORY.md`, `active-context.md`, daily notes, and thread summaries
+- inject only top relevant results into new thread startup context
+
+This is where semantic search or memory indexing becomes genuinely helpful.
+
+But only after the underlying memory hygiene is already good.
+
+---
+
 ## What I think Jones actually wants
 
 Not “unlimited memory.”
@@ -423,6 +726,7 @@ Useful search terms for future research:
 - `slack bot thread context memory`
 - `agent shared working memory vs long term memory`
 - `conversation memory namespaces agents`
+- `model context protocol memory tools`
 
 Useful tool / framework categories:
 
@@ -463,7 +767,9 @@ That gives the best tradeoff between:
 
 - OpenClaw docs: multi-channel gateway, session-centric architecture, file-memory conventions in templates/docs
 - LangChain / LangGraph memory overview: thread-scoped short-term vs shared long-term memory
-- LangGraph product/docs framing: persisted memory across interactions
+- LangGraph persistence docs: thread-keyed checkpoints and thread state
+- LangGraph memory docs: short-term thread memory + long-term shared memory
 - LlamaIndex memory docs: mixed short-term + long-term memory blocks
 - Mem0 overview: memory as a dedicated continuity layer across sessions
 - Anthropic engineering guidance on building effective agents: prefer simple composable patterns before heavy frameworks
+- MCP docs: standardized access to external tools and data systems, relevant for future memory-service integration
