@@ -16,6 +16,17 @@
 - **輪子底盤相關零件**，例如 TT 馬達、輪組、馬達驅動板、萬向輪、電池盒
 - **機構材料與工具小物**，例如杜邦線、接頭、螺絲組、軸承、熱縮套、麵包板、電源模組
 
+### 可先記住的品牌 / 官方站
+- **M5Stack**: <https://shop.m5stack.com/>
+- **Switch Science**: <https://www.switch-science.com/>
+- **秋月電子通商**: <https://akizukidenshi.com/>
+- **千石電商**: <https://www.sengoku.co.jp/>
+- **Marutsu**: <https://www.marutsu.co.jp/>
+- **LEGO Technic**: <https://www.lego.com/ja-jp/themes/technic>
+- **Tamiya**: <https://www.tamiya.com/japan/>
+- **KONDO**: <https://kondo-robot.com/>
+- **Futaba**: <https://www.futabausa.com/>
+
 ### 第二優先，很適合東京逛的
 - **高品質日本伺服馬達**，像 Futaba、KONDO 這類
 - **3D 列印輔助零件**，例如黃銅熱熔銅柱、螺母嵌件、磁鐵、快拆結構件
@@ -64,6 +75,12 @@ ESP32 / M5Stack 當 body controller
 - **有螢幕或內建 IMU 的 ESP32 模組**
 - **適合做小車/邊緣控制的控制板**
 
+可參考產品 / 系列：
+- **M5Stack Core2**: <https://shop.m5stack.com/products/m5stack-core2-esp32-iot-development-kit-v1-3>
+- **M5StickS3**: <https://shop.m5stack.com/products/m5sticks3-esp32s3-mini-iot-dev-kit>
+- **ATOM Matrix**: <https://shop.m5stack.com/products/atom-matrix-esp32-dev-kit-v1-1>
+- **StackChan**（超值得看，因為它很接近 embodied AI 桌上小機器人概念）: <https://shop.m5stack.com/products/stackchan-kawaii-co-created-open-source-ai-desktop-robot>
+
 你在店裡可以找的關鍵詞：
 - ESP32
 - M5Stack
@@ -83,6 +100,11 @@ ESP32 / M5Stack 當 body controller
 - **麥克風模組**，之後做聲控或喚醒
 - **攝影機模組**，未來做視覺
 - **人體接近 / 紅外線 / 光感測**
+
+可參考產品 / 系列：
+- **M5Stack ToF Unit (VL53L0X)**: <https://shop.m5stack.com/products/chain-tof-vl53l0>
+- **Switch Science 感測器生態入口**: <https://www.switch-science.com/>
+- **秋月電子新商品頁**，很適合現場比對型號: <https://akizukidenshi.com/catalog/e/enewall_dT/>
 
 店內關鍵詞：
 - ultrasonic
@@ -142,6 +164,12 @@ ESP32 / M5Stack 當 body controller
 
 ## 1. 秋葉原，主戰場
 如果你這趟只能選一個地方為 `agent-body` 補貨，那就是秋葉原。
+
+先記幾個站：
+- 秋月電子通商: <https://akizukidenshi.com/>
+- 千石電商: <https://www.sengoku.co.jp/>
+- Marutsu: <https://www.marutsu.co.jp/>
+- Switch Science: <https://www.switch-science.com/>
 
 ### 最值得逛的店型
 
@@ -247,6 +275,11 @@ Yodobashi 比較不是深度零件街，但很適合你：
 參考：
 - LEGO Japan: <https://www.lego.com/ja-jp>
 - LEGO Technic: <https://www.lego.com/ja-jp/themes/technic>
+
+可優先看這類：
+- **Jeep Wrangler Rubicon SUV**: <https://www.lego.com/ja-jp/product/jeep-wrangler-rubicon-suv-42227>
+- **Bugatti Chiron Pur Sport**: <https://www.lego.com/ja-jp/product/bugatti-chiron-pur-sport-hypercar-42222>
+- **Volvo EC500 Hybrid Excavator**: <https://www.lego.com/ja-jp/product/volvo-ec500-hybrid-excavator-42215>
 
 如果你真的想買，優先看：
 - 越野車

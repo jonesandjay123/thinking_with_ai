@@ -34,6 +34,11 @@
 - 1 個麥克風模組或 IMU
 - 一包接頭 / 杜邦線 / 螺絲組 / 熱熔銅柱
 
+參考：
+- M5Stack: <https://shop.m5stack.com/>
+- ToF Unit: <https://shop.m5stack.com/products/chain-tof-vl53l0>
+- 秋月電子: <https://akizukidenshi.com/>
+
 ### 適合的你
 - 這趟主要還是玩
 - 只想順手補一些最有價值的東西
@@ -61,6 +66,11 @@
 - 萬向輪
 - 電池盒 / buck converter
 - 線材 / 接頭 / 螺絲 / inserts
+
+參考店家：
+- 千石電商: <https://www.sengoku.co.jp/>
+- Marutsu: <https://www.marutsu.co.jp/>
+- Switch Science: <https://www.switch-science.com/>
 
 ### 這版最像什麼
 這是我最推薦的版本。
@@ -92,6 +102,12 @@
 - 結構裝配配件整批
 - LEGO Technic / RC 底盤參考品
 - 教育型 robot kit 一組
+
+參考：
+- KONDO: <https://kondo-robot.com/>
+- Futaba: <https://www.futabausa.com/>
+- LEGO Technic: <https://www.lego.com/ja-jp/themes/technic>
+- Tamiya: <https://www.tamiya.com/japan/>
 
 ### 適合的你
 - 你已經很確定這條路會繼續做

@@ -21,9 +21,9 @@
 
 ### 上午 1，先打電子零件街
 建議先去：
-1. 秋月電子通商
-2. 千石電商
-3. Marutsu 秋葉原本店
+1. 秋月電子通商，<https://akizukidenshi.com/>
+2. 千石電商，<https://www.sengoku.co.jp/>
+3. Marutsu 秋葉原本店，<https://www.marutsu.co.jp/>
 
 ### 為什麼上午先去
 - 腦還清楚，適合看規格
@@ -62,6 +62,10 @@
 - 補工具、麥克風、相機、收納
 - 看 LEGO / 教育型機器人 / 玩具與靈感件
 
+參考：
+- Yodobashi Akiba: <https://www.yodobashi.com/store/0018/>
+- LEGO Technic: <https://www.lego.com/ja-jp/themes/technic>
+
 ### 下午的採購任務
 - 看聲音與視覺相關設備
 - 看工具與配件
@@ -93,6 +97,10 @@
 - 輪距
 - 外殼拆裝
 - 關節機構
+
+參考站：
+- LEGO Technic: <https://www.lego.com/ja-jp/themes/technic>
+- Tamiya: <https://www.tamiya.com/japan/>
 
 ### 可選方向 2，Hands / DIY 商場
 重點看：
@@ -163,6 +171,12 @@
 如果你問我只能選一條，我會選：
 
 *上午秋月 + 千石 + Marutsu，下午 Yodobashi Akiba，晚上整理。*
+
+如果你要更像 shopping mission，我會把手機先開這幾個頁面：
+- <https://akizukidenshi.com/>
+- <https://www.sengoku.co.jp/>
+- <https://www.marutsu.co.jp/>
+- <https://shop.m5stack.com/>
 
 因為這條最符合你現在的階段：
 - 有足夠 technical depth

@@ -23,6 +23,12 @@
 - [ ] 有螢幕或內建 IMU 的控制模組
 - [ ] 小型 ESP32 / Atom / Stick 類模組
 
+參考：
+- M5Stack: <https://shop.m5stack.com/>
+- Core2: <https://shop.m5stack.com/products/m5stack-core2-esp32-iot-development-kit-v1-3>
+- M5StickS3: <https://shop.m5stack.com/products/m5sticks3-esp32s3-mini-iot-dev-kit>
+- ATOM Matrix: <https://shop.m5stack.com/products/atom-matrix-esp32-dev-kit-v1-1>
+
 ### 感測器
 - [ ] 超聲波距離感測器
 - [ ] ToF 距離感測器
@@ -30,6 +36,11 @@
 - [ ] 麥克風模組
 - [ ] 接近感測器 / 紅外線感測器
 - [ ] Camera module（看到合適的再買）
+
+參考：
+- M5Stack ToF Unit: <https://shop.m5stack.com/products/chain-tof-vl53l0>
+- Switch Science: <https://www.switch-science.com/>
+- 秋月電子: <https://akizukidenshi.com/>
 
 ### 動力與移動
 - [ ] 小型輪車底盤組
@@ -79,6 +90,10 @@
 - [ ] Tamiya / RC 車底盤
 - [ ] 教育型 robot kit
 - [ ] 可動模型，觀察關節與外殼拆法
+
+參考：
+- LEGO Technic: <https://www.lego.com/ja-jp/themes/technic>
+- Tamiya: <https://www.tamiya.com/japan/>
 
 ### 只是參考，不一定買
 - [ ] 觀察輪距

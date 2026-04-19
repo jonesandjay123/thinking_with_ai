@@ -47,6 +47,11 @@
 - M5Stack
 - 有網路能力的 controller
 
+參考：
+- M5Stack: <https://shop.m5stack.com/>
+- Core2: <https://shop.m5stack.com/products/m5stack-core2-esp32-iot-development-kit-v1-3>
+- M5StickS3: <https://shop.m5stack.com/products/m5sticks3-esp32s3-mini-iot-dev-kit>
+
 ---
 
 ## 2. Body controller
@@ -88,6 +93,11 @@
 - IR / proximity sensor
 - Button / touch sensor
 
+參考：
+- M5Stack ToF Unit: <https://shop.m5stack.com/products/chain-tof-vl53l0>
+- Switch Science: <https://www.switch-science.com/>
+- 秋月電子: <https://akizukidenshi.com/>
+
 ### 為什麼重要
 如果你未來想讓它不只是被動擺動，而是真的像助手，perception 一定要慢慢補起來。
 
@@ -109,6 +119,9 @@
 - 小型 servo
 - 可動配件
 
+參考：
+- StackChan: <https://shop.m5stack.com/products/stackchan-kawaii-co-created-open-source-ai-desktop-robot>
+
 ### 這層的意義
 這層會讓它不只是工具，而是開始有 presence。
 
@@ -129,6 +142,9 @@
 - 馬達驅動板
 - 編碼器
 - 萬向輪
+
+參考：
+- Tamiya: <https://www.tamiya.com/japan/>
 
 ### 這層的核心問題
 - 走得動嗎？
@@ -188,6 +204,10 @@
 - LEGO / 模型做結構參考
 - 可動裝飾件
 - 小螢幕、燈光、表情件
+
+參考：
+- LEGO Technic: <https://www.lego.com/ja-jp/themes/technic>
+- Tamiya: <https://www.tamiya.com/japan/>
 
 ### 為什麼它不是可有可無
 因為對 personal robot assistant 來說，personality 會直接影響你願不願意長期跟它互動。
