@@ -10,6 +10,7 @@
 
 ### 1. 核心方法論
 - [Thinking → Building → Compounding](./principles/thinking-building-compounding/)
+- [Playable Life System](./principles/playable-life-system/)
 
 ### 2. 操作流程
 - [Conversation → Article Playbook](./playbooks/conversation-to-article/)
@@ -82,6 +83,7 @@ thinking_with_ai/
 
 ### Principles
 - [Thinking → Building → Compounding](./principles/thinking-building-compounding/)
+- [Playable Life System](./principles/playable-life-system/)
 
 ### Playbooks
 - [Conversation → Article](./playbooks/conversation-to-article/)
