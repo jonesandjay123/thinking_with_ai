@@ -1,83 +1,85 @@
-# OpenClaw `memory_search` Embedding Provider Research
+# OpenClaw `memory_search` Embedding Provider 調查報告
 
-**Date:** 2026-04-24  
-**Context:** Jones asked why OpenClaw `memory_search` used Gemini embeddings while the main runtime/model was OpenAI Codex, and whether requiring an OpenAI API key for OpenAI embeddings is normal.
+**日期：** 2026-04-24  
+**背景：** Jones 問為什麼 OpenClaw 的 `memory_search` 會使用 Gemini embeddings，但主模型/執行 runtime 明明是 OpenAI Codex；以及「如果要改 OpenAI embedding，為什麼還需要另外提供 OpenAI API key」這件事是否正常。
 
-## Executive summary
+## 摘要結論
 
-OpenClaw's `memory_search` is a separate retrieval/embedding subsystem from the chat/coding model runtime. Using `openai-codex/gpt-5.5` for agent replies does **not** automatically mean OpenAI embeddings are available.
+OpenClaw 的 `memory_search` 是一套獨立於聊天/ coding 模型 runtime 的檢索與 embedding 子系統。也就是說，主回覆模型使用 `openai-codex/gpt-5.5`，並不代表 OpenAI embeddings 也自動可用。
 
-The current behavior is consistent with OpenClaw's documented design:
+目前觀察到的行為符合 OpenClaw 官方文件設計：
 
-- `memory_search` uses hybrid retrieval: vector embeddings + BM25 keyword search.
-- Embedding provider selection is auto-detected when not explicitly configured.
-- Auto-detection chooses the first available provider in a documented order.
-- OpenAI embeddings require an OpenAI API key (`OPENAI_API_KEY` or `models.providers.openai.apiKey`).
-- OpenAI Codex OAuth is explicitly documented as covering chat/completions only, not embedding requests.
-- If Google/Gemini credentials are available and OpenAI API-key auth is not, OpenClaw may legitimately select Gemini for memory embeddings.
+- `memory_search` 使用 hybrid retrieval：向量 embedding + BM25 關鍵字搜尋。
+- 如果沒有明確指定 provider，embedding provider 會自動偵測。
+- 自動偵測會依照官方文件列出的順序，選第一個可用 provider。
+- OpenAI embeddings 需要 OpenAI API key（`OPENAI_API_KEY` 或 `models.providers.openai.apiKey`）。
+- 官方文件明確寫到：OpenAI Codex OAuth 只涵蓋 chat/completions，不滿足 embedding requests。
+- 如果本機有 Google/Gemini credentials，但沒有 OpenAI API-key auth，OpenClaw 會選 Gemini 做 memory embeddings 是合理結果。
 
-For this machine, that means the observed setup is not obviously broken: Codex handles the main agent model, while Gemini handles memory embeddings because it is the first available remote embedding provider after unavailable higher-priority options.
+套到目前 Jarvis Mac Mini 的狀況，就是：Codex 負責主 agent 模型，Gemini 負責 memory embeddings。這不是設定明顯壞掉，而是 OpenClaw 把「主模型」和「記憶搜尋 embedding」拆成兩層。
 
-The downside is operational: Gemini free-tier embedding quota can temporarily break semantic memory search with `429` quota errors. When that happens, memory files are still intact, and OpenClaw can degrade to lexical/file reads, but semantic recall quality and convenience drop.
+真正的缺點是營運層面：Gemini 免費層 embedding quota 可能偶爾撞到 `429`，導致 semantic memory search 暫時不可用。這時候記憶檔案本身不會壞，OpenClaw 仍可透過關鍵字搜尋或直接讀取本地 Markdown 檔案退化處理，但語意回憶的品質與便利性會下降。
 
-## Why this surprised us
+## 為什麼這件事容易讓人困惑
 
-The confusing part is the word "OpenAI" being used for two different auth surfaces:
+混淆點在於「OpenAI」其實有兩個不同的認證/使用面：
 
-1. **OpenAI Codex OAuth**
-   - Used by OpenClaw's Codex runtime / coding agent path.
-   - Current main model observed locally: `openai-codex/gpt-5.5`.
-   - Does not imply access to the OpenAI embeddings API.
+### 1. OpenAI Codex OAuth
 
-2. **OpenAI API key**
-   - Used by OpenAI's platform API endpoints such as `/v1/embeddings`.
-   - Required by OpenClaw's `openai` memory embedding provider.
-   - Typical env/config: `OPENAI_API_KEY` or `models.providers.openai.apiKey`.
+- 用於 OpenClaw 的 Codex runtime / coding agent 路徑。
+- 目前本機主模型觀察到是：`openai-codex/gpt-5.5`。
+- 不等於可以呼叫 OpenAI embeddings API。
 
-So the phrase "we use OpenAI now" is true for chat/coding, but not sufficient for memory embeddings.
+### 2. OpenAI API key
 
-## Official documentation findings
+- 用於 OpenAI platform API endpoint，例如 `/v1/embeddings`。
+- OpenClaw 的 `openai` memory embedding provider 需要這種 API key。
+- 常見設定是 `OPENAI_API_KEY` 或 `models.providers.openai.apiKey`。
+
+所以「我們現在用 OpenAI」這句話對主模型/聊天/coding 是對的，但對 memory embeddings 來說還不夠。
+
+## 官方文件調查
 
 ### Memory overview
 
-OpenClaw memory is file-first:
+OpenClaw 的記憶架構本質上是 file-first：
 
-- `MEMORY.md` for long-term memory.
-- `memory/YYYY-MM-DD.md` for daily notes.
-- Optional `DREAMS.md` for dreaming/consolidation review.
+- `MEMORY.md`：長期記憶。
+- `memory/YYYY-MM-DD.md`：每日筆記。
+- `DREAMS.md`：可選，用於 dreaming/consolidation review。
 
-The docs describe `memory_search` as a semantic search tool over those memory files and note that it works automatically once an embedding API key for a supported provider exists.
+官方文件描述 `memory_search` 是一個在這些記憶檔上做 semantic search 的工具，而且只要有支援 provider 的 embedding API key，通常就會自動運作。
 
-Source: <https://docs.openclaw.ai/concepts/memory>
+來源：<https://docs.openclaw.ai/concepts/memory>
 
-### Memory search docs
+### Memory search 文件
 
-The memory search page states:
+Memory search 文件提到：
 
-- `memory_search` indexes notes into chunks.
-- Retrieval uses embeddings, keywords, or both.
-- If a GitHub Copilot subscription, OpenAI, Gemini, Voyage, or Mistral API key is configured, memory search works automatically.
-- A provider can be set explicitly under `agents.defaults.memorySearch.provider`.
-- Local embeddings are supported with `provider: "local"` and no API key, but require `node-llama-cpp`.
+- `memory_search` 會把 notes 切成 chunks。
+- Retrieval 可使用 embeddings、keywords，或兩者並用。
+- 如果有 GitHub Copilot subscription，或已設定 OpenAI、Gemini、Voyage、Mistral API key，memory search 會自動啟用。
+- 可以在 `agents.defaults.memorySearch.provider` 明確指定 provider。
+- 若不想使用 API key，可用 local embeddings：`provider: "local"`，但需要 `node-llama-cpp`。
 
-Source: <https://docs.openclaw.ai/concepts/memory-search>
+來源：<https://docs.openclaw.ai/concepts/memory-search>
 
 ### Memory config reference
 
-The config reference is the clearest source. It says all memory search settings live under:
+Memory config reference 是最關鍵的官方來源。它說所有 memory search 設定都在：
 
 ```json5
 agents.defaults.memorySearch
 ```
 
-Provider selection fields:
+Provider selection 範例：
 
 ```json5
 {
   agents: {
     defaults: {
       memorySearch: {
-        provider: "openai", // or gemini, local, github-copilot, etc.
+        provider: "openai", // 或 gemini, local, github-copilot, etc.
         model: "text-embedding-3-small",
         fallback: "none"
       }
@@ -86,48 +88,52 @@ Provider selection fields:
 }
 ```
 
-Documented auto-detection order:
+官方文件列出的 auto-detection order：
 
-1. `local` — only if `memorySearch.local.modelPath` is configured and the file exists.
-2. `github-copilot` — if a GitHub Copilot token can be resolved.
-3. `openai` — if an OpenAI key can be resolved.
-4. `gemini` — if a Gemini key can be resolved.
-5. `voyage` — if a Voyage key can be resolved.
-6. `mistral` — if a Mistral key can be resolved.
-7. `bedrock` — if AWS SDK credentials resolve.
+1. `local` — 只有在 `memorySearch.local.modelPath` 已設定且檔案存在時。
+2. `github-copilot` — 如果可以解析到 GitHub Copilot token。
+3. `openai` — 如果可以解析到 OpenAI key。
+4. `gemini` — 如果可以解析到 Gemini key。
+5. `voyage` — 如果可以解析到 Voyage key。
+6. `mistral` — 如果可以解析到 Mistral key。
+7. `bedrock` — 如果 AWS SDK credentials 可解析。
 
-The same page explicitly says:
+同一份文件還明確寫到：
 
 > Codex OAuth covers chat/completions only and does not satisfy embedding requests.
 
-It also lists OpenAI API-key resolution as:
+OpenAI API-key 解析方式則是：
 
-- Env var: `OPENAI_API_KEY`
-- Config key: `models.providers.openai.apiKey`
+- 環境變數：`OPENAI_API_KEY`
+- Config key：`models.providers.openai.apiKey`
 
-Source: <https://docs.openclaw.ai/reference/memory-config>
+來源：<https://docs.openclaw.ai/reference/memory-config>
 
-## Local implementation findings
+## 本機實作調查
 
-Checked installed OpenClaw 2026.4.22 files under `/opt/homebrew/lib/node_modules/openclaw/dist`.
+檢查本機安裝的 OpenClaw 2026.4.22：
 
-Relevant observations:
+```text
+/opt/homebrew/lib/node_modules/openclaw/dist
+```
 
-- The bundled OpenAI plugin registers `openAiMemoryEmbeddingProviderAdapter`.
-- OpenAI memory embedding adapter:
+相關觀察：
+
+- Bundled OpenAI plugin 會註冊 `openAiMemoryEmbeddingProviderAdapter`。
+- OpenAI memory embedding adapter：
   - id: `openai`
   - auth provider: `openai`
   - default model: `text-embedding-3-small`
   - auto-select priority: 20
-- Gemini memory embedding adapter:
+- Gemini memory embedding adapter：
   - id: `gemini`
   - auth provider: `google`
   - default model: `gemini-embedding-001`
   - auto-select priority: 30
-- OpenAI embedding provider calls an OpenAI-compatible `/embeddings` endpoint and resolves bearer auth through provider API key/profile/env resolution.
-- Local config schema confirms `agents.defaults.memorySearch.provider` supports `openai`, `gemini`, `voyage`, `mistral`, `bedrock`, `lmstudio`, `ollama`, and `local`.
+- OpenAI embedding provider 會呼叫 OpenAI-compatible `/embeddings` endpoint，並透過 provider API key/profile/env 解析 bearer auth。
+- 本機 config schema 也確認 `agents.defaults.memorySearch.provider` 支援：`openai`、`gemini`、`voyage`、`mistral`、`bedrock`、`lmstudio`、`ollama`、`local`。
 
-Current local status before any config change:
+目前未改設定前，本機 memory status 類似：
 
 ```json
 {
@@ -140,118 +146,120 @@ Current local status before any config change:
 }
 ```
 
-Current auth/config situation observed locally:
+本機 auth/config 狀況：
 
-- OpenAI Codex OAuth profile exists.
-- Google/Gemini auth profile exists.
-- No `OPENAI_API_KEY` env var was present in the agent shell.
-- No `models.providers.openai.apiKey` was configured.
-- Therefore auto-detection selecting Gemini is expected.
+- 有 OpenAI Codex OAuth profile。
+- 有 Google/Gemini auth profile。
+- Agent shell 裡沒有 `OPENAI_API_KEY`。
+- Config 裡沒有 `models.providers.openai.apiKey`。
+- 所以 auto-detection 選到 Gemini 是預期行為。
 
-## What the community / issue tracker shows
+## 社群 / Issue tracker 調查
 
-There does not appear to be a large public discussion specifically saying "OpenClaw should let Codex OAuth pay for OpenAI embeddings." Instead, public issues and docs mostly treat memory embeddings as their own provider layer.
+目前沒有看到大量公開討論在爭論「OpenClaw 應該讓 Codex OAuth 直接支援 OpenAI embeddings」。公開 issues 和官方文件比較像是把 memory embeddings 視為獨立 provider layer。
 
-A few relevant patterns from GitHub issue searches:
+幾個值得注意的 patterns：
 
-### 1. Users often use Gemini as the practical workaround when local embeddings fail
+### 1. Local embeddings 失敗時，Gemini 常被當成實務 workaround
 
-Example issue: node-llama-cpp missing on Apple Silicon / Node.js 22. The workaround suggested in the issue was to patch config to use Gemini:
+例子：Apple Silicon / Node.js 22 上 `node-llama-cpp` missing 的 issue。該 issue 的 workaround 是把 memory search provider 改成 Gemini：
 
 ```bash
 clawdbot gateway config.patch '.agents.defaults.memorySearch.provider = "gemini"'
 ```
 
-Source: <https://github.com/openclaw/openclaw/issues/29548>
+來源：<https://github.com/openclaw/openclaw/issues/29548>
 
-Interpretation: Gemini memory embeddings are not unusual; they have been a normal workaround/provider path for users whose local embeddings were unavailable.
+解讀：Gemini memory embeddings 不是異常用法；它一直是正常 provider / workaround 路徑之一。
 
-### 2. Local embeddings have historically had install/runtime sharp edges
+### 2. Local embeddings 歷史上有安裝與 runtime 坑
 
-Examples:
+例子：
 
-- `node-llama-cpp` missing after upgrade: <https://github.com/openclaw/openclaw/issues/46569>
-- local GGUF embeddings deadlocking under concurrent calls: <https://github.com/openclaw/openclaw/issues/7548>
+- 升級後 `node-llama-cpp` missing：<https://github.com/openclaw/openclaw/issues/46569>
+- Local GGUF embeddings 在 concurrent calls 下 deadlock：<https://github.com/openclaw/openclaw/issues/7548>
 
-Interpretation: The local/no-API-key path is attractive, but historically not as frictionless as remote providers. It may be better now, but should be tested deliberately before switching a working setup.
+解讀：local/no-API-key 路線很吸引人，但不一定是最少摩擦的選項。它現在可能變好，但不應該在沒有測試的情況下貿然切換。
 
-### 3. Gemini embedding path has had its own operational issues
+### 3. Gemini embedding path 也有自己的營運問題
 
-Examples:
+例子：
 
-- Gemini behind HTTP(S) proxy failed in one version: <https://github.com/openclaw/openclaw/issues/54279>
-- Older Gemini model/batch config confusion: <https://github.com/openclaw/openclaw/issues/7319>
+- 某版本 Gemini behind HTTP(S) proxy 失敗：<https://github.com/openclaw/openclaw/issues/54279>
+- 舊版 Gemini model/batch config 混淆：<https://github.com/openclaw/openclaw/issues/7319>
 
-Interpretation: Gemini is a valid provider, but it can hit provider-specific issues, including quota, proxy, model naming, and batch behavior.
+解讀：Gemini 是有效 provider，但可能遇到 quota、proxy、model naming、batch behavior 等 provider-specific 問題。
 
-### 4. QMD backend has had integration complexity
+### 4. QMD backend 更進階，但 integration complexity 不低
 
-Examples:
+例子：
 
-- QMD backend CLI hangs on Raspberry Pi / arm64: <https://github.com/openclaw/openclaw/issues/65553>
-- QMD returned empty results despite direct `qmd search` working: <https://github.com/openclaw/openclaw/issues/58055>
-- QMD collection name mismatch issues: <https://github.com/openclaw/openclaw/issues/21349>, <https://github.com/openclaw/openclaw/issues/9854>, <https://github.com/openclaw/openclaw/issues/23228>
-- QMD MCP daemon proposal to avoid cold-start timeout/fallback problems: <https://github.com/openclaw/openclaw/issues/15562>
+- Raspberry Pi / arm64 上 QMD backend CLI hangs：<https://github.com/openclaw/openclaw/issues/65553>
+- Direct `qmd search` 有結果但 OpenClaw 回空：<https://github.com/openclaw/openclaw/issues/58055>
+- QMD collection name mismatch：<https://github.com/openclaw/openclaw/issues/21349>、<https://github.com/openclaw/openclaw/issues/9854>、<https://github.com/openclaw/openclaw/issues/23228>
+- QMD MCP daemon proposal：<https://github.com/openclaw/openclaw/issues/15562>
 
-Interpretation: Advanced local-first memory stacks exist, but are not the simplest thing to change casually. For Jones/Jarvis continuity, a stable provider matters more than architectural purity.
+解讀：進階 local-first memory stack 確實存在，但不是「隨手改一下就一定更穩」。對 Jones/Jarvis 的 continuity 來說，穩定比架構潔癖更重要。
 
-### 5. Public discussion volume is limited
+### 5. 公開討論量有限
 
-Searches across OpenClaw repo issues and GitHub discussion search found no strong public consensus thread about "Codex OAuth should provide embedding access." The clearest guidance is currently the official memory config reference.
+針對 OpenClaw repo issues 與 GitHub discussion search，沒有找到明確的大型共識串在討論「Codex OAuth 應該提供 embedding access」。目前最清楚的依據仍然是官方 memory config reference。
 
-## Is requiring an API key normal?
+## 要求 OpenAI API key 正常嗎？
 
-For OpenAI embeddings specifically: yes, in OpenClaw's documented design.
+如果目標是使用 OpenAI embeddings：**正常**。
 
-This is not because OpenClaw wants a duplicate credential for no reason; it is because the `openai` embedding provider uses OpenAI's platform embedding endpoint. That endpoint is normally billed and authenticated via OpenAI API keys.
+這不是 OpenClaw 故意要求重複 credential，而是因為 `openai` embedding provider 走 OpenAI platform embedding endpoint。該 endpoint 一般就是使用 OpenAI API key 認證與計費。
 
-However, it is fair to say the UX is surprising for users who came in through Codex OAuth. The ideal product behavior might be clearer onboarding/status messaging, such as:
+但從使用者體驗來說，這確實容易困惑。尤其是使用者是透過 Codex OAuth 進入 OpenAI 生態時，直覺會以為「OpenAI 都登入了，怎麼 embeddings 還要 key？」
 
-- "Main model auth: OpenAI Codex OAuth"
-- "Memory embedding auth: Gemini API key"
-- "Codex OAuth does not cover embeddings"
-- "To use OpenAI embeddings, configure OPENAI_API_KEY or choose local/Copilot/Gemini"
+更理想的產品呈現可能應該在 status / onboarding 裡把兩件事分開顯示：
 
-## Practical options for Jones/Jarvis
+- 主模型 auth：OpenAI Codex OAuth
+- Memory embedding auth：Gemini API key
+- Codex OAuth 不涵蓋 embeddings
+- 若要 OpenAI embeddings，請設定 `OPENAI_API_KEY`；否則可選 local/Copilot/Gemini
 
-### Option A — Keep Gemini for now
+## Jones/Jarvis 的實務選項
 
-Recommended if quota errors are rare.
+### 選項 A — 先保持 Gemini
 
-Pros:
+如果 quota error 很少發生，這是目前最推薦的短期做法。
 
-- Minimal change.
-- Current architecture has worked since early Jarvis history.
-- No new OpenAI API billing/config needed.
-- Avoids destabilizing memory search while other work is ongoing.
+優點：
 
-Cons:
+- 最少變更。
+- 目前架構從早期 Jarvis 歷史到現在大致能運作。
+- 不需要新增 OpenAI API billing/config。
+- 避免在其他工作進行中動到 memory search 穩定性。
 
-- Free-tier quota can occasionally 429.
-- Provider mismatch remains conceptually confusing.
-- If quota becomes frequent, continuity suffers.
+缺點：
 
-Operational rule:
+- 免費 quota 可能偶爾 429。
+- 主模型 provider 和 memory embedding provider 不一致，心智模型會混亂。
+- 如果 quota 常爆，continuity 感會受影響。
 
-- If `memory_search` fails with Gemini quota, fall back to direct file reads (`memory_get`, `read MEMORY.md`, today's/yesterday's notes) and retry later.
+操作規則：
 
-### Option B — Configure OpenAI API key for memory embeddings
+- 如果 `memory_search` 因 Gemini quota 失敗，就退回直接讀本地記憶檔：`memory_get`、`read MEMORY.md`、今天/昨天 daily notes，晚點再重試 semantic search。
 
-Recommended if Gemini quota becomes frequent and Jones is okay with API billing.
+### 選項 B — 設定 OpenAI API key 做 memory embeddings
 
-Pros:
+如果 Gemini quota 變成高頻問題，而且 Jones 接受 API billing，這是最穩直覺的方案。
 
-- Simple and well-documented.
-- OpenAI `text-embedding-3-small` is cheap and reliable for text memory.
-- Avoids Google/Gemini free-tier quota.
+優點：
 
-Cons:
+- 簡單、官方文件支援清楚。
+- OpenAI `text-embedding-3-small` 對文字記憶便宜且穩。
+- 避免 Google/Gemini free-tier quota。
 
-- Requires OpenAI platform API key separate from Codex OAuth.
-- Adds another paid credential to manage.
-- Changing provider/model may trigger reindexing.
+缺點：
 
-Potential config:
+- 需要 OpenAI platform API key，和 Codex OAuth 分開。
+- 多一組 paid credential 要管理。
+- 改 provider/model 可能觸發 reindex。
+
+可能設定：
 
 ```json5
 {
@@ -267,28 +275,28 @@ Potential config:
 }
 ```
 
-Auth options:
+Auth 方式：
 
-- `OPENAI_API_KEY` environment variable, or
-- `models.providers.openai.apiKey`, preferably via a secret reference if supported in the active config path.
+- `OPENAI_API_KEY` environment variable，或
+- `models.providers.openai.apiKey`，若 active config path 支援，最好用 secret reference。
 
-### Option C — Test local embeddings
+### 選項 C — 測試 local embeddings
 
-Recommended if Jones wants no external embedding API dependency.
+如果 Jones 希望 memory embeddings 完全不依賴外部 API，這是值得研究的方向。
 
-Pros:
+優點：
 
-- No external quota.
-- Better privacy; memory chunks do not leave the machine for embedding.
-- Fits self-hosted/local-agent philosophy.
+- 沒有外部 quota。
+- 隱私性更好；memory chunks 不需要送出機器做 embedding。
+- 符合 self-hosted/local-agent 哲學。
 
-Cons:
+缺點：
 
-- Requires `node-llama-cpp`/GGUF path to work reliably.
-- May need model download/build fixes.
-- Historically had sharp edges in OpenClaw issue tracker.
+- 需要 `node-llama-cpp` / GGUF path 可靠運作。
+- 可能需要下載模型、處理 build/optional dependency。
+- OpenClaw issue tracker 顯示歷史上有不少坑。
 
-Potential config:
+可能設定：
 
 ```json5
 {
@@ -302,7 +310,7 @@ Potential config:
 }
 ```
 
-Validation commands:
+驗證指令：
 
 ```bash
 openclaw memory status --deep --agent main
@@ -310,52 +318,52 @@ openclaw memory index --force --agent main --verbose
 openclaw memory search "test recall" --agent main
 ```
 
-### Option D — GitHub Copilot embeddings
+### 選項 D — GitHub Copilot embeddings
 
-Docs say GitHub Copilot can be auto-detected and does not need a separate API key if a Copilot token can be resolved.
+官方文件說 GitHub Copilot 可被 auto-detected，若能解析 Copilot token，理論上不需要另外 API key。
 
-Pros:
+優點：
 
-- May avoid OpenAI platform key.
-- Comes before OpenAI/Gemini in auto-detection.
+- 可能避免 OpenAI platform key。
+- 在 auto-detection 順序中排在 OpenAI/Gemini 前面。
 
-Cons:
+缺點：
 
-- Unknown fit for current Jarvis machine without testing.
-- Ties memory recall to GitHub/Copilot token availability.
+- 目前 Jarvis 這台機器是否具備可用 Copilot embedding auth 未驗證。
+- 會把 memory recall 綁到 GitHub/Copilot token availability。
 
-## Recommendation
+## 建議
 
-For now: **keep Gemini**, because it has been working and the observed quota issue was a transient free-tier limit, not data corruption or architectural failure.
+目前建議：**先保持 Gemini，不要急著改。**
 
-Do not rush to add an OpenAI API key just to make provider names line up.
+這次發現的 quota 問題比較像是免費層短暫限制，不是資料損壞，也不是架構錯誤。不要只是為了讓 provider 名稱一致，就急著加 OpenAI API key。
 
-Suggested follow-up plan:
+建議後續策略：
 
-1. Leave current config unchanged.
-2. Add an operational note: if Gemini quota causes `memory_search` failure, use direct memory file reads as fallback.
-3. Track whether quota failures recur over the next several days.
-4. If recurrence is annoying, run a controlled local embedding test first.
-5. If local embedding is unreliable or too slow, then configure OpenAI API key for `text-embedding-3-small`.
+1. 目前 config 不變。
+2. 記住 operational fallback：Gemini quota 導致 `memory_search` 失敗時，直接讀本地記憶檔。
+3. 接下來幾天觀察 quota failure 是否常發生。
+4. 如果常發生，先做一次 controlled local embedding test。
+5. 如果 local embedding 不穩或太慢，再考慮設定 OpenAI API key + `text-embedding-3-small`。
 
-## Open questions for later
+## 後續待研究問題
 
-- Does the current OpenClaw install have a working `node-llama-cpp` local embedding path on this Mac Mini?
-- Would GitHub Copilot embedding auth be available via existing `gh`/Copilot credentials?
-- How often does Gemini embedding free-tier quota actually reset/hit under Jarvis's normal memory usage?
-- Should OpenClaw status/control UI surface "chat provider" and "memory embedding provider" side by side to avoid this confusion?
-- Would `cache.enabled` reduce repeated embedding work enough to avoid quota spikes?
+- 目前 OpenClaw 安裝在這台 Mac Mini 上的 `node-llama-cpp` local embedding path 是否能正常工作？
+- 既有 GitHub / Copilot credentials 是否能支援 GitHub Copilot embedding provider？
+- Gemini embedding free-tier quota 在 Jarvis 的正常 memory usage 下，實際多久會撞一次？
+- OpenClaw status / Control UI 是否應該把「chat provider」與「memory embedding provider」並列顯示，避免這類混淆？
+- `cache.enabled` 是否能顯著降低重複 embedding work，進而減少 quota spike？
 
-## Sources
+## 來源
 
-Official docs:
+官方文件：
 
 - OpenClaw Memory Overview: <https://docs.openclaw.ai/concepts/memory>
 - OpenClaw Memory Search: <https://docs.openclaw.ai/concepts/memory-search>
 - OpenClaw Memory Config Reference: <https://docs.openclaw.ai/reference/memory-config>
 - OpenClaw Memory CLI: <https://docs.openclaw.ai/cli/memory>
 
-Issue tracker examples:
+Issue tracker examples：
 
 - Local/node-llama install workaround using Gemini: <https://github.com/openclaw/openclaw/issues/29548>
 - node-llama-cpp missing after upgrade: <https://github.com/openclaw/openclaw/issues/46569>
@@ -369,8 +377,8 @@ Issue tracker examples:
 - QMD suffix bug: <https://github.com/openclaw/openclaw/issues/23228>
 - QMD MCP daemon proposal: <https://github.com/openclaw/openclaw/issues/15562>
 
-Local evidence:
+本機證據：
 
-- `openclaw memory status --json` on Jarvis Mac Mini, 2026-04-24.
-- OpenClaw installed dist inspection under `/opt/homebrew/lib/node_modules/openclaw/dist`.
-- Config schema lookup for `agents.defaults.memorySearch`.
+- 2026-04-24 在 Jarvis Mac Mini 上執行 `openclaw memory status --json`。
+- 檢查本機 OpenClaw installed dist：`/opt/homebrew/lib/node_modules/openclaw/dist`。
+- 查詢 config schema：`agents.defaults.memorySearch`。
