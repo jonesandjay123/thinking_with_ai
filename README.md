@@ -24,7 +24,7 @@
 - [Codex mobile usage check](./projects/codex-mobile-usage-check/)
 - [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
 - [Trip Planner](./projects/trip-planner/)
-- [Gemini Voice → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
+- [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
 
 ## Repo 的新定位
 
@@ -98,7 +98,7 @@ thinking_with_ai/
 - [Codex mobile usage check](./projects/codex-mobile-usage-check/)
 - [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
 - [Trip Planner](./projects/trip-planner/)
-- [Gemini Voice → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
+- [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
 
