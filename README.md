@@ -99,6 +99,7 @@ thinking_with_ai/
 - [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
 - [Trip Planner](./projects/trip-planner/)
 - [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
+- [Rubik's Cube Algorithms → Animal Shogi AI](./projects/rubiks-cube-algorithms-animal-shogi-ai-2026-04-26/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
 
