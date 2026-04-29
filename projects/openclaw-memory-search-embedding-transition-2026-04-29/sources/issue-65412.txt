@@ -1,0 +1,14 @@
+author:	vincentkoc
+association:	member
+edited:	false
+status:	none
+--
+Checked against current `main` and I could not reproduce the reported `snippets=[] && promotions=[]` phase path.
+
+Both phase pipelines already pass non-empty snippet data into `generateAndAppendDreamNarrative()` on current `main`, and I just landed regressions that lock that in for both Light and REM:
+- `extensions/memory-core/src/dreaming-phases.test.ts`
+- commit: https://github.com/openclaw/openclaw/commit/077cfca229
+
+That means the issue's reported root cause is not accurate on current `main`. There may still be separate diary/UI/reporting problems, but this specific narrative-input claim is not reproducible anymore, so I'm closing this one.
+
+--

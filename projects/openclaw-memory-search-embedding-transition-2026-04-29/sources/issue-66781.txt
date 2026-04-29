@@ -1,0 +1,31 @@
+author:	clawsweeper
+association:	contributor
+edited:	true
+status:	none
+--
+Codex automated review: keeping this open.
+
+Keep open. Current main narrows the Active Memory example, and fresh local onboarding now defaults to the `coding` tool profile, but the broader least-privilege default requested here is still not implemented: unset/`full` profiles remain unrestricted, no-policy and empty-allowlist matching allow tools, empty runtime `toolsAllow` preserves the full tool list, and docs still document broad full/unset and sub-agent behavior.
+
+Best possible solution:
+
+Keep this open for an explicit maintainer product decision on least-privilege tool defaults. A complete fix should define per-agent/per-run default policy semantics, preserve an intentional escape hatch such as `tools.profile: "full"`, warn or migrate existing broad configs, update schema/help/public docs, and add regression coverage for embedded runs, Codex harness runs, plugin/MCP tools, sub-agent policy resolution, and runtime `toolsAllow` behavior.
+
+What I checked:
+
+- **Issue discussion already separated partial mitigation from global default:** The existing discussion says the Active Memory symptom was partially fixed but the broader disabled-by-default / explicit-enable policy remains unresolved; current main inspection confirms that assessment. ([f0b327cf686e](https://github.com/openclaw/openclaw/commit/f0b327cf686e))
+- **Active Memory concrete example is now narrow:** Active Memory recall calls `runEmbeddedPiAgent` with `toolsAllow: ["memory_search", "memory_get"]`, `disableMessageTool: true`, and lightweight bootstrap context. That addresses the example in this issue, not the global default. ([`extensions/active-memory/index.ts:1670`](https://github.com/openclaw/openclaw/blob/f0b327cf686e/extensions/active-memory/index.ts#L1670), [f0b327cf686e](https://github.com/openclaw/openclaw/commit/f0b327cf686e))
+- **Unset and full profiles are unrestricted:** `CORE_TOOL_PROFILES.full` is `{}`, and `resolveCoreToolProfilePolicy` returns `undefined` for missing profiles and profiles with no allow/deny entries, so unset and `full` both mean no profile restriction. ([`src/agents/tool-catalog.ts:316`](https://github.com/openclaw/openclaw/blob/f0b327cf686e/src/agents/tool-catalog.ts#L316), [f0b327cf686e](https://github.com/openclaw/openclaw/commit/f0b327cf686e))
+- **No policy or empty allowlist allows tools:** The matcher returns true when `policy` is absent, and also returns true when a policy has no allow entries unless denied. That is not disabled-by-default behavior. ([`src/agents/tool-policy-match.ts:22`](https://github.com/openclaw/openclaw/blob/f0b327cf686e/src/agents/tool-policy-match.ts#L22), [f0b327cf686e](https://github.com/openclaw/openclaw/commit/f0b327cf686e))
+- **Runtime toolsAllow is opt-in:** `applyEmbeddedAttemptToolsAllow` returns the complete tool array when `toolsAllow` is missing or empty, and bundled MCP creation also remains enabled for missing/empty `toolsAllow`. ([`src/agents/pi-embedded-runner/run/attempt.ts:471`](https://github.com/openclaw/openclaw/blob/f0b327cf686e/src/agents/pi-embedded-runner/run/attempt.ts#L471), [f0b327cf686e](https://github.com/openclaw/openclaw/commit/f0b327cf686e))
+- **Tests preserve broad empty runtime allow semantics:** The runner test expects bundled MCP to be created when `toolsAllow` is omitted or `[]`, while a memory-only runtime allowlist skips bundle MCP. ([`src/agents/pi-embedded-runner/run/attempt.test.ts:109`](https://github.com/openclaw/openclaw/blob/f0b327cf686e/src/agents/pi-embedded-runner/run/attempt.test.ts#L109), [f0b327cf686e](https://github.com/openclaw/openclaw/commit/f0b327cf686e))
+
+Remaining risk / open question:
+
+- Changing unset or `full` semantics is compatibility-sensitive for existing configs, plugin and MCP tools, cron runs, sub-agent workflows, and channel integrations.
+- Closing this now would treat the narrower Active Memory/#66060 mitigation as if it solved the broader least-privilege default request.
+
+Codex Review notes: model gpt-5.5, reasoning high; reviewed against [f0b327cf686e](https://github.com/openclaw/openclaw/commit/f0b327cf686e3a957fef8c94985ee6509953a3b7).
+
+<!-- clawsweeper-review item=66781 -->
+--

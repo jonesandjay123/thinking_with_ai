@@ -1,0 +1,105 @@
+author:	r3n3x
+association:	none
+edited:	false
+status:	none
+--
++1, i am encountering this issue 
+, too (V 2026.2.6-3)
+--
+author:	rex05ai
+association:	none
+edited:	false
+status:	none
+--
+## Related Issues and Patterns
+
+After searching the issue tracker, this appears to be part of a broader **file descriptor leak epidemic** affecting OpenClaw on macOS. Here are the related reports:
+
+### Direct File Descriptor Leak Issues
+
+**Memory/Embedding Subsystem:**
+- #5138 - MemoryIndexManager INDEX_CACHE leaks FDs, watchers, and timers (P1/High, CWE-404)
+- #5968 - Memory subsystem FD leak: git objects not closed after embedding
+- #9068 - FD leak in bash-tools.exec.js - child process stdio streams not closed on session exit
+- #11181 - File descriptor leak in workspace scanning on every message
+
+**Skill Scanner / File Watcher:**
+- #2532 - `spawn EBADF` error on all exec tool calls (15 comments, PR #8869 pending)
+- #3708 - FD leak: gateway skill scanner opens .venv files and never closes them (7 comments)
+- #5827 - chokidar file watcher lacks ignore patterns, causing FD exhaustion and spawn EBADF
+- #9481 - FD Leak: skills watcher ignores .venv/, causing spawn EBADF
+- #9960 - macOS: gateway exec starts failing after skill directory scan leaks ~12k open FDs (Python venv)
+
+**Exec Tool / spawn EBADF:**
+- #8841 - exec tool fails with "spawn EBADF" error - persists across restart and reboot
+- #8938 - exec tool fails with "spawn EBADF" error on macOS
+- #9921 - Critical: File descriptor leak causes exec tool to fail (EBADF)
+- #11243 - Gradual FD leak under macOS LaunchAgent causes EMFILE after extended uptime (256 FD soft limit)
+- #11589 - macOS Tahoe 26.2: exec always fails (pipe path spawn EBADF errno=-9; PTY path exits 1 with no output)
+- #12181 - persistent spawn EBADF error on exec tool calls (Node v22.22.0 + macOS)
+
+### memory_search Tool Issues (may overlap with root cause)
+
+- #9645 - memory_search never calls qmd search when using QMD backend (7 comments)
+- #9000 - memory_search returns empty when memory.backend=qmd, but qmd CLI works (5 comments)
+- #8560 - memory_search tool fails - dist/memory/manager.js missing (3 comments)
+- #10393 - memory_search: support local file search without external API
+- #10734 - memory_search returns empty results despite functional database and embeddings
+- #10931 - memory_search tool fails with Ollama embeddings (fetch failed), CLI works
+- #11727 - memory_search returns empty results despite indexed chunks
+- #11981 - memory_search tool doesn't use qmd backend when memory.backend=qmd
+- #12021 - memory_search tool ignores memory.backend: 'qmd' config, tries cloud providers
+
+### Pattern Analysis
+
+The common thread appears to be:
+1. **Memory indexing/embedding operations** open file handles (git objects, workspace files, etc.)
+2. **File handles are never closed** due to missing cleanup in async paths
+3. **FD count accumulates** until system limit (~10,240 on macOS)
+4. **All spawn() calls fail with EBADF** once limit is reached
+5. **Hard restart temporarily fixes** the symptom but doesn't address the leak
+
+### Potential Root Causes
+
+Based on the related issues:
+- **MemoryIndexManager INDEX_CACHE** not releasing resources (#5138)
+- **Git object files** left open after embedding (#5968)
+- **Python venv files** in skills directories scanned but never closed (#2532, #3708, #9481)
+- **chokidar file watcher** lacking ignore patterns (#5827)
+- **Workspace file scanning** on every message (#11181)
+
+### Suggested Next Steps
+
+1. Check if PR #8869 (fix for #2532) addresses this case
+2. Investigate if disabling memory indexing prevents the leak (confirms root cause)
+3. Monitor FD count with `lsof -p <gateway-pid> | wc -l` to identify leak rate
+4. Consider adding FD leak detection to OpenClaw health checks
+
+cc @tyler6204 @jverkoey (PR #8869 author)
+--
+author:	vignesh07
+association:	contributor
+edited:	false
+status:	none
+--
+Implemented a hardening pass in `main` focused on file-descriptor pressure in builtin memory sync startup:
+
+- `/Users/vignesh/openclaw/src/memory/manager-sync-ops.ts`
+  - memory watcher now targets markdown globs (`memory/**/*.md` + markdown files under configured extra paths) instead of broad recursive directory watches
+  - added ignore filters for heavy dependency/venv directories (`node_modules`, `.git`, `.venv`, etc.)
+- `/Users/vignesh/openclaw/src/memory/manager.watcher-config.test.ts`
+  - regression coverage for watcher targets and ignored-directory behavior
+
+Validation run:
+- `pnpm test src/memory/manager.watcher-config.test.ts src/memory/manager.sync-errors-do-not-crash.test.ts`
+
+Thanks for the report and pressure-testing details, @rex05ai.
+
+--
+author:	vignesh07
+association:	contributor
+edited:	false
+status:	none
+--
+Closing as fixed in main with memory watcher FD-pressure hardening. If you can still reproduce spawn EBADF on latest main/release, comment with exact config + repro and we will reopen.
+--

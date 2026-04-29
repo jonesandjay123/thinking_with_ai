@@ -1,0 +1,60 @@
+
+## QUERY OpenClaw memory_search Gemini embedding quota
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Freference%2Fmemory%2Dconfig&rut=20a39f1a4e2aba657a5e987a604d166bd97371aa6b413f7af78a06afc38f5afd
+- [Bug] [Regression] memorySearch provider &quot;gemini&quot; unknown after ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fopenclaw%2Fopenclaw%2Fissues%2F73527&rut=ee291d84ee5cf9a9e4d658fec97c1099927ec65fa79d6c491c9d6b807854723a
+- Memory &amp; Semantic Search — Setup &amp; Configuration — OpenClaw Help | //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.getopenclaw.ai%2Fhelp%2Fmemory%2Dsearch%2Dsetup%2Dguide&rut=91ac53452ed834d81d69eca48252247b01f61f19bbd764b09b2e4faa0c601d2f
+- Agent Memory Setup v2 (Gemini Embeddings 2) — ClawHub | //duckduckgo.com/l/?uddg=https%3A%2F%2Fclawhub.ai%2Fautosolutionsai%2Ddidac%2Fagent%2Dmemory%2Dsetup%2Dv2&rut=022d2abb65a80136eff620db77c012fb569813de85c70924d1f92df48f4cc28e
+- Agent Memory Setup v2 (Gemini Embeddings 2) - llmbase.ai | //duckduckgo.com/l/?uddg=https%3A%2F%2Fllmbase.ai%2Fopenclaw%2Fagent%2Dmemory%2Dsetup%2Dv2%2F&rut=3512fb8dc6d4ceabe7cbbe674b49e803bda36255c04d5db48ee1eebca7d87645
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.kr%2Freference%2Fmemory%2Dconfig&rut=f95d66d413b36661c493c7282c3cf8abe9f4858e4bec0fe73a076a8fb5ee7047
+- OpenClaw Configuration | clawdbrunner/openclaw-graphiti-memory | DeepWiki | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fclawdbrunner%2Fopenclaw%2Dgraphiti%2Dmemory%2F7.1%2Dopenclaw%2Dconfiguration&rut=b5e5e96d7059f86ce119936094a50e00b83a0af4cdd53063d82c02257a4c66cb
+- Memory configuration reference | OpenClaw Docs | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopenclaw%2Ddocs.beaverslab.xyz%2Fen%2Freference%2Fmemory%2Dconfig&rut=b30e47605c62f5776461c4ae71b503f3ef2090254a99c7faec067483afe27b36
+- OpenClaw Memory Configuration — Embeddings, Context Pruning ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fmoltfounders.com%2Fopenclaw%2Drunbook%2Fmemory%2Dconfiguration&rut=c14010c8cb97e88075734b5dc42dec8e49f3ddc9ad1024b196f234cb5276e299
+- Builtin memory engine - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Fconcepts%2Fmemory%2Dbuiltin&rut=799df5421fa505f45d389cd3062ce7630f0774f8919c20c27449c0fcaf763a29
+
+## QUERY OpenClaw memory_search external API key
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Freference%2Fmemory%2Dconfig&rut=20a39f1a4e2aba657a5e987a604d166bd97371aa6b413f7af78a06afc38f5afd
+- Configure OpenClaw Memory Search: Improve Retrieval Accuracy | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopen%2Dclaw.bot%2Fdocs%2Fconcepts%2Fmemory%2Dsearch%2F&rut=fac835eeaab687925589fb0944113efb8f3960baf31f12e69851662559ab73f8
+- Memory search requires API key even when using local model | //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fopenclaw%2Fopenclaw%2Fissues%2F6385&rut=b5de7ad43fdb0f335a1d1fab15cdcda17dfd214cc5753bfdc52832aa4650231a
+- Memory &amp; Semantic Search — Setup &amp; Configuration — OpenClaw Help | //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.getopenclaw.ai%2Fhelp%2Fmemory%2Dsearch%2Dsetup%2Dguide&rut=91ac53452ed834d81d69eca48252247b01f61f19bbd764b09b2e4faa0c601d2f
+- OpenClaw Configuration | clawdbrunner/openclaw-graphiti-memory | DeepWiki | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fclawdbrunner%2Fopenclaw%2Dgraphiti%2Dmemory%2F7.1%2Dopenclaw%2Dconfiguration&rut=b5e5e96d7059f86ce119936094a50e00b83a0af4cdd53063d82c02257a4c66cb
+- Memory - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Fcli%2Fmemory&rut=ed3ac31ca63017630be959ae9a4e1ee7afb7ca23db96862950aa370ca0487c97
+- The Complete Guide to OpenClaw Memory Search: Architecture ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fskywork.ai%2Fskypage%2Fen%2Fopenclaw%2Dmemory%2Dsearch%2Dguide%2F2049134065522900992&rut=e9b316780da2346d8cad438c8654a2030700b8c820165e52a712e2c44d943463
+- Memory configuration reference | OpenClaw Docs | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopenclaw%2Ddocs.beaverslab.xyz%2Fen%2Freference%2Fmemory%2Dconfig&rut=b30e47605c62f5776461c4ae71b503f3ef2090254a99c7faec067483afe27b36
+- Bug: memory_search/memory_get tools require OpenAI/Google API key even ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fopenclaw%2Fopenclaw%2Fissues%2F8131&rut=902be6734e22476d3d4109f260a580f1a25fe687c77922171721d98dcfce48f0
+- Stop Losing Context: A Guide to OpenClaw Memory | OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopen%2Dclaw.bot%2Fdocs%2Fconcepts%2Fmemory%2F&rut=68c1e7c5be76600b43c8c245d135c8b9506f159a473afb4f72f8315c3c6ff1eb
+
+## QUERY OpenClaw active-memory memory_search API key
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Freference%2Fmemory%2Dconfig&rut=20a39f1a4e2aba657a5e987a604d166bd97371aa6b413f7af78a06afc38f5afd
+- Memory | OpenClaw Docs | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopenclaw%2Dai.com%2Fen%2Fdocs%2Fconcepts%2Fmemory&rut=da9e55ce845668f035f17c032bf091919f8d08d2c15147aae433dbe8141aa648
+- Memory &amp; Semantic Search — Setup &amp; Configuration — OpenClaw Help | //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.getopenclaw.ai%2Fhelp%2Fmemory%2Dsearch%2Dsetup%2Dguide&rut=91ac53452ed834d81d69eca48252247b01f61f19bbd764b09b2e4faa0c601d2f
+- Configure OpenClaw Memory Search: Improve Retrieval Accuracy | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopen%2Dclaw.bot%2Fdocs%2Fconcepts%2Fmemory%2Dsearch%2F&rut=fac835eeaab687925589fb0944113efb8f3960baf31f12e69851662559ab73f8
+- OpenClaw memory: how it works and why your agent forgets | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopenclawvps.io%2Fblog%2Fopenclaw%2Dmemory&rut=adf126940eed5cc608578ad262d38d08d8fe51e608defdd319cef34cc9fa711c
+- Memory configuration reference | OpenClaw Docs | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopenclaw%2Ddocs.beaverslab.xyz%2Fen%2Freference%2Fmemory%2Dconfig&rut=b30e47605c62f5776461c4ae71b503f3ef2090254a99c7faec067483afe27b36
+- The Complete Guide to OpenClaw Memory Search: Architecture ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fskywork.ai%2Fskypage%2Fen%2Fopenclaw%2Dmemory%2Dsearch%2Dguide%2F2049134065522900992&rut=e9b316780da2346d8cad438c8654a2030700b8c820165e52a712e2c44d943463
+- memory - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.kr%2Fcli%2Fmemory&rut=a7908bf3d0d98f72b460a2049b4ad6635ebcd75bcd1cd6944e6652766681bce5
+- Memory &amp; Search | openclaw/openclaw | DeepWiki | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fopenclaw%2Fopenclaw%2F3.4.3%2Dmemory%2Dand%2Dsearch&rut=3c4b3ee40394da7b4873cdb748decda73c9a977382af1b200f14c3264bdbc3f9
+- Active memory - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Fconcepts%2Factive%2Dmemory&rut=1255f5abe3fe94cb57379e605fffa9b4122b7df13590524cbdee8bab7bcd0475
+
+## QUERY OpenClaw memory_search 429 Gemini
+- Builtin memory engine - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Fconcepts%2Fmemory%2Dbuiltin&rut=799df5421fa505f45d389cd3062ce7630f0774f8919c20c27449c0fcaf763a29
+- Gemini embedding path missing retry/backoff for 429 errors #15546 | //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fopenclaw%2Fopenclaw%2Fissues%2F15546&rut=1f556197a7d616fb234ee8d8dc6ed436c9ab0a3df4852a64646ab0e3555a2183
+- Memory &amp; Semantic Search — Setup &amp; Configuration — OpenClaw Help | //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.getopenclaw.ai%2Fhelp%2Fmemory%2Dsearch%2Dsetup%2Dguide&rut=91ac53452ed834d81d69eca48252247b01f61f19bbd764b09b2e4faa0c601d2f
+- Configure OpenClaw Memory Search: Improve Retrieval Accuracy | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopen%2Dclaw.bot%2Fdocs%2Fconcepts%2Fmemory%2Dsearch%2F&rut=fac835eeaab687925589fb0944113efb8f3960baf31f12e69851662559ab73f8
+- Common Issues | clawdbrunner/openclaw-graphiti-memory | DeepWiki | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fclawdbrunner%2Fopenclaw%2Dgraphiti%2Dmemory%2F10.2%2Dcommon%2Dissues&rut=09c416daf00bd253ca609e1bbdc1107a412a5d18ce0ec671815f4835afa31be0
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.kr%2Freference%2Fmemory%2Dconfig&rut=f95d66d413b36661c493c7282c3cf8abe9f4858e4bec0fe73a076a8fb5ee7047
+- Memory configuration reference | OpenClaw Docs | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopenclaw%2Ddocs.beaverslab.xyz%2Fen%2Freference%2Fmemory%2Dconfig&rut=b30e47605c62f5776461c4ae71b503f3ef2090254a99c7faec067483afe27b36
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Freference%2Fmemory%2Dconfig&rut=20a39f1a4e2aba657a5e987a604d166bd97371aa6b413f7af78a06afc38f5afd
+- [Bug]: memory_search with Gemini embeddings does not honor ... - GitHub | //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fopenclaw%2Fopenclaw%2Fissues%2F54279&rut=3a4197f1d3e17c80431f4ed1f10b0790138b955a58ed016bd30871e1627173e4
+- OpenClaw Memory Embedding 系统修复实录：从 Ollama 到 Gemini 的完整踩坑指南 | //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.cloudzun.com%2Fposts%2F2026%2D03%2D03%2Dopenclaw%2Dmemory%2Dembedding%2Dfix%2F&rut=3271196b90531d27e1939a4f6f67b0f3442ee3feb92cc003546ecf09b132e724
+
+## QUERY OpenClaw memory_search provider gemini
+- [Bug] [Regression] memorySearch provider &quot;gemini&quot; unknown after ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fopenclaw%2Fopenclaw%2Fissues%2F73527&rut=ee291d84ee5cf9a9e4d658fec97c1099927ec65fa79d6c491c9d6b807854723a
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.ai%2Freference%2Fmemory%2Dconfig&rut=20a39f1a4e2aba657a5e987a604d166bd97371aa6b413f7af78a06afc38f5afd
+- Memory configuration reference - OpenClaw | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdocs.openclaw.kr%2Freference%2Fmemory%2Dconfig&rut=f95d66d413b36661c493c7282c3cf8abe9f4858e4bec0fe73a076a8fb5ee7047
+- Memory &amp; Semantic Search — Setup &amp; Configuration — OpenClaw Help | //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.getopenclaw.ai%2Fhelp%2Fmemory%2Dsearch%2Dsetup%2Dguide&rut=91ac53452ed834d81d69eca48252247b01f61f19bbd764b09b2e4faa0c601d2f
+- Connect OpenClaw to Google Gemini — 1M Token Context + Free Tier | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopen%2Dclaw.bot%2Fdocs%2Fproviders%2Fgemini%2F&rut=b7823a9ee81f1f6f1b4cbadb2c2b06342a76e404f5e3704640f2a57de1fb8961
+- Memory configuration reference | OpenClaw Docs | //duckduckgo.com/l/?uddg=https%3A%2F%2Fopenclaw%2Ddocs.beaverslab.xyz%2Fen%2Freference%2Fmemory%2Dconfig&rut=b30e47605c62f5776461c4ae71b503f3ef2090254a99c7faec067483afe27b36
+- 2026 Complete Guide to OpenClaw memorySearch: Supercharge Your AI ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdev.to%2Fczmilo%2F2026%2Dcomplete%2Dguide%2Dto%2Dopenclaw%2Dmemorysearch%2Dsupercharge%2Dyour%2Dai%2Dassistant%2D49oc&rut=92f5129bffb3c76fd5792750b11cfe36af84ee483316f4b8dafe550997f
+- Openclaw MemorySearch 配置 - 见路非道 - 博客园 | //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.cnblogs.com%2Fsing1ee%2Fp%2F19685422%2Fopenclaw%2Dmemorysearch&rut=9e1c6d940c696756b048283e65dfc86995f7abc6669c68f70c543ad401948b83
+- OpenClaw Configuration | clawdbrunner/openclaw-graphiti-memory | DeepWiki | //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fclawdbrunner%2Fopenclaw%2Dgraphiti%2Dmemory%2F7.1%2Dopenclaw%2Dconfiguration&rut=b5e5e96d7059f86ce119936094a50e00b83a0af4cdd53063d82c02257a4c66cb
+- openclaw memory search just got upgraded. gemini embedding 2 preview ... | //duckduckgo.com/l/?uddg=https%3A%2F%2Fx.com%2FVoxyz_ai%2Fstatus%2F2032018762078306493&rut=d30879d2ed7fa19129a270ce7b187623a9415cc5389a571506d3a3166c818dde

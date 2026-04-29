@@ -1,0 +1,17 @@
+author:	hxy91819
+association:	member
+edited:	false
+status:	none
+--
+@13Guinness :warning: **Security Notice: Secret Leakage Detected**
+
+GitHub Secret Scanning detected the following exposed secret types in your issue description:
+
+1. **Google API Key**
+
+The affected content has been redacted in place.
+
+**Please rotate these credentials immediately.**
+
+These secrets were publicly exposed and should be considered compromised.
+--

@@ -1,0 +1,19 @@
+author:	steipete
+association:	contributor
+edited:	false
+status:	none
+--
+Closing this as not reproducible on current `main` after Codex review.
+
+Current `main` does not use the reported `models/embedding-001` path. The Gemini memory embedding adapter defaults to `gemini-embedding-001`, normalizes to `models/gemini-embedding-001`, and the official Gemini API docs still list `gemini-embedding-001` as the stable embeddings model while deprecating the older `embedding-001`. That makes the report's stated root cause obsolete against current `main`. ([ai.google.dev](https://ai.google.dev/gemini-api/docs/embeddings?utm_source=openai))
+
+What I checked:
+
+- **Gemini default model on main:** [`extensions/google/embedding-provider.ts`](https://github.com/openclaw/openclaw/blob/8866544ffefb/extensions/google/embedding-provider.ts) hardcodes `DEFAULT_GEMINI_EMBEDDING_MODEL = "gemini-embedding-001"`, not `embedding-001`. ([`extensions/google/embedding-provider.ts:31`](https://github.com/openclaw/openclaw/blob/8866544ffefb/extensions/google/embedding-provider.ts#L31), [8866544ffefb](https://github.com/openclaw/openclaw/commit/8866544ffefb))
+- **Request path built from supported Gemini model name:** The same file builds the REST path as `models/${model}`, so the default request path is `models/gemini-embedding-001`, not `models/embedding-001`. ([`extensions/google/embedding-provider.ts:214`](https://github.com/openclaw/openclaw/blob/8866544ffefb/extensions/google/embedding-provider.ts#L214), [8866544ffefb](https://github.com/openclaw/openclaw/commit/8866544ffefb))
+- **Docs on main match code:** The shipped memory config reference still documents Gemini memory search default model as `gemini-embedding-001`. Public docs: [`docs/reference/memory-config.md`](https://docs.openclaw.ai/reference/memory-config). ([`docs/reference/memory-config.md:112`](https://docs.openclaw.ai/reference/memory-config), [8866544ffefb](https://github.com/openclaw/openclaw/commit/8866544ffefb))
+- **Tests encode the same expectation:** [`extensions/google/embedding-provider.test.ts`](https://github.com/openclaw/openclaw/blob/8866544ffefb/extensions/google/embedding-provider.test.ts) asserts `text-embedding-004` is not treated as the Gemini Embedding 2 path and that an empty Gemini model resolves to the repo default model. ([`extensions/google/embedding-provider.test.ts:82`](https://github.com/openclaw/openclaw/blob/8866544ffefb/extensions/google/embedding-provider.test.ts#L82), [8866544ffefb](https://github.com/openclaw/openclaw/commit/8866544ffefb))
+- **Official Gemini API docs:** Google's Gemini API docs show `gemini-embedding-001` as the stable embedding model and example REST calls against `models/gemini-embedding-001:embedContent`; they separately note that legacy `embedding-001` was deprecated. ([ai.google.dev](https://ai.google.dev/gemini-api/docs/embeddings?utm_source=openai))
+
+Review notes: reviewed against [8866544ffefb](https://github.com/openclaw/openclaw/commit/8866544ffefb42ca234c66c337134fb60743d8d0).
+--

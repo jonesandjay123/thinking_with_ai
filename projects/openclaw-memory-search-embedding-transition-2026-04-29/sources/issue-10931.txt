@@ -1,0 +1,21 @@
+author:	openclaw-barnacle
+association:	none
+edited:	false
+status:	none
+--
+This issue has been automatically marked as stale due to inactivity.
+Please add updates or it will be closed.
+--
+author:	steipete
+association:	contributor
+edited:	false
+status:	none
+--
+Thanks for the report. This is the same runtime memory_search/Ollama fetch-failed symptom tracked in #18198.
+
+To keep triage clean, consolidating there as canonical tracking.
+No merged fix commit yet for this specific runtime issue.
+
+Closing as duplicate of #18198.
+
+--
