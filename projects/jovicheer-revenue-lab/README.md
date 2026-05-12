@@ -1,51 +1,54 @@
-# Jovicheer Revenue Lab
+# Jovicheer 收入 Lab
 
-> Status: active research
-> Started: 2026-05-12
-> Owner: Jones + Jarvis
+> 狀態：進行中研究
+> 建立日期：2026-05-12
+> 負責：Jones + Jarvis
 
-## Why this exists
+## 為什麼建立這個專案
 
-This project tracks Jones's shift from side projects and experiments toward real company revenue for Jovicheer / JonesLab / Raijax.
+這個專案用來追蹤 Jones / Jovicheer / JonesLab / Raijax 從「作品集與實驗」走向「真實公司收入」的研究與決策過程。
 
-The near-term question is not "which random thing can make $10?" It is:
+近期問題不是「哪個隨機點子最快賺到 $10」，而是：
 
-> Which AI-assisted interactive content/product experiment can create the first real paid revenue signal while also compounding toward a 1.5–2 year independent company income path?
+> 哪一種 AI 輔助互動內容 / 產品實驗，能創造第一個真實付費收入訊號，同時也能累積成 1.5–2 年內建立獨立公司收入管道的基礎？
 
-## Core framing
+## 核心定位
 
-Jones is considering lightweight paid products that avoid logistics, inventory, heavy customer support, and large marketplace cold-start problems. The current candidate family is:
+Jones 正在考慮低負擔的付費產品，刻意避開物流、庫存、重客服、大型市場冷啟動等問題。現在主要候選類型包括：
 
-- interactive fiction
-- visual novel / choice-based narrative game
-- xianxia / 古裝 / 修仙 / 熱血 choice story
-- AI sci-fi / AI agent themed game
-- digital card / board game prototype
-- AI-assisted story game engine / production pipeline
-- short paid narrative game distributed via itch.io, Steam, Gumroad, Stripe, App Store, or Google Play
+- 互動小說
+- 視覺小說 / 選擇推進型敘事遊戲
+- 仙俠 / 古裝 / 修仙 / 熱血題材選擇故事
+- AI 科幻 / AI 代理人主題遊戲
+- 數位卡牌 / 桌遊原型
+- AI 輔助故事遊戲引擎 / 內容生產流程
+- 可透過 itch.io、Steam、Gumroad、Stripe、App Store、Google Play 等平台發售的短篇付費敘事遊戲
 
-The strategic asset may not be a single game. It may be an AI-assisted narrative product factory / pipeline that can repeatedly produce small paid experiments.
+真正的戰略資產不一定是單一遊戲，而可能是一條可重複出貨小型付費作品的 AI 輔助敘事產品工廠。
 
-## Project questions
+## 這個專案要回答的問題
 
-1. In 2025–2026, what is the real market state for interactive fiction, visual novels, narrative indie games, and digital card/board games?
-2. Which distribution platform is best for a solo/AI-assisted creator trying to earn the first $10–$100?
-3. Which product directions fit Jones's technical stack, taste, brands, and 1.5–2 year income goal?
-4. What should be avoided for now because of logistics, support burden, cold-start, or weak brand fit?
-5. What is the best first paid experiment that can ship in 30–60 days and still serve the long-term company direction?
+1. 2025–2026 年互動小說、視覺小說、敘事型獨立遊戲、數位卡牌 / 桌遊市場的真實狀態如何？
+2. 對個人創作者 / AI 輔助創作者來說，哪個平台最適合測試第一個 $10–$100 收入？
+3. 哪些產品方向最符合 Jones 的技術棧、品味、品牌與 1.5–2 年收入目標？
+4. 哪些方向因為物流、客服、冷啟動、弱品牌適配等原因，現在應該避免？
+5. 哪個第一個付費實驗最適合在 30–60 天內推出，同時又能服務長期公司方向？
 
-## Files
+## 檔案說明
 
-- [`source-conversation-2026-05-12.md`](./source-conversation-2026-05-12.md) — raw GPT/Jones conversation that triggered this project.
-- [`market-research-ai-assisted-interactive-content-2026-05-12.md`](./market-research-ai-assisted-interactive-content-2026-05-12.md) — main research report draft.
-- [`product-bets-shortlist.md`](./product-bets-shortlist.md) — evolving shortlist of product bets.
-- [`decision-notes.md`](./decision-notes.md) — decisions, pivots, and follow-up questions.
+- [`source-conversation-2026-05-12.md`](./source-conversation-2026-05-12.md) — 觸發本專案的 Jones / GPT 對話脈絡。必要英文專有名詞保留原文。
+- [`market-research-ai-assisted-interactive-content-2026-05-12.md`](./market-research-ai-assisted-interactive-content-2026-05-12.md) — 主要市調報告。
+- [`product-bets-shortlist.md`](./product-bets-shortlist.md) — 產品候選清單。
+- [`decision-notes.md`](./decision-notes.md) — 決策紀錄、轉向與待釐清問題。
 
-## Current working hypothesis
+## 目前工作假設
 
-The strongest starting point is likely *not* a full store, physical board game, heavy dating platform, or generic AI tool.
+最強起點大概率不是完整商城、實體桌遊、重型交友平台 或 泛用型 AI 工具。
 
-The best initial research target is:
+目前最值得研究的起點是：
 
-> AI-assisted choice-based narrative product + reusable production pipeline + one sharply positioned first paid title.
+> AI 輔助選擇推進型敘事產品 + 可重用製作流程 + 一個清楚有力的鉤子 的第一個付費作品。
 
+## 語言規則
+
+本資料夾所有 `.md` 文件以繁體中文撰寫。平台名、產品名、技術名、URL、常見專有名詞（例如 itch.io、Steam、Stripe、AI、MVP）可保留英文，以避免失真。
