@@ -29,6 +29,7 @@
 - [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
 - [Trip Planner](./projects/trip-planner/)
 - [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
+- [NotebookLM x Jyn Pipeline Research](./projects/notebooklm-jyn-pipeline-research/)
 
 ## Repo 的新定位
 
@@ -112,6 +113,7 @@ thinking_with_ai/
 - [Claude Code vs OpenClaw](./projects/claude-code-vs-openclaw/)
 - [Trip Planner](./projects/trip-planner/)
 - [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
+- [NotebookLM x Jyn Pipeline Research](./projects/notebooklm-jyn-pipeline-research/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
 
