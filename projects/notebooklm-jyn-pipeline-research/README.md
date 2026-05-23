@@ -430,6 +430,13 @@ NotebookLM output highlights:
 - 它的 citation 是回到音訊 source 的片段引用，不等於完整逐字稿可直接 export。
 - 對 podcast 來說，最穩定的 source chain 不是 Apple episode page 本身，而是 RSS / enclosure audio URL / MP3 檔。
 
+URL-only follow-up test:
+
+- Firstory episode URL can be added, but it behaves like a web-page source: NotebookLM uses the episode title/description/metadata and does not clearly ingest the full 48-minute audio.
+- Direct MP3 URL (`d3mww1g1pfq2pt.cloudfront.net/...mp3`) is rejected with `不支援這個網址類型`.
+- RSS feed URL (`https://feed.firstory.me/rss/user/ckyjmnkp0166d0830od1kznfj`) is also rejected / unusable as a source.
+- Therefore, for full podcast audio ingestion in consumer NotebookLM, the reliable path is still: locate RSS/audio enclosure -> download audio to a temporary file -> upload the audio file to NotebookLM.
+
 判斷：
 
 - 這條 chain 打通後，NotebookLM 對 Jones 的實用價值上升很多。
