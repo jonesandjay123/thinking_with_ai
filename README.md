@@ -30,6 +30,7 @@
 - [Trip Planner](./projects/trip-planner/)
 - [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
 - [NotebookLM x Jyn Pipeline Research](./projects/notebooklm-jyn-pipeline-research/)
+- [AI 美女短影片生成技術前沿調查](./projects/ai-beauty-short-video-generation-2026-05-24/)
 
 ## Repo 的新定位
 
@@ -115,6 +116,7 @@ thinking_with_ai/
 - [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
 - [NotebookLM x Jyn Pipeline Research](./projects/notebooklm-jyn-pipeline-research/)
 - [AI 時代的膝蓋復健與物理治療消費調查](./projects/ai-physical-therapy-self-rehab-2026-05-23/)
+- [AI 美女短影片生成技術前沿調查](./projects/ai-beauty-short-video-generation-2026-05-24/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
 
