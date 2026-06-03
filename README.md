@@ -121,6 +121,7 @@ thinking_with_ai/
 - [AI 美女短影片生成技術前沿調查](./projects/ai-beauty-short-video-generation-2026-05-24/)
 - [以照片找人的網站與開源替代研究](./projects/reverse-face-search-landscape-2026-05-30/)
 - [Logitech Slim Solar+ K980 電池與充電異常調查](./projects/logitech-slim-solar-k980-battery-issue-2026-06-01/)
+- [AI 時代的 LeetCode 面試文化調查](./projects/leetcode-ai-interview-culture-2026-06-03/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
 
