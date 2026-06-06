@@ -5,3 +5,4 @@
 ## Channels
 
 - [好棒Bump](hao-bang-bump/)
+- [零度解說](lingdu-explainer/)
