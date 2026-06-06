@@ -16,6 +16,10 @@ Extraction note: YouTube did not expose manual or automatic caption tracks for t
 
 Important caveat: This is a content summary for later AI discussion, not mining, trading, security, tax, or investment advice. The video discusses crypto mining software, wallet custody, exchange/liquidity, and disabling security tools; all of those carry operational and financial risk.
 
+Follow-up note:
+
+- [Jovix RTX 5080 PRL mining and alternatives evaluation](jovix-rtx-5080-followup.md)
+
 ## Why This Video Matters
 
 這支影片不是單純「幣圈消息」，而是一個完整的 PRL/Pearl 顯卡挖礦上手流程：先說收益誘因，再示範錢包、礦池、Windows 單卡挖礦、HiveOS 叢集挖礦、查收益、提幣/變現、以及不同顯卡的功耗與算力參考。
