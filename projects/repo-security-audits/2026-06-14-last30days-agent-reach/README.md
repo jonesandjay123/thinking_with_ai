@@ -11,16 +11,20 @@
 
 ## 摘要結論
 
-我的建議是：先試 `last30days-skill`，但只在 sandbox / 隔離研究環境裡試，並使用專用 credentials。它比較接近 Jones 目前真正需要的工作流：跨 Reddit、X、YouTube、GitHub、Polymarket、HN、TikTok / Instagram / Threads、Web 等來源抓取近期社群訊號，再整理成有根據的摘要。它有大量測試、明確設定文件、MIT license，也看得到不少安全意識；但它仍是年輕且快速變動的專案，而且會碰 API key、browser cookie、local env file 這類敏感資料。
+我的建議是：不要盲目跟風導入 `last30days-skill` 或 `Agent-Reach` 這類爆火 repo。更好的做法是把它們當成技術樣板與突破口：看它們怎麼設計多來源 research pipeline、source adapter、credential boundary、doctor checks、資料 normalize、去重、評分與摘要流程；真正要長期使用時，應該依照 Jones / Jarvis / Jyn Null 的需求自研一套更窄、更乾淨、更安全的內部系統。
+
+`last30days-skill` 值得參考，因為它展示了一個完整的「近期社群訊號研究」pipeline：跨 Reddit、X、YouTube、GitHub、Polymarket、HN、TikTok / Instagram / Threads、Web 等來源抓取資料，再整理成有根據的摘要。它有大量測試、明確設定文件、MIT license，也看得到不少安全意識；但它仍是年輕且快速變動的專案，而且會碰 API key、browser cookie、local env file 這類敏感資料。所以它更適合被研究、拆解與借鑑，不適合直接成為主系統依賴。
 
 `Agent-Reach` 很值得研究，但我不建議現在直接裝進主 OpenClaw / Jarvis 環境。它更像是一個「網路能力路由器 + installer」，不是單一搜尋工具。它的設計很有啟發：多後端路由、doctor 健康檢查、平台 fallback、修復提示。但也因為它會安裝全域工具、設定 MCP、讀取 browser cookies、寫入 token config、接上第三方 CLI / OpenCLI，風險面比 `last30days-skill` 更大。
 
 簡短版：
 
-- 最適合先試：`last30days-skill`
-- 最值得當架構參考：`Agent-Reach`
-- 兩者都不應該拿 Jones 的主社群帳號、主瀏覽器 profile、或高信任 credentials 直接測
-- 應使用專用 bot / sandbox 帳號、per-project env files，並避免給任何發文或互動權限
+- 不要因為 GitHub trending 或社群爆火就直接採用。
+- 真正重要的是：我們知道自己的需求，也知道需要時自己做得出來。
+- `last30days-skill` 最值得參考的是 research pipeline 與 source normalization。
+- `Agent-Reach` 最值得參考的是能力路由、doctor checks、multi-backend fallback。
+- 兩者都不應該拿 Jones 的主社群帳號、主瀏覽器 profile、或高信任 credentials 直接測。
+- 若未來自研，應使用專用 bot / sandbox 帳號、per-project env files，並避免給任何發文或互動權限。
 
 ## Repo 1：mvanhorn/last30days-skill
 
@@ -96,9 +100,9 @@
 
 ### 採用建議
 
-可以當成受控研究工具試用，但還不要當成完全信任的 always-on autonomous scanner。
+不建議直接採用成主系統依賴。比較好的做法是把它當成 reference implementation：研究它怎麼拆 source adapters、怎麼 normalize item schema、怎麼做 engagement scoring、怎麼保存 raw data、怎麼讓 LLM 摘要與資料抓取分離。
 
-建議試用路徑：
+若真的需要做實測，也應該只是 sandbox spike，而不是正式導入：
 
 1. 裝在 disposable / sandbox agent 環境，不要直接裝進主 OpenClaw home。
 2. 第一階段只開低風險來源：GitHub、HN、Polymarket、可用的 Reddit public path、YouTube via `yt-dlp`、Web search。
@@ -109,7 +113,7 @@
 
 風險等級：中。
 
-我的判斷：值得 sandbox trial。
+我的判斷：值得研究與拆解；必要時可做 sandbox spike，但長期方向應該是自研內部版。
 
 ## Repo 8：Panniantong/Agent-Reach
 
@@ -214,29 +218,49 @@
 | 面向 | last30days-skill | Agent-Reach |
 |---|---|---|
 | 核心形態 | Research skill + Python engine | Capability router + installer + doctor |
-| 立即使用價值 | 高 | 中 |
+| 直接導入價值 | 中 | 低 |
+| 參考價值 | 高 | 高 |
 | 主要風險 | 多 API keys / browser tokens | 全域安裝、MCP / router surface、browser cookies |
 | Credential handling | Env files + project env + macOS Keychain support | `~/.agent-reach/config.yaml`，權限 0600 |
 | CI 成熟度 | 大量 pytest，advisory security scans | Multi-Python CI + wheel smoke gate |
 | Runtime dependency surface | Python runtime deps 很小 | 較大，且有 optional browser / MCP deps |
-| 最適合我們的用途 | 趨勢 / 社群訊號研究 | 架構參考與 sandbox 平台存取 |
-| 是否裝進主 Jarvis | 先不要，sandbox first | 不建議 |
-| 總體建議 | 謹慎試用 | 研究與 sandbox，不 wholesale adoption |
+| 最適合我們的用途 | 拆解 research pipeline 與 source normalization | 拆解工具治理、doctor checks、multi-backend fallback |
+| 是否裝進主 Jarvis | 不建議，reference only | 不建議 |
+| 總體建議 | 研究拆解，必要時 sandbox spike | 研究拆解，不 wholesale adoption |
 
 ## 建議下一步
 
-1. 為 `last30days-skill` 建一個小型 sandbox trial。
-2. 跑三個評估題目：
+1. 不急著安裝或導入任一個爆火 repo。
+2. 先把 `last30days-skill` 拆成可學習的技術模組：
+   - source adapter
+   - normalized item schema
+   - raw result archive
+   - engagement scoring
+   - dedupe / clustering
+   - synthesis prompt contract
+3. 先把 `Agent-Reach` 拆成可學習的工具治理模組：
+   - platform router
+   - active backend
+   - doctor output
+   - repair hints
+   - safe / dry-run install mode
+4. 未來若要自研，可以先做一個小型 `Jarvis Signal Engine` / `Jovi Signal Lab`：
+   - GitHub repo / issue / release 掃描
+   - Web search + article reader
+   - YouTube search + transcript
+   - HN / Reddit 社群討論
+   - Markdown brief + raw JSON archive
+5. 跑三個評估題目：
    - `OpenClaw vs Hermes`
    - `AI social media automation tools`
    - `Xiaohongshu AI creator workflow`
-3. 把輸出和手動 Web / GitHub 查核、現有 browser / web_fetch workflow 比較。
-4. 第一天不要加 X cookies；如果後續需要，使用 throwaway X account。
-5. 從 `Agent-Reach` 抽出架構筆記：platform router、doctor output、active backend、repair hints、safe / dry-run install mode。
-6. 長期來看，可以考慮做一個更小、更受控的內部版「Jarvis Reach」，而不是直接 import Agent-Reach 全套。
+6. 把輸出和手動 Web / GitHub 查核、現有 browser / web_fetch workflow 比較。
+7. 第一天不要加 X cookies；如果後續需要，使用 throwaway X account。
 
 ## 最後判斷
 
-`last30days-skill` 是我會先實際試的 repo，因為它解決的是明確、可重複的研究任務。它不是零風險，但 scope 比較容易框住。
+`last30days-skill` 的價值不在於「我們要不要用它」，而在於它證明了 agent research 可以被工程化：多來源抓取、normalize、排序、cluster、保存 raw data、再交給 LLM 摘要。這個方向值得學，但不必盲目採用。
 
 `Agent-Reach` 很聰明，也符合 agent tooling 的未來方向，但它想變成 infrastructure。對 infrastructure，要走比較慢、比較嚴格的 trust path。
+
+最適合我們的策略是：不跟風、不迷信 star 數；保留技術參考，知道突破口在哪，然後在真正需要時自己做一個符合 Jones 系統需求與安全邊界的版本。
