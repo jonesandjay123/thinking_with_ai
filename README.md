@@ -18,6 +18,7 @@
 ### 3. 對話原文歸檔
 - [Rubik's Cube Algorithms → Animal Shogi AI](./conversations/rubiks-cube-algorithms-animal-shogi-ai-2026-04-26/)
 - [找工作成為攻擊入口 → Creative Lab 對齊](./conversations/job-scam-security-creative-lab-2026-06-02/)
+- [快樂、創業焦慮與反對過早結論](./conversations/happiness-creative-muscle-before-jyn-2026-06-09/)
 
 ### 4. 關鍵決策
 - [Repo 2.0 Upgrade Decision Log](./decision-log/2026-04-repo-2.0-upgrade.md)
