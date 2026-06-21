@@ -3,6 +3,10 @@
 > **建立日期：** 2026-04-15
 > **目的：** 蒐集並評估 OpenClaw 與近期受矚目的 Hermes Agent 之間的差異、優勢、弱點、定位與適用場景，協助 Jones 判斷應如何看待這兩條產品路線。
 
+## Updates
+
+- [2026-06-20 最新口碑與現況更新：OpenClaw vs Hermes](current-sentiment-update-2026-06-20.md)
+
 ## TL;DR
 
 如果一句話總結：
