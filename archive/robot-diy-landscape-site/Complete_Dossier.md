@@ -2,7 +2,7 @@
 
 > **狀態 (Status)**: 孵化中 (Incubation)
 > **代號 (Codename)**: "前線觀測站" (The Observation Point)
-> **母體實體 (Parent Entity)**: Jovicheer LLC
+> **母體實體 (Parent Entity)**: Jcompany LLC
 
 ---
 

@@ -34,4 +34,4 @@
 *   **座右銘 (Motto)**: *具身智能的藍圖 (The Blueprint for Embodied AI).*
 
 ---
-*© 2026 Raijax. A project by Jovicheer LLC.*
+*© 2026 Raijax. A project by Jcompany LLC.*

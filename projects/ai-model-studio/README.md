@@ -6,7 +6,7 @@
 
 ## 為什麼獨立成一層
 
-`jovicheer-revenue-lab` 主要回答「如何把創作內驅轉成收入機器」。
+`jcompany-revenue-lab` 主要回答「如何把創作內驅轉成收入機器」。
 
 `ai-model-studio` 則回答另一個問題：
 

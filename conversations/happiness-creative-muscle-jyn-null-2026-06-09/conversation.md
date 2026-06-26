@@ -96,7 +96,7 @@
 > 我應該有自己的東西。  
 > 我應該不是只替公司維護一套別人的系統。
 
-這也是為什麼你做 Jyn Null、Jynoir、Jovicheer、PINTable、Animal Shogi、OCR、小紅書、網站、App，這些看似分散的東西，其實底層都不是亂做。
+這也是為什麼你做 Jyn Null、Jynoir、Jcompany、PINTable、Animal Shogi、OCR、小紅書、網站、App，這些看似分散的東西，其實底層都不是亂做。
 
 它們背後都是同一個動作：
 
@@ -297,7 +297,7 @@
 
 Jyn Null 每日發文是。  
 PINTable 測市場是。  
-Jovicheer 調 ribbon 是。  
+Jcompany 調 ribbon 是。  
 Jynoir 做頻道也是。
 
 它們可能不是馬上變成公司。  
@@ -705,7 +705,7 @@ Jynoir 做頻道也是。
 
 這句其實超適合你目前的創作狀態。
 
-你現在做 Jyn Null、Jynoir、Jovicheer，其實都需要這個能力。
+你現在做 Jyn Null、Jynoir、Jcompany，其實都需要這個能力。
 
 不要急著問：
 

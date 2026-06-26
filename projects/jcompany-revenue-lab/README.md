@@ -1,4 +1,4 @@
-# Jovicheer 收入 Lab
+# Jcompany 收入 Lab
 
 > 狀態：進行中研究
 > 建立日期：2026-05-12
@@ -6,7 +6,7 @@
 
 ## 為什麼建立這個專案
 
-這個專案用來追蹤 Jones / Jovicheer / JonesLab / Raijax 從「作品集與實驗」走向「真實公司收入」的研究與決策過程。
+這個專案用來追蹤 Jones / Jcompany / JonesLab / Raijax 從「作品集與實驗」走向「真實公司收入」的研究與決策過程。
 
 近期問題不是「哪個隨機點子最快賺到 $10」，而是：
 

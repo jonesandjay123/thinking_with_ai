@@ -265,7 +265,7 @@ ComfyUI_IPAdapter_plus 是 ComfyUI 的 IPAdapter reference implementation，READ
 - 概念上相近：相鄰 tile / background 必須接得上。
 - 技術上不同：通常是 pixel art / grid tile / procedural adjacency，不是 high-res panoramic matte painting。
 
-推論：可借「adjacency constraint / transition tile」的測試思路，但沒有找到可直接拿來生成 Jovicheer panoramic adapter 的成熟 repo。
+推論：可借「adjacency constraint / transition tile」的測試思路，但沒有找到可直接拿來生成 Jcompany panoramic adapter 的成熟 repo。
 
 ## ComfyUI 可嘗試 workflows
 

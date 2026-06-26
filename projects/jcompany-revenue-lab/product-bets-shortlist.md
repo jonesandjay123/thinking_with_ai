@@ -1,4 +1,4 @@
-# 產品候選清單：Jovicheer 收入 Lab
+# 產品候選清單：Jcompany 收入 Lab
 
 > 狀態：第一版
 > 日期：2026-05-12
@@ -10,7 +10,7 @@
 1. Jones 是否有興奮感與完成能量
 2. 30–60 天內是否能做出可收錢 V0
 3. 是否能用 AI / Jarvis / agentic coding 放大產能
-4. 是否累積 Jovicheer / JonesLab / Raijax 品牌
+4. 是否累積 Jcompany / JonesLab / Raijax 品牌
 5. 是否能長成產品線，而不是一次性玩具
 6. 發售與第一筆收入路徑是否清楚
 7. 是否低客服、低行政、低物流負擔

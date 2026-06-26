@@ -170,7 +170,7 @@ Jyn Null 小紅書發文
 
 你這幾個月其實大量在做「生成型」活動：
 
-Jovicheer
+Jcompany
 
 Jyn Null
 
@@ -524,7 +524,7 @@ Jyn Null 小紅書發文
 
 你這幾個月其實大量在做「生成型」活動：
 
-Jovicheer
+Jcompany
 
 Jyn Null
 

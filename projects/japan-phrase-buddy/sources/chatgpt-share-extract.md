@@ -77,7 +77,7 @@ git remote add origin https://github.com/jonesandjay123/JapanPhraseBuddy.git
 git push -u origin main
 ```
 
-如果你想放到 jovicheer org，也可以之後再轉移，不急。
+如果你想放到 jcompany org，也可以之後再轉移，不急。
 
 3. 立刻確認 .gitignore
 

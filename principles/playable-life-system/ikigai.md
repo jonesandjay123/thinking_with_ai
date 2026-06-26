@@ -35,7 +35,7 @@
 ✔ 你喜歡的（Love）
 建東西（App / 系統 / agent）
 AI / automation / system thinking
-長期 project（Jovicheer、ObserverJ）
+長期 project（Jcompany、ObserverJ）
 探索「人生 / 系統 / 社會運作」
 
 👉 不是單純 coding，是 創造 + 架構 + system
@@ -75,7 +75,7 @@ execution + system builder（不是純工程師）
 
 🧩 方向 A：人與人連結 / 社交問題
 
-（Jovicheer、dating pivot）
+（Jcompany、dating pivot）
 
 👉 你在意：
 
@@ -117,7 +117,7 @@ AI如何讓人變「超個體」
 
 👉 用 AI 建立「人與人更好的連結系統」
 
-= Jovicheer + AI + 行為設計
+= Jcompany + AI + 行為設計
 
 👉 世界需要：解決孤獨 / low-quality interaction
 👉 可賺錢：dating / social platform
@@ -166,7 +166,7 @@ AI如何讓人變「超個體」
 
 從這三個方向選一個：
 
-AI × 社交（Jovicheer）
+AI × 社交（Jcompany）
 AI × 資訊（ObserverJ）
 AI × 行為（gamification）
 

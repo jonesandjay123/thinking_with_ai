@@ -191,7 +191,7 @@ swipe
 - 手機 app 截圖觀察
 - 夜間 metrics 收集
 - App onboarding 測試
-- Jovicheer / PINTable mobile flow QA
+- Jcompany / PINTable mobile flow QA
 - 任何只能在手機 app 裡做的事情
 
 所以這篇我們可以直接接著聊。
@@ -807,7 +807,7 @@ Motorola = body / eyes / hands / app runtime
 輸出候選切入點
 ```
 
-這個很適合 Jyn Null / PINTable / Jovicheer 內容策略。
+這個很適合 Jyn Null / PINTable / Jcompany 內容策略。
 
 ---
 
@@ -832,7 +832,7 @@ push 圖片到手機
 
 ### 3. Mobile QA 真機測試
 
-這對 PINTable / Jovicheer 特別有用：
+這對 PINTable / Jcompany 特別有用：
 
 ```text
 打開網站
@@ -2169,7 +2169,7 @@ recover()
 log()
 ```
 
-之後小紅書、動物將棋、PINTable QA、Jovicheer mobile test 都走這層。
+之後小紅書、動物將棋、PINTable QA、Jcompany mobile test 都走這層。
 
 優點：
 
@@ -2771,7 +2771,7 @@ app 更新後 layout drift
 ```text id="i7zzqx"
 不要再只寫小紅書腳本。
 先把 Jarvis Android Agent 升級成一個低 token、可觀察、可恢復、可擴充的 Android Computer Use Runtime。
-小紅書只是第一個 workflow，動物將棋、PINTable QA、Jovicheer mobile test 都會是後續 workflow。
+小紅書只是第一個 workflow，動物將棋、PINTable QA、Jcompany mobile test 都會是後續 workflow。
 ```
 
 這就是正確路線。
