@@ -36,6 +36,7 @@
 - [Logitech Slim Solar+ K980 電池與充電異常調查](./projects/logitech-slim-solar-k980-battery-issue-2026-06-01/)
 - [Jovicheer 水平無縫循環背景研究](./projects/jovicheer-seamless-looping-background/)
 - [Jovicheer World Stage 技術路線調查報告](./projects/jovicheer-world-stage-technical-route/)
+- [Jovicheer 3D Asset Lab：參照圖到 3D 地景工具調查報告](./projects/jovicheer-3d-ground-scene-tools-2026-06-25/)
 - [Android / Wear OS 手錶四年後升級調查：Google Fi + 續航 + 新功能](./projects/android-smartwatch-google-fi-2026/)
 - [2024 邁阿密 Bayside Marketplace「外星人事件」調查報告](./projects/miami-bayside-alien-rumor-2024/)
 
@@ -130,6 +131,7 @@ thinking_with_ai/
 - [2024 邁阿密 Bayside Marketplace「外星人事件」調查報告](./projects/miami-bayside-alien-rumor-2024/)
 - [Jovicheer 水平無縫循環背景研究](./projects/jovicheer-seamless-looping-background/)
 - [Jovicheer World Stage 技術路線調查報告](./projects/jovicheer-world-stage-technical-route/)
+- [Jovicheer 3D Asset Lab：參照圖到 3D 地景工具調查報告](./projects/jovicheer-3d-ground-scene-tools-2026-06-25/)
 - [AI 時代的 LeetCode 面試文化調查](./projects/leetcode-ai-interview-culture-2026-06-03/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
