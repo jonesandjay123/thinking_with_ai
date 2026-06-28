@@ -40,6 +40,9 @@
 - [Android / Wear OS 手錶四年後升級調查：Google Fi + 續航 + 新功能](./projects/android-smartwatch-google-fi-2026/)
 - [2024 邁阿密 Bayside Marketplace「外星人事件」調查報告](./projects/miami-bayside-alien-rumor-2024/)
 
+### 6. 近期調查報告
+- [LLM API 免費額度與強模型調查](./reports/llm-api-free-tier-research-2026-06-28.md)
+
 ## Repo 的新定位
 
 `thinking_with_ai` 2.0 的核心不是「什麼都丟進 projects/」，而是把不同類型的內容分層管理，避免未來越堆越亂。
