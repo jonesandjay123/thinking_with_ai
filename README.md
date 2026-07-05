@@ -40,6 +40,7 @@
 - [Decision Field Lab：點子發酵與交匯點資料結構調查](./projects/decision-field-idea-fermentation-2026-06-29/)
 - [Android / Wear OS 手錶四年後升級調查：Google Fi + 續航 + 新功能](./projects/android-smartwatch-google-fi-2026/)
 - [2024 邁阿密 Bayside Marketplace「外星人事件」調查報告](./projects/miami-bayside-alien-rumor-2024/)
+- [Adobe 取消訂閱流程阻滯案例調查](./projects/adobe-cancellation-flow-obstruction-2026-07-04/)
 
 ### 6. 近期調查報告
 - [LLM API 免費額度與強模型調查](./reports/llm-api-free-tier-research-2026-06-28.md)
@@ -137,6 +138,7 @@ thinking_with_ai/
 - [Jcompany World Stage 技術路線調查報告](./projects/jcompany-world-stage-technical-route/)
 - [Jcompany 3D Asset Lab：參照圖到 3D 地景工具調查報告](./projects/jcompany-3d-ground-scene-tools-2026-06-25/)
 - [Decision Field Lab：點子發酵與交匯點資料結構調查](./projects/decision-field-idea-fermentation-2026-06-29/)
+- [Adobe 取消訂閱流程阻滯案例調查](./projects/adobe-cancellation-flow-obstruction-2026-07-04/)
 - [AI 時代的 LeetCode 面試文化調查](./projects/leetcode-ai-interview-culture-2026-06-03/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
