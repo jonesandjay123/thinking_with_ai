@@ -10,6 +10,8 @@ Scope: Adobe / Photoshop / Creative Cloud 訂閱取消流程、`account.adobe.co
 
 > Adobe 的取消訂閱流程不只是「使用者不熟悉介面」問題。公開資料中同時存在監管機關指控、Adobe 自家社群的具體技術性卡關案例，以及 Reddit 上跨裝置/跨瀏覽器仍無法取消、但升級頁面正常的回報。這些資料無法直接證明某一次 `/plans` 頁面錯誤是 Adobe 刻意設計的 bug，但足以顯示「退訂流程出現技術性阻滯」不是孤例，而且與 Adobe 已被 FTC/DOJ 指控的取消摩擦模式高度相容。
 
+更重要的是，這不是只有「被監管機關點名前」的舊問題。FTC/DOJ 在 2024 年 6 月已經對 Adobe 的取消障礙採取行動後，公開使用者回報中仍可看到 2025 年的同型態案例：Adobe Community 有使用者說跨 Mac、Windows PC、iPad、Chrome / Safari / Firefox、不同網路都無法進入 `Plans` page；Reddit 也有使用者明確指出 cancel 路徑壞掉，但 upgrade plan 頁面正常。也就是說，至少在使用者可觀察層面，這類「取消路徑技術性阻滯」並沒有因為監管壓力而完全消失。
+
 最貼近本次個案的公開案例，是 Adobe Community 2025 年 10 月一篇「Cannot cancel Plan」。發文者明確說：
 
 - 不管怎麼做，`Plans` page 都不讓他進去。
@@ -45,6 +47,19 @@ FTC 同時說，當消費者試圖在 Adobe 網站取消訂閱時，被迫穿越
 這份 FTC 資料沒有直接說「`/plans` 頁面 bug 是故意的」，但它提供了重要背景：美國監管機關已正式指控 Adobe 的取消流程包含多重障礙，而不是單純零星客服問題。
 
 Source: https://www.ftc.gov/news-events/news/press-releases/2024/06/ftc-takes-action-against-adobe-executives-hiding-fees-preventing-consumers-easily-cancelling
+
+### A-2. 被監管點名後，仍出現同型態公開回報
+
+Jones 這次最在意的不是「Adobe 曾經被罰過」這件事本身，而是：既然外界早就知道、監管也已經介入，為什麼使用者仍會遇到像是退訂頁面特別壞掉的狀況？
+
+公開資料能支持的回答是：
+
+- 是，有其他使用者也注意到同型態異常。
+- 是，部分回報發生在 FTC/DOJ 2024 年行動之後。
+- 是，有人不只抱怨「難取消」，而是具體描述「只有 plan/cancel path 壞，其他 Adobe 頁面正常」。
+- 是，有人觀察到 cancel path 壞掉時，upgrade path 卻正常，這會讓使用者合理懷疑問題不是單純網站全面故障。
+
+目前能查到的資料仍不足以證明 Adobe 在被監管後「故意部署某個 bug」。但若問題長期重複出現在取消入口，而升級/付款等收入正向路徑較少受阻，這就不只是客服體驗差，而是需要監管與使用者持續記錄的 dark pattern / cancellation obstruction 風險。
 
 ### B. Adobe 官方說法：理論上應可從 Adobe Account 直接取消
 
@@ -216,4 +231,3 @@ Source: https://www.reddit.com/r/Anticonsumption/comments/1nq33qo/adobe_pulls_th
 
 - Reddit: Adobe pulls this "error" whenever you want to cancel your subscription  
   https://www.reddit.com/r/Anticonsumption/comments/1nq33qo/adobe_pulls_this_error_whenever_you_want_to/
-
