@@ -1,27 +1,28 @@
-# Fable 5、GPT-5.5 Medium、GPT-5.6 Terra Medium：能力、成本與 token 消耗比較
+# Fable 5、GPT-5.5 Medium、GPT-5.6 Terra / Sol：能力、成本與 token 消耗比較
 
 日期：2026-07-09  
-問題：OpenClaw 預設從 `openai/gpt-5.5` medium 切到 `openai/gpt-5.6-terra` medium 後，是否更聰明？token 消耗會不會變高？同時放進 Claude Fable 5 當高端對照。
+問題：OpenClaw 預設從 `openai/gpt-5.5` medium 切到 `openai/gpt-5.6-terra` medium 後，是否更聰明？token 消耗會不會變高？如果日常 Jarvis 用 Terra medium，而 Jones 在 Codex 手寫程式時常用 Sol medium / high，這樣的分工是否更好？同時放進 Claude Fable 5 當高端對照。
 
 ## TL;DR
 
-我的判斷分成兩層：
+我的判斷分成三層：
 
 1. 如果只問「日常 Jarvis / OpenClaw 預設值要不要從 GPT-5.5 medium 換成 GPT-5.6 Terra medium」，答案是：**可以，這是合理的成本效率升級**。OpenAI 官方文件明確把 Terra 定位成 GPT-5.6 家族裡的平衡款，強調 GPT-5.6 token-efficient，且建議從 GPT-5.5 遷移時先維持原 reasoning effort，再測同級與低一級。
 2. 如果問「公開 benchmark 上 Terra medium 是否一定比 GPT-5.5 medium 更聰明」，答案反而要保守：**Artificial Analysis 目前的 Intelligence Index 顯示 GPT-5.6 Terra medium 低於 GPT-5.5 medium**。但 Terra medium 的每任務成本與輸出/推理 token 都明顯更低。
+3. 如果問「Jones 在 Codex app / CLI 手寫程式時，要不要常用 GPT-5.6 Sol medium，必要時升 Sol high」，答案是：**很合理，這比把所有東西都丟給 Terra 或 Fable 更健康**。Sol medium 在 AA 分數高於 GPT-5.5 medium，成本還略低；Sol high 明顯更強但成本上升，適合真正需要 coding 判斷力的任務。
 
 最重要的數字：
 
-| 指標 | GPT-5.5 medium | GPT-5.6 Terra medium | Terra medium 相對 GPT-5.5 medium |
-|---|---:|---:|---:|
-| Artificial Analysis Intelligence Index | 50.41 | 45.57 | 約 -9.6% |
-| AA 每任務 answer tokens | 2,512.51 | 2,326.28 | 約 -7.4% |
-| AA 每任務 reasoning tokens | 2,619.92 | 1,442.81 | 約 -44.9% |
-| AA 每任務 answer + reasoning tokens | 5,132.42 | 3,769.09 | 約 -26.6% |
-| AA 每任務成本 | $0.3441 | $0.1276 | 約 -62.9% |
-| API input / output 價格 | $5 / $30 per MTok | $2.5 / $15 per MTok | 半價 |
+| 指標 | GPT-5.5 medium | GPT-5.6 Terra medium | GPT-5.6 Sol medium | GPT-5.6 Sol high | Claude Fable 5 |
+|---|---:|---:|---:|---:|---:|
+| AA Intelligence Index | 50.41 | 45.57 | 53.59 | 55.87 | 59.86 |
+| AA 每任務 answer + reasoning tokens | 5,132.42 | 3,769.09 | 4,202.72 | 6,690.31 | 未列於同欄位 |
+| AA 每任務成本 | $0.3441 | $0.1276 | $0.3140 | $0.4530 | $2.7498 |
+| API input / output 價格 | $5 / $30 per MTok | $2.5 / $15 per MTok | $5 / $30 per MTok | $5 / $30 per MTok | $10 / $50 per MTok |
 
 所以，對 Jones 的實際問題：**從 GPT-5.5 medium 換成 GPT-5.6 Terra medium，token 消耗不應該自然變高；以 AA task 的公開數據看，反而是每任務 token 與成本更低。** 但品質不一定全面更高。這比較像「省、快、夠用、5.6 新能力完整」的預設模型，而不是「所有 benchmark 都贏 5.5 medium」的純能力升級。
+
+對 Codex 手寫程式的實際問題：**Sol medium 是更好的常用 coding model；Sol high 是該花力氣時的升級檔；Fable 5 則是少數高價值、長程或極難任務才值得動用的頂級模型。**
 
 ## 先講我的體感
 
@@ -31,33 +32,72 @@
 
 只是，這不等於 benchmark 全勝。更準確的說法是：**它像是比較新的 agent 日常工作模型，而不是單純更高 IQ 的模型。**
 
-## 三個模型的角色定位
+## 模型角色定位
 
 | 模型 | 官方 / 公開定位 | 我會怎麼用 |
 |---|---|---|
 | Claude Fable 5 | Anthropic 稱為最高可用能力、長程 agentic reasoning；1M context、128k max output、adaptive thinking always on | 高價高能力，適合少數高價值長程推理 / coding / agent 任務，不適合當日常低摩擦預設 |
 | GPT-5.5 medium | 舊 OpenClaw 預設基準；AA 上 medium 分數仍高於 Terra medium | 穩定 baseline，若 Terra medium 在某些判斷任務顯得太省或太保守，可退回對照 |
 | GPT-5.6 Terra medium | OpenAI GPT-5.6 家族平衡款；官方定位是 strong performance at lower price；medium 是 balanced starting point | Jarvis / OpenClaw 日常預設合理，尤其適合需要長期在線、訊息處理、repo 維護、一般研究的成本效率場景 |
+| GPT-5.6 Sol medium | OpenAI GPT-5.6 家族 flagship capability；medium 是 balanced starting point | Codex app / CLI 手寫程式的常用主力；比 5.5 medium 更強，成本接近甚至略低 |
+| GPT-5.6 Sol high | 同 Sol，但給更多 reasoning effort | 大改 code、架構設計、debug 卡關、review 風險高的 PR 時升級使用 |
 
 ## 公開 benchmark 對照
 
-以下主要取自 Artificial Analysis。它不是官方 benchmark，但好處是同一套榜單同時列出不同 reasoning effort 的 GPT-5.5 / GPT-5.6 Terra，剛好可回答 medium-to-medium 的問題。
+以下主要取自 Artificial Analysis。它不是官方 benchmark，但好處是同一套榜單同時列出不同 reasoning effort 的 GPT-5.5 / GPT-5.6 Terra / GPT-5.6 Sol，剛好可回答 medium-to-medium 與 Sol/Fable 高端對照的問題。
 
-| 指標 | Claude Fable 5 with fallback | GPT-5.5 medium | GPT-5.6 Terra medium |
-|---|---:|---:|---:|
-| Intelligence Index | 59.86 | 50.41 | 45.57 |
-| Omniscience Index | 40.15 | 17.28 | 未列於 medium 頁資料 |
-| 輸出速度 | 70.47 tok/s | 61.49 tok/s | 未列於 medium 頁資料 |
-| Time per Intelligence Index task | 4.76 min | 1.36 min | 未列於 medium 頁資料 |
-| TTFT | 185.78 s | 9.23 s | 未列於 medium 頁資料 |
-| API input / output 價格 | $10 / $50 per MTok | $5 / $30 per MTok | $2.5 / $15 per MTok |
-| Context window | 1M | 未列於 medium 頁資料 | 1M |
+| 指標 | Fable 5 with fallback | GPT-5.5 medium | GPT-5.6 Terra medium | GPT-5.6 Sol medium | GPT-5.6 Sol high | GPT-5.6 Sol max |
+|---|---:|---:|---:|---:|---:|---:|
+| Intelligence Index | 59.86 | 50.41 | 45.57 | 53.59 | 55.87 | 58.89 |
+| Omniscience Index | 40.15 | 17.28 | 未列於 medium 頁資料 | 18.95 | 19.75 | 21.70 |
+| 每任務成本 | $2.7498 | $0.3441 | $0.1276 | $0.3140 | $0.4530 | $1.0373 |
+| 輸出速度 | 70.47 tok/s | 61.49 tok/s | 未列於 medium 頁資料 | 未列於 medium 頁資料 | 未列於 high 頁資料 | 未列於 max 頁資料 |
+| Time per Intelligence Index task | 4.76 min | 1.36 min | 未列於 medium 頁資料 | 未列於 medium 頁資料 | 未列於 high 頁資料 | 未列於 max 頁資料 |
+| TTFT | 185.78 s | 9.23 s | 未列於 medium 頁資料 | 未列於 medium 頁資料 | 未列於 high 頁資料 | 未列於 max 頁資料 |
+| API input / output 價格 | $10 / $50 per MTok | $5 / $30 per MTok | $2.5 / $15 per MTok | $5 / $30 per MTok | $5 / $30 per MTok | $5 / $30 per MTok |
+| Context window | 1M | 未列於 medium 頁資料 | 1M | 1M | 1M | 1M |
 
 這張表的直接解讀：
 
 - **Fable 5 是最高能力層**：AA Intelligence Index 59.86，明顯高於 GPT-5.5 medium 與 Terra medium。
 - **GPT-5.5 medium 在 AA 的綜合能力分數高於 Terra medium**：50.41 vs 45.57。這點和「5.6 一定更聰明」的直覺相反。
-- **Terra medium 的定位不是硬拚最高分**：GPT-5.6 Terra 的 max effort 在 AA 是 54.95，幾乎貼近 GPT-5.5 xhigh 的 54.84；但 medium effort 目前分數偏成本效率，而不是最高品質。
+- **Sol medium 才是 GPT-5.5 medium 的比較自然上位替代**：Sol medium 分數 53.59，高於 GPT-5.5 medium 的 50.41，而且每任務成本 $0.3140，略低於 GPT-5.5 medium 的 $0.3441。
+- **Sol high 是 coding 品質升級檔**：分數 55.87，成本 $0.4530；比 Sol medium 明顯更強，但成本也明顯上升。
+- **Sol max 已經接近 Fable 5 的綜合分數**：58.89 vs 59.86，但 Fable 5 在 Omniscience Index 上仍高很多：40.15 vs Sol max 21.70。
+- **Terra medium 的定位不是硬拚最高分**：Terra medium 目前分數偏成本效率，而不是最高品質。
+
+## Sol medium / high vs Fable 5
+
+這是 Jones 新問題的核心：如果 Jarvis/OpenClaw 平常用 Terra medium，Jones 在 Codex app 寫程式時改用 Sol medium，甚至偶爾 Sol high，是否比直接常用 Fable 5 更好？
+
+我的答案：**是，這個搭配更好。**
+
+比較數字：
+
+| 指標 | GPT-5.6 Sol medium | GPT-5.6 Sol high | GPT-5.6 Sol max | Claude Fable 5 |
+|---|---:|---:|---:|---:|
+| AA Intelligence Index | 53.59 | 55.87 | 58.89 | 59.86 |
+| AA Omniscience Index | 18.95 | 19.75 | 21.70 | 40.15 |
+| 每任務 answer + reasoning tokens | 4,202.72 | 6,690.31 | 15,346.35 | 未列於同欄位 |
+| 每任務成本 | $0.3140 | $0.4530 | $1.0373 | $2.7498 |
+| API input / output 價格 | $5 / $30 | $5 / $30 | $5 / $30 | $10 / $50 |
+| Context window | 1M | 1M | 1M | 1M |
+
+解讀：
+
+- **Sol medium 是日常 coding sweet spot**：它比 GPT-5.5 medium 更強，AA 分數 +6.3%，每任務成本還低約 8.8%。對 Codex 裡一般寫 code、修 bug、改 UI、寫測試，這是最自然的主力。
+- **Sol high 是「我希望它多想一點」的檔位**：AA 分數比 Sol medium 高約 4.3%，成本高約 44.3%，每任務 answer + reasoning tokens 高約 59.2%。它適合架構、難 bug、風險高的修改，不適合所有小任務。
+- **Sol max 接近 Fable 5 的總分，但成本仍低很多**：Sol max 分數 58.89，Fable 5 59.86；Fable 5 每任務成本約是 Sol max 的 2.65 倍。不過 Fable 5 的 Omniscience Index 高得多，代表某些知識可靠性 / 幻覺控制型任務仍可能值得用 Fable。
+- **Fable 5 是頂級判斷工具，不是常用 coding default**：它的分數最高，但成本、TTFT、Claude usage quota / credits、newer tokenizer 約 30% token inflation 都讓它更適合少數高價值任務。
+
+我會把使用策略寫成：
+
+| 工作 | 建議 |
+|---|---|
+| Jarvis / OpenClaw 24/7 接 Slack、WhatsApp、例行 repo 維護 | Terra medium |
+| Jones 在 Codex app / CLI 寫一般功能、修 bug、做 repo 任務 | Sol medium |
+| 架構設計、困難 debug、大型 refactor、PR review、需要更高 coding 判斷 | Sol high |
+| 很高價值的長程設計、跨 repo 方向、需要最強知識可靠性或深度推理 | Fable 5 或 Sol max，視 quota / 成本而定 |
 
 ## Token 與成本：最關鍵的 OpenClaw 問題
 
@@ -157,8 +197,9 @@ agentRuntime: codex
 | 場景 | 建議模型 |
 |---|---|
 | Slack / WhatsApp 日常、repo 小修、例行檢查 | GPT-5.6 Terra medium |
-| 需要更高判斷、但仍要控制成本 | GPT-5.6 Terra high 或 Sol medium |
-| 高價值深度 coding / architecture / 長程研究 | GPT-5.6 Sol high / max，或 Claude Fable 5 |
+| Jones 在 Codex app / CLI 手寫程式 | GPT-5.6 Sol medium |
+| 需要更高判斷、但仍要控制成本 | GPT-5.6 Sol high |
+| 高價值深度 coding / architecture / 長程研究 | GPT-5.6 Sol max，或 Claude Fable 5 |
 | Terra medium 明顯太省、過度壓縮、漏掉推理 | 臨時升 Terra high / Sol medium，或回 GPT-5.5 medium 對照 |
 
 ## 建議的實測方式
@@ -181,13 +222,14 @@ agentRuntime: codex
 
 短版：
 
-> GPT-5.6 Terra medium 對 OpenClaw 是合理 default。它不是公開 benchmark 上全面壓過 GPT-5.5 medium 的「更聰明模型」，但它是更便宜、更省 token、更符合新一代 agent runtime 的日常模型。Fable 5 則是另一個層級的高價高能力工具，適合少數重要任務，不適合常駐預設。
+> GPT-5.6 Terra medium 對 OpenClaw 是合理 default。它不是公開 benchmark 上全面壓過 GPT-5.5 medium 的「更聰明模型」，但它是更便宜、更省 token、更符合新一代 agent runtime 的日常模型。Jones 在 Codex app / CLI 手寫程式時，Sol medium 是更合理的常用主力；Sol high 是需要更多 coding 判斷時的升級檔；Fable 5 則是另一個層級的高價高能力工具，適合少數重要任務，不適合常駐預設。
 
 對 Jones 的原問題：
 
 - **是否感覺變聰明？** 風格上更乾脆、更像 5.6 官方描述的 agent work mode；但模型自評不可靠。
 - **GPT-5.5 medium 換 GPT-5.6 Terra medium 是否 token 變高？** 以目前 AA 公開數據看，不會，反而每任務 answer + reasoning tokens 約少 26.6%，總成本約少 62.9%。
 - **是否能力更高？** 不要一概而論。AA 的 medium-to-medium Intelligence Index 是 GPT-5.5 medium 較高；Terra medium 的優勢是效率。需要高能力時應升 effort 或切 Sol/Fable。
+- **Codex 手寫程式是否該常用 Sol medium / high？** 是。Sol medium 比 GPT-5.5 medium 分數更高、成本略低；Sol high 適合更難的 coding / architecture / review；Fable 5 留給極高價值或需要最強知識可靠性的任務。
 
 ## Sources
 
@@ -197,6 +239,9 @@ agentRuntime: codex
 - Anthropic Docs, “Introducing Claude Fable 5 and Claude Mythos 5.” https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5
 - Anthropic Docs, “Pricing.” https://platform.claude.com/docs/en/about-claude/pricing
 - Artificial Analysis, “GPT-5.6 Terra (medium).” https://artificialanalysis.ai/models/gpt-5-6-terra-medium
+- Artificial Analysis, “GPT-5.6 Sol (medium).” https://artificialanalysis.ai/models/gpt-5-6-sol-medium
+- Artificial Analysis, “GPT-5.6 Sol (high).” https://artificialanalysis.ai/models/gpt-5-6-sol-high
+- Artificial Analysis, “GPT-5.6 Sol (max).” https://artificialanalysis.ai/models/gpt-5-6-sol
 - Artificial Analysis, “GPT-5.5 (medium).” https://artificialanalysis.ai/models/gpt-5-5-medium
 - Artificial Analysis, “Claude Fable 5.” https://artificialanalysis.ai/models/claude-fable-5
 - Existing repo background: [GPT-5.6 最新動態與發布消息調查](../gpt-5-6-release-watch-2026-07-07/)

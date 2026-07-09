@@ -44,7 +44,7 @@
 - [Adobe 取消訂閱流程阻滯案例調查](./projects/adobe-cancellation-flow-obstruction-2026-07-04/)
 - [GPT-5.6 最新動態與發布消息調查](./projects/gpt-5-6-release-watch-2026-07-07/)
 - [Claude Fable 5：Pro plan 是否仍可使用、7/7 計費變更調查](./projects/claude-fable-5-pro-plan-billing-2026-07-07/)
-- [Fable 5、GPT-5.5 Medium、GPT-5.6 Terra Medium：能力、成本與 token 消耗比較](./projects/gpt-5-6-terra-fable-5-benchmark-comparison-2026-07-09/)
+- [Fable 5、GPT-5.5 Medium、GPT-5.6 Terra / Sol：能力、成本與 token 消耗比較](./projects/gpt-5-6-terra-fable-5-benchmark-comparison-2026-07-09/)
 
 ### 6. 近期調查報告
 - [LLM API 免費額度與強模型調查](./reports/llm-api-free-tier-research-2026-06-28.md)
@@ -145,7 +145,7 @@ thinking_with_ai/
 - [Adobe 取消訂閱流程阻滯案例調查](./projects/adobe-cancellation-flow-obstruction-2026-07-04/)
 - [GPT-5.6 最新動態與發布消息調查](./projects/gpt-5-6-release-watch-2026-07-07/)
 - [Claude Fable 5：Pro plan 是否仍可使用、7/7 計費變更調查](./projects/claude-fable-5-pro-plan-billing-2026-07-07/)
-- [Fable 5、GPT-5.5 Medium、GPT-5.6 Terra Medium：能力、成本與 token 消耗比較](./projects/gpt-5-6-terra-fable-5-benchmark-comparison-2026-07-09/)
+- [Fable 5、GPT-5.5 Medium、GPT-5.6 Terra / Sol：能力、成本與 token 消耗比較](./projects/gpt-5-6-terra-fable-5-benchmark-comparison-2026-07-09/)
 - [AI 時代的 LeetCode 面試文化調查](./projects/leetcode-ai-interview-culture-2026-06-03/)
 - [Vibe Coding Course](./projects/vibe-coding-course/)
 - [Raijax v2](./projects/raijax-v2/)
