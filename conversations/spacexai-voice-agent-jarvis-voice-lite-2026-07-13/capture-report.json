@@ -1,0 +1,313 @@
+{
+  "type": "chatgpt_shared_link",
+  "url": "https://chatgpt.com/share/6a556e7a-b87c-83ea-a445-f1e9b191196f",
+  "capturedAt": "2026-07-13T23:05:18.003Z",
+  "title": "SpaceXAI語音助理介紹",
+  "extractor": "react-router-data-model",
+  "completeness": "high",
+  "warning": null,
+  "totalNodes": 32,
+  "includedMessages": 6,
+  "includedByRole": {
+    "user": 3,
+    "assistant": 3
+  },
+  "includedSourceIndexes": [
+    6,
+    14,
+    15,
+    22,
+    23,
+    31
+  ],
+  "skippedCounts": {
+    "no_message": 1,
+    "non_conversation_role": 12,
+    "hidden_redacted": 1,
+    "model_context": 3,
+    "empty": 3,
+    "reasoning_or_thoughts": 6
+  },
+  "skipped": [
+    {
+      "sourceNodeIndex": 0,
+      "id": "7ac2f869-da5d-4cfb-9304-4afc581519d7",
+      "reason": "no_message"
+    },
+    {
+      "sourceNodeIndex": 1,
+      "id": "3cbd8bd9-14c1-43ab-92fd-7d49e2452c96",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 2,
+      "id": "086792a4-5780-4da7-a98a-dfbc4e752892",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 3,
+      "id": "6bc4a778-3e3b-4294-8bc8-4ce9e7468625",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 4,
+      "id": "715ea8b3-daf5-462b-aec4-959e4f2e4583",
+      "role": "user",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": true,
+      "textLen": 48,
+      "reason": "hidden_redacted"
+    },
+    {
+      "sourceNodeIndex": 5,
+      "id": "031a35ea-f8ea-4f63-ad8c-4d7f87b45934",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 7,
+      "id": "b395f59d-c114-4f47-b297-12a83e2ee914",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 8,
+      "id": "207ddd69-ce4e-4996-8fe1-42684c0af27a",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 9,
+      "id": "84559dd2-537a-4053-b092-ce7ac333e8df",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 10,
+      "id": "5280e874-b368-407a-b43f-52c129adfdc9",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 11,
+      "id": "7d58ff8f-7b50-4f3b-ad4b-790cc1a4385d",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 12,
+      "id": "4ba18b23-9844-4f41-8c3a-470f503799e9",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 13,
+      "id": "5a52daeb-2723-456d-b6c7-349a6071f1c1",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 16,
+      "id": "803ea87f-5f02-4562-915a-248d3a9be517",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 17,
+      "id": "cb3cd7bc-77ff-4f6c-ad5e-c5222f7c052b",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 18,
+      "id": "6e168f29-0adc-463d-9725-828705ea7792",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 19,
+      "id": "831bb390-1971-4a86-9ccd-6a9dcfbf910a",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 20,
+      "id": "f1cf4678-891e-4f7a-a878-161de01d82ae",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 21,
+      "id": "3fc64fb4-25c7-4e67-8b06-dd7b5279ecf4",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 24,
+      "id": "3ba2cdaf-863d-480f-8a56-3d6bfede5b46",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 25,
+      "id": "c51cc427-81cf-4835-9876-31ec8390783f",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 26,
+      "id": "018ce283-5c3a-4ff5-a677-fb96d7cb931b",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 27,
+      "id": "f167557d-ec3c-475d-9762-18995917dcbb",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 28,
+      "id": "13773df7-ab83-476e-be66-a7b2f8cb06c3",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 29,
+      "id": "a1984057-4ff0-4a31-854b-31260b257ee3",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 30,
+      "id": "5bb1a3c8-1a6f-418c-925d-002e94592b17",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    }
+  ]
+}
