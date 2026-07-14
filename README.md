@@ -47,6 +47,7 @@
 - [Claude Fable 5：Pro plan 是否仍可使用、7/7 計費變更調查](./projects/claude-fable-5-pro-plan-billing-2026-07-07/)
 - [Fable 5、GPT-5.5 Medium、GPT-5.6 Terra / Sol：能力、成本與 token 消耗比較](./projects/gpt-5-6-terra-fable-5-benchmark-comparison-2026-07-09/)
 - [即時語音代理選項調查：Jarvis Voice Lite](./projects/realtime-voice-agent-options-2026-07-13/)
+- [開源即時語音 Agent 地圖：端到端 Speech-to-Speech 模型與工程底座](./projects/open-source-realtime-voice-agent-landscape-2026-07-14/)
 - [MiniCPM5-1B 與開放權重模型版圖比較](./projects/open-weights-model-landscape-minicpm5-1b-2026-07-14/)
 
 ### 6. 近期調查報告
