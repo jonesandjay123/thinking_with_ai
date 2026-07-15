@@ -1,0 +1,260 @@
+{
+  "type": "chatgpt_shared_link",
+  "url": "https://chatgpt.com/share/6a578bc6-567c-83ea-a63d-6ab7dd4bbe11",
+  "capturedAt": "2026-07-15T13:34:09.942Z",
+  "title": "Jarvis語音框架進展",
+  "extractor": "react-router-data-model",
+  "completeness": "high",
+  "warning": null,
+  "totalNodes": 29,
+  "includedMessages": 8,
+  "includedByRole": {
+    "user": 3,
+    "assistant": 5
+  },
+  "includedSourceIndexes": [
+    6,
+    11,
+    12,
+    14,
+    20,
+    21,
+    22,
+    28
+  ],
+  "skippedCounts": {
+    "no_message": 1,
+    "non_conversation_role": 8,
+    "hidden_redacted": 1,
+    "model_context": 2,
+    "empty": 3,
+    "reasoning_or_thoughts": 6
+  },
+  "skipped": [
+    {
+      "sourceNodeIndex": 0,
+      "id": "9bad58de-f2a2-4acb-875e-b4e2d208a14b",
+      "reason": "no_message"
+    },
+    {
+      "sourceNodeIndex": 1,
+      "id": "ce93f4ae-5636-450c-9c12-dd2506269683",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 2,
+      "id": "655264ff-bf8c-487b-99c9-9a4e45450cc5",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 3,
+      "id": "17d09011-f956-4703-84c1-883e46aba2aa",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 4,
+      "id": "6ac8ec77-b559-4aa0-bf9f-a36e7a504b21",
+      "role": "user",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": true,
+      "textLen": 48,
+      "reason": "hidden_redacted"
+    },
+    {
+      "sourceNodeIndex": 5,
+      "id": "af2a0ba2-1c85-4fd2-ad23-6a987b4b455a",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 7,
+      "id": "9a49da15-a03a-4dc4-b135-aeba306e0bd3",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 8,
+      "id": "a6194c8e-6a6b-49c1-89a0-790936468c22",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 9,
+      "id": "3aa2500c-4422-45b7-a0c8-d291e22214aa",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 10,
+      "id": "778b60dd-ead6-4711-9bb4-c0bcadd85bca",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 13,
+      "id": "987a44a9-6da6-4697-8b23-c65288df7570",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 15,
+      "id": "fffd6c4c-6ca7-474c-8b01-6665261d09f9",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 16,
+      "id": "59c0b47f-2103-4e08-b4f2-ea40ea034b6a",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 17,
+      "id": "b1e0f43a-03e1-46a2-b111-444b1d33125a",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 18,
+      "id": "13194266-6253-402f-80d7-56c498981744",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 19,
+      "id": "212bcbb7-a90b-49f6-ab7e-c1da43436f93",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 23,
+      "id": "3b54e99e-98fd-4042-bd41-2a2e0ff2daf6",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 24,
+      "id": "21ed9f7c-af2d-4d98-a2e7-2d37d09ee33e",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 25,
+      "id": "4505d046-1d5a-4cb0-b991-db73df00d37c",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 26,
+      "id": "e7bbc187-a09c-4049-a060-a33af5fb73a2",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 27,
+      "id": "360e4e41-8911-4774-b1ab-806a22ce5865",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    }
+  ]
+}

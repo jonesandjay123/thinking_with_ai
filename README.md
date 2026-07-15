@@ -21,6 +21,7 @@
 - [驚嘆號、語氣指紋與個人操作說明書](./conversations/exclamation-mark-writing-style-memory-2026-06-20/)
 - [身份與志業探索](./conversations/identity-vocation-self-authored-framework-2026-07-08/)
 - [SpaceXAI Voice Agent 與 Jarvis Voice Lite](./conversations/spacexai-voice-agent-jarvis-voice-lite-2026-07-13/)
+- [Gemini / 阿斯拉語音入口與 Jovitrip 工具層](./conversations/gemini-asla-voice-jovitrip-2026-07-15/)
 - [企鵝妹的生命形式](./conversations/penguin-girl-life-form-2026-07-14/)
 - [虛度時間、遺憾與生命形式](./conversations/wasted-time-regret-life-form-2026-07-14/)
 
