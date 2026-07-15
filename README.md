@@ -21,6 +21,7 @@
 - [驚嘆號、語氣指紋與個人操作說明書](./conversations/exclamation-mark-writing-style-memory-2026-06-20/)
 - [身份與志業探索](./conversations/identity-vocation-self-authored-framework-2026-07-08/)
 - [SpaceXAI Voice Agent 與 Jarvis Voice Lite](./conversations/spacexai-voice-agent-jarvis-voice-lite-2026-07-13/)
+- [企鵝妹的生命形式](./conversations/penguin-girl-life-form-2026-07-14/)
 
 ### 4. 關鍵決策
 - [Repo 2.0 Upgrade Decision Log](./decision-log/2026-04-repo-2.0-upgrade.md)
