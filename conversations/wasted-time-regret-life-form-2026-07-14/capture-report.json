@@ -1,30 +1,36 @@
 {
   "type": "chatgpt_shared_link",
-  "url": "https://chatgpt.com/share/6a565612-0170-83ea-925f-50b860d8f26a?refresh=1784085131",
-  "capturedAt": "2026-07-15T03:12:11.426Z",
+  "url": "https://chatgpt.com/share/6a56fbba-b7f0-83ea-9594-8ba52300aa83",
+  "capturedAt": "2026-07-15T03:18:02.347Z",
   "title": "企鵝妹的生命形式",
   "extractor": "react-router-data-model",
   "completeness": "high",
   "warning": null,
-  "totalNodes": 16,
-  "includedMessages": 4,
+  "totalNodes": 32,
+  "includedMessages": 10,
   "includedByRole": {
-    "user": 2,
-    "assistant": 2
+    "user": 5,
+    "assistant": 5
   },
   "includedSourceIndexes": [
     6,
     9,
     10,
-    15
+    15,
+    16,
+    21,
+    22,
+    24,
+    25,
+    31
   ],
   "skippedCounts": {
     "no_message": 1,
-    "non_conversation_role": 4,
+    "non_conversation_role": 8,
     "hidden_redacted": 1,
-    "model_context": 2,
-    "reasoning_or_thoughts": 3,
-    "empty": 1
+    "model_context": 3,
+    "reasoning_or_thoughts": 7,
+    "empty": 2
   },
   "skipped": [
     {
@@ -145,6 +151,116 @@
     {
       "sourceNodeIndex": 14,
       "id": "e3b50967-c821-43db-9a0f-2ba4b0b88b55",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 17,
+      "id": "382c4418-de77-4008-bdc9-407e4973469c",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 18,
+      "id": "548f3667-4ca1-4e6e-aaf9-668cdde90d8d",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 19,
+      "id": "b35e965b-05cc-4554-bdad-5416a8345454",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 20,
+      "id": "d7a81050-dc90-4ffe-9e4f-4c37acfa3073",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 23,
+      "id": "01221aa6-7171-4328-92ce-aae8f67eb6ba",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 26,
+      "id": "3f7ccf64-305c-4fd3-b1ea-3a9f18f66496",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 27,
+      "id": "a7eab93d-d0f9-4e42-9c2a-d29a7f34b808",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 28,
+      "id": "725ce77e-3ae4-4326-8454-fa462d045976",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 29,
+      "id": "da8a3f91-1ba4-4f4e-9a76-495c585964cd",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 30,
+      "id": "c08374e7-ef2b-47d2-8e03-1efbef013230",
       "role": "assistant",
       "channel": null,
       "contentType": "reasoning_recap",

@@ -11,8 +11,8 @@
 
 ## Source
 
-<https://chatgpt.com/share/6a565612-0170-83ea-925f-50b860d8f26a>
+<https://chatgpt.com/share/6a56fbba-b7f0-83ea-9594-8ba52300aa83>
 
 ## Extraction Note
 
-使用本機 `chatgpt-conversation-ingestor` 的 React Router data model extractor 重新擷取，而非僅使用 rendered DOM。`capture-report.json` 顯示：`completeness=high`、16 個 nodes、4 則可見 User/GPT 訊息。
+使用本機 `chatgpt-conversation-ingestor` 的 React Router data model extractor 重新擷取，而非僅使用 rendered DOM。`capture-report.json` 顯示：`completeness=high`、32 個 nodes、10 則可見 User/GPT 訊息。
