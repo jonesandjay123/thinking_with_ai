@@ -1,0 +1,157 @@
+{
+  "type": "chatgpt_shared_link",
+  "url": "https://chatgpt.com/share/6a565612-0170-83ea-925f-50b860d8f26a?refresh=1784085131",
+  "capturedAt": "2026-07-15T03:12:11.426Z",
+  "title": "企鵝妹的生命形式",
+  "extractor": "react-router-data-model",
+  "completeness": "high",
+  "warning": null,
+  "totalNodes": 16,
+  "includedMessages": 4,
+  "includedByRole": {
+    "user": 2,
+    "assistant": 2
+  },
+  "includedSourceIndexes": [
+    6,
+    9,
+    10,
+    15
+  ],
+  "skippedCounts": {
+    "no_message": 1,
+    "non_conversation_role": 4,
+    "hidden_redacted": 1,
+    "model_context": 2,
+    "reasoning_or_thoughts": 3,
+    "empty": 1
+  },
+  "skipped": [
+    {
+      "sourceNodeIndex": 0,
+      "id": "322bfcf7-f74d-4de2-9443-e80efc94c8ef",
+      "reason": "no_message"
+    },
+    {
+      "sourceNodeIndex": 1,
+      "id": "1c6205d9-3cd1-4315-9a99-c5c23ff405bd",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 2,
+      "id": "9f01f87a-19ee-4fcc-a682-8be33a033012",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 3,
+      "id": "8311cb4a-fd27-48a0-9071-3ea68aee3050",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 4,
+      "id": "2feafb4c-fa56-4733-8fdd-1c9a550d198e",
+      "role": "user",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": true,
+      "textLen": 48,
+      "reason": "hidden_redacted"
+    },
+    {
+      "sourceNodeIndex": 5,
+      "id": "fd641612-052a-4550-bf3c-7fb552b08007",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 7,
+      "id": "e72f4042-8cc2-43bb-8bf5-aec28ea69201",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 8,
+      "id": "103b5990-cdcb-4ad3-b270-f6e56ebfdd83",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 11,
+      "id": "172a6775-6995-4fca-b1d3-830a9e8f41d6",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 12,
+      "id": "64b2e381-5dda-4e09-8f4b-4df53ff6f3a5",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 13,
+      "id": "2679104c-ace5-4531-99bb-d0362165a1cb",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 14,
+      "id": "e3b50967-c821-43db-9a0f-2ba4b0b88b55",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    }
+  ]
+}
