@@ -4,6 +4,8 @@
 > 研究對象：[`jonesandjay123/asurada`](https://github.com/jonesandjay123/asurada) `8d86339`（已在本機 `git pull`／clone 後檢閱）  
 > 結論狀態：**可做，但不能把自訓聲音直接嵌入 Gemini Live 的內建語音。**要取得真正的自訂音色，必須選擇「接管輸出播放」或「把語音管線拆開」其中一條路。
 
+相關工具清單與實作流程見：[2026 自訂／自訓聲音 TTS 工具地圖](./custom-tts-tool-landscape-2026-07-17.md)。
+
 ## 先給決策結論
 
 Asurada 現在的優勢是：Firebase AI Logic 的 Gemini Live native-audio 模型直接處理即時收音、VAD、雙向音訊、打斷與播放。它不是「Gemini 產生文字，再由 App 呼叫某個可替換 TTS」的架構。
