@@ -37,6 +37,7 @@
 - [Trip Planner](./projects/trip-planner/)
 - [Gemini 語音 → Firestore / Trip Planner](./projects/gemini-voice-firestore-trip-planner/)
 - [阿斯拉：Gemini Live × Jovitrip 工具層可行性報告](./projects/asurada-gemini-live-jovitrip-2026-07-15/)
+- [Asurada 自訂聲音：Gemini Live 與自訓／克隆 TTS 的架構調查](./projects/asurada-custom-voice-architecture-2026-07-17/)
 - [NotebookLM x Jyn Pipeline Research](./projects/notebooklm-jyn-pipeline-research/)
 - [AI 美女短影片生成技術前沿調查](./projects/ai-beauty-short-video-generation-2026-05-24/)
 - [Logitech Slim Solar+ K980 電池與充電異常調查](./projects/logitech-slim-solar-k980-battery-issue-2026-06-01/)
