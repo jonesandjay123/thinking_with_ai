@@ -24,6 +24,7 @@
 - [Gemini / 阿斯拉語音入口與 Jovitrip 工具層](./conversations/gemini-asla-voice-jovitrip-2026-07-15/)
 - [企鵝妹的生命形式](./conversations/penguin-girl-life-form-2026-07-14/)
 - [虛度時間、遺憾與生命形式](./conversations/wasted-time-regret-life-form-2026-07-14/)
+- [Jones 4.0：替意識修建通往共同世界的入口](./conversations/jones-4-consciousness-common-world-2026-07-20/)
 
 ### 4. 關鍵決策
 - [Repo 2.0 Upgrade Decision Log](./decision-log/2026-04-repo-2.0-upgrade.md)

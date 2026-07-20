@@ -1,0 +1,320 @@
+{
+  "type": "chatgpt_shared_link",
+  "url": "https://chatgpt.com/share/6a5e5b98-b1b0-83ea-a97e-61bb8e64d880",
+  "capturedAt": "2026-07-20T17:33:37.135Z",
+  "title": "阿德勒心理學探討",
+  "extractor": "react-router-data-model",
+  "completeness": "high",
+  "warning": null,
+  "totalNodes": 39,
+  "includedMessages": 13,
+  "includedByRole": {
+    "user": 5,
+    "assistant": 8
+  },
+  "includedSourceIndexes": [
+    6,
+    8,
+    13,
+    14,
+    18,
+    22,
+    23,
+    26,
+    27,
+    30,
+    31,
+    33,
+    38
+  ],
+  "skippedCounts": {
+    "no_message": 1,
+    "non_conversation_role": 11,
+    "hidden_redacted": 1,
+    "model_context": 2,
+    "empty": 3,
+    "reasoning_or_thoughts": 8
+  },
+  "skipped": [
+    {
+      "sourceNodeIndex": 0,
+      "id": "4a8f99cd-f923-4540-99df-1ede82120a7e",
+      "reason": "no_message"
+    },
+    {
+      "sourceNodeIndex": 1,
+      "id": "3dcb4857-43ba-49b9-98c6-c458a483faf5",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 2,
+      "id": "d292d774-5378-432a-a117-abbfc745b2f7",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 3,
+      "id": "674c8ac4-6825-4227-8072-09a230f1151d",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 4,
+      "id": "0304e1e7-f45a-483b-9ee9-032337d9cf6d",
+      "role": "user",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": true,
+      "textLen": 48,
+      "reason": "hidden_redacted"
+    },
+    {
+      "sourceNodeIndex": 5,
+      "id": "7d1eecf6-a1bc-4888-bc30-6b7e0ab10f74",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 7,
+      "id": "4e3fd433-8d85-4f9f-9009-9cef0ec60ee2",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 9,
+      "id": "9dd89c8a-8867-4a5e-b912-43ee672a1610",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 10,
+      "id": "8f4dd85a-8601-462c-be2d-238d41f16da5",
+      "role": "tool",
+      "channel": null,
+      "contentType": "execution_output",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 11,
+      "id": "f0d247f5-cd7e-4bff-b9ae-d30444536e2c",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 12,
+      "id": "091792a5-9daf-45c5-8089-d1f4fc8fa828",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 15,
+      "id": "c814f501-fa5c-4de3-af41-5b68a12f20a3",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 16,
+      "id": "22e2a852-63b5-4139-85a1-3a2fd04c0e43",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "model_editable_context",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 0,
+      "reason": "model_context"
+    },
+    {
+      "sourceNodeIndex": 17,
+      "id": "6451c2cf-a2ca-4f03-b466-d5eb2fe51734",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 19,
+      "id": "5fb15e4b-18b5-4df4-b397-328509c509f5",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 20,
+      "id": "fc3e34b0-2457-4f32-8f8a-fe6fc07167df",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 21,
+      "id": "8faf311d-8f53-49a3-97ca-69efbbe684ab",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 24,
+      "id": "cfaaaa50-9ffc-4b85-b44d-f780e18f11ed",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 25,
+      "id": "01d7cf53-2684-49f7-9c01-b616cf6c2ec3",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 28,
+      "id": "67900684-c10b-431a-8d8b-a1c3b2f3c81b",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 29,
+      "id": "b1c00933-59f5-46a0-ab7d-1b7624353cb3",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 32,
+      "id": "b812ae99-c8cf-4bd6-ab89-76a276a7daa5",
+      "role": "system",
+      "channel": null,
+      "contentType": "text",
+      "hidden": true,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 34,
+      "id": "a1d088ed-1e0c-44d2-ba0c-a6e853346f71",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "code",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "empty"
+    },
+    {
+      "sourceNodeIndex": 35,
+      "id": "c5161be4-72e0-4887-93c2-47bc9fbef179",
+      "role": "tool",
+      "channel": null,
+      "contentType": "text",
+      "hidden": false,
+      "redacted": true,
+      "textLen": 39,
+      "reason": "non_conversation_role"
+    },
+    {
+      "sourceNodeIndex": 36,
+      "id": "6f74c302-651a-4739-a7b1-99ab240aabc4",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "thoughts",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    },
+    {
+      "sourceNodeIndex": 37,
+      "id": "b21b6977-8826-444b-b8ce-3a343e829b76",
+      "role": "assistant",
+      "channel": null,
+      "contentType": "reasoning_recap",
+      "hidden": false,
+      "redacted": false,
+      "textLen": 0,
+      "reason": "reasoning_or_thoughts"
+    }
+  ]
+}
