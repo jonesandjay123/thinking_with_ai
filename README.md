@@ -56,6 +56,7 @@
 - [即時語音代理選項調查：Jarvis Voice Lite](./projects/realtime-voice-agent-options-2026-07-13/)
 - [開源即時語音 Agent 地圖：端到端 Speech-to-Speech 模型與工程底座](./projects/open-source-realtime-voice-agent-landscape-2026-07-14/)
 - [MiniCPM5-1B 與開放權重模型版圖比較](./projects/open-weights-model-landscape-minicpm5-1b-2026-07-14/)
+- [Pixel 本地 Agent 地圖：Gemini Nano、AI Edge Gallery 與口袋代理](./projects/pixel-local-agent-landscape-2026-08-30/)
 
 ### 6. 近期調查報告
 - [LLM API 免費額度與強模型調查](./reports/llm-api-free-tier-research-2026-06-28.md)
