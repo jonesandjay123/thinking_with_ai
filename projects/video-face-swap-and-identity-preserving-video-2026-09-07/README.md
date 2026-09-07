@@ -178,7 +178,72 @@
 
 ---
 
-## 7. 建議的安全評估方式（不使用真人第三方臉）
+## 7. 已有「自己的臉」LoRA，要替換廣告／電影角色：該選哪一條？
+
+### 先給答案：追求最好效果，應選「混合式後製」，不是把 LoRA 直接塞進單一換臉器
+
+如果目標是把**自己（已同意使用）的臉與身份**放進既有廣告片或電影段落，同時盡量保留原有的鏡頭調度、表演、服裝、動作、背景、音效與剪輯節奏，最穩定的實務優先順序是：
+
+1. 用自己的 LoRA 產出一組高品質、風格一致、涵蓋正臉／左右側臉／不同表情與光線的 **identity reference pack**。
+2. 對一般鏡頭，以 **FaceFusion** 做「原始影片不重生成」的臉部替換。這一步保留原片的肢體表演、背景、鏡頭與時間結構，通常是整體最自然、也最省時的主幹。
+3. 對 FaceFusion 最容易失敗的少數鏡頭——例如大側臉、強烈遮擋、手摸臉、劇烈轉頭、逆光、臉部被物件遮住——改用 **VACE 的 masked video-to-video / reference-to-video** 做局部重建，而不是強迫同一套 swap pipeline 硬做到底。
+4. 最後以臉部修復、顏色／顆粒匹配、遮罩與必要的人工 compositing 做收尾；電影級效果通常就差在這一段，而不在「多換一個模型」。
+
+**我的推薦：FaceFusion 作為 80% 鏡頭的主工具，VACE 作為難鏡頭的生成式補救工具；自己的 LoRA 用來建立高品質 reference，而非期待所有換臉工具直接讀取 `.safetensors`。**
+
+### 關鍵觀念：LoRA 的相容性由「底座模型」決定
+
+「我有自己的臉 LoRA」還不足以決定能不能直接接到影片工具。LoRA 是對某個特定底座模型的權重增量：SDXL LoRA、FLUX LoRA、Wan LoRA、Hunyuan LoRA 彼此通常**不能直接互換**。
+
+| LoRA 類型 | 能否直接用於 FaceFusion / ReActor | 合理用途 |
+|---|---|---|
+| SDXL / FLUX 人像 LoRA | 通常不能；FaceFusion / ReActor 是以 source image 或 face embedding 做交換，並非 diffusion LoRA host | 先生成高品質、多角度 reference images，再餵給換臉或影片編輯流程 |
+| Wan / VACE 相容的影片 LoRA | 需逐一確認 adapter、checkpoint、ComfyUI node / Diffusers workflow 是否相容 | 可望直接影響生成式 V2V／R2V 的角色身份與風格，但仍需在固定 benchmark 實測 |
+| 不確定底座或來源的 LoRA | 不應假設可直用 | 先確認訓練底座、觸發詞、license、輸出品質；必要時只把它當 identity-reference 產生器 |
+
+所以，若你的 LoRA 原本是用 SDXL 或 FLUX 訓練：**不要因為它叫 LoRA 就直接找「影片 LoRA 插槽」**。最可靠的橋接方式是先生成一組一致人物 reference，再讓 FaceFusion／VACE 做其各自擅長的事。
+
+### 為什麼不是「全程用 VACE」？
+
+VACE 確實是更進階的 all-in-one video editing 模型，官方列出 reference-to-video、video-to-video 與 masked video-to-video，並提供 Swap-Anything、Reference-Anything 等能力。它適合把人物的局部甚至整個角色區域重新生成；這在問題鏡頭特別有價值。
+
+但 VACE 重生成的範圍越大，越可能改變原片的微表情、服裝紋理、光影、景深、手部與動作細節。對「把我替進一段已經拍得很好的廣告／電影」而言，這反而可能不如先保留原始影像、只做 face swap。**VACE 的強項是修難鏡頭與做角色層級替換，不是天然地在每個鏡頭都勝過保留原片的 swap。**
+
+### 依你的目標選工具
+
+| 目標 | 首選 | 為什麼 |
+|---|---|---|
+| 只把演員的臉換成自己的臉，保留原服裝、身體、台詞和鏡頭 | **FaceFusion** | 最少改動原片，最符合「替換臉」問題；先用 LoRA 生成的多角度 source refs 增強身份穩定性 |
+| 需要在 ComfyUI 裡把 LoRA 生圖、換臉、遮罩、修復串成同一 workflow | **ComfyUI + ReActor** | 可把 LoRA 生成 reference 與 swap / face restoration 接在同一張 workflow；工程彈性最高 |
+| 角色不只臉要變，連髮型、身形、服裝或鏡頭局部都要重新創作 | **VACE（mask V2V / R2V）** | 可用 video、mask、reference image 與文字共同控制局部重建；代價是生成漂移與較高算力 |
+| 只是頭像說話、表情或轉頭，不需保留原電影表演 | **LivePortrait** | 對頭部 motion transfer 快而可控；不適合作為複雜電影鏡頭的完整角色替換器 |
+
+### 實際品質會被什麼決定？
+
+就算已有好 LoRA，成敗多半取決於以下因素：
+
+- **reference 的涵蓋度**：一張完美正臉通常不夠；應有與 target 鏡頭相近的側向角度、焦段、光線和表情。
+- **target 鏡頭難度**：臉佔比小、motion blur、遮擋、反射、強背光、多人交錯與長鏡頭都會提高時間閃爍與邊緣問題。
+- **替換範圍是否克制**：只改臉時，原始鏡頭保留越多，通常越可信；若要改整個人，應預期進入生成式影片與合成後製的範圍。
+- **輸出收尾**：色彩、膚色、底片顆粒、銳化、motion blur、臉部遮罩與 cut 點接合，往往決定觀眾是否覺得「貼上去」。
+
+### 最小可驗證的 benchmark
+
+在完整長片前，先拿自己有權使用的 10–15 秒片段，刻意含三種鏡頭：正／半正臉、側臉或快速轉頭、遮擋或特殊光線。比較：
+
+1. FaceFusion + LoRA 產生的 reference pack。
+2. ComfyUI-ReActor + 同一組 reference pack（若已在 ComfyUI 生態）。
+3. 僅針對失敗鏡頭的 VACE masked V2V / R2V。
+
+以身份相似度、時間閃爍、原鏡頭保留率、修片時間與 GPU 成本選擇，而不是只比較靜態截圖。這能很快判斷「你的 LoRA 是更適合當 reference generator，還是值得投入訓練成特定影片底座的 LoRA」。
+
+**前提重申**：即使使用的是你自己的臉，商業廣告與電影片段本身仍可能有表演、著作、商標、合約、發行與誤導性使用限制；公開或商用前要確認片段與發行用途的權利，並揭露合成處理。
+
+來源：[FaceFusion](https://github.com/facefusion/facefusion)｜[ComfyUI-ReActor](https://github.com/Gourieff/ComfyUI-ReActor)｜[VACE](https://github.com/ali-vilab/VACE)｜[Wan2.1](https://github.com/Wan-Video/Wan2.1)
+
+---
+
+## 8. 建議的安全評估方式（不使用真人第三方臉）
 
 在決定採用前，做一個小型、可重複的 benchmark：
 
