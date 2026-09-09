@@ -30,6 +30,7 @@
 - [Repo 2.0 Upgrade Decision Log](./decision-log/2026-04-repo-2.0-upgrade.md)
 
 ### 5. 近期代表性專案
+- [Pixel 8 Pro：合法解除 MDM／受管 Google Play 與裝置復原路徑（2026-09-09）](./projects/pixel-8-pro-mdm-managed-google-play-legal-recovery-2026-09-09/)
 - [影片換臉與身份保留影片技術地圖（2026-09-07）](./projects/video-face-swap-and-identity-preserving-video-2026-09-07/)
 - [OpenClaw 圖像識別失效調查](./projects/openclaw-image-pipeline-regression-2026-04-29/)
 - [OpenClaw Slack Thread Continuity Success](./projects/openclaw-slack-thread-continuity-success/)
