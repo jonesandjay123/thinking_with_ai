@@ -7,3 +7,4 @@
 - [好棒Bump](hao-bang-bump/)
 - [零度解說](lingdu-explainer/)
 - [Meditation Math](meditation-math/)
+- [老金：奇科・澤維爾《Pinga-Fogo》生命哲學與 Q&A（2026-10）](laojin/chico-xavier-pinga-fogo-1971/)
