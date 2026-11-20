@@ -63,6 +63,7 @@
 - [Pixel 本地 Agent 地圖：Gemini Nano、AI Edge Gallery 與口袋代理](./projects/pixel-local-agent-landscape-2026-08-30/)
 
 ### 6. 近期調查報告
+- [GTA 6 攻略、秘籍與秘密探索專區（2026-11-20）](./projects/gta-6-guide/)
 - [DIY × AI 機械手臂套件與 2026 黑五購買調查（11/19 更新）](./reports/2026-11-19-diy-ai-robot-arm-kits-black-friday.md)
 - [LLM API 免費額度與強模型調查](./reports/llm-api-free-tier-research-2026-06-28.md)
 
